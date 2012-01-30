@@ -129,7 +129,7 @@ namespace andtools
             }
             catch (Exception ex)
             {
-                MessageBox.Show("启动应用程序时出错！原因：" + ex.Message);
+                MessageBox.Show("Error：" + ex.Message);
             }
             return false;
         }
@@ -138,6 +138,135 @@ namespace andtools
         {
             if (_txtsavepath.Text.Length == 0) return;
             System.Diagnostics.Process.Start("explorer.exe",_txtsavepath.Text);
+        }
+
+        /// <summary>
+        /// 选择源代码的路径
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _btnselbuildpath_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _txtbuildpath.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        /// <summary>
+        /// 选择apk保存路径
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _btnbuildspkpath_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _txtbuildapkpath.Text = saveFileDialog1.FileName;
+            }
+        }
+
+        /// <summary>
+        /// 签名APK保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _btnsavesignapk_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _txtsignapk.Text = saveFileDialog1.FileName;
+            }
+        }
+
+        /// <summary>
+        /// 编译
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _btnbuild_Click(object sender, EventArgs e)
+        {
+            string strapk = string.Empty;
+            string strpath = string.Empty;
+
+
+            if (_txtbuildpath.Text.Length != 0 && _txtbuildpath.Text != "")
+            {
+                strpath = _txtbuildpath.Text;
+            }
+            else
+            {
+                MessageBox.Show("请选择源码路径!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && File.Exists(_txtbuildapkpath.Text) && _txtbuildapkpath.Text.EndsWith(".apk"))
+            {
+                strapk = _txtbuildapkpath.Text;
+            }
+            else
+            {
+                MessageBox.Show("请选择APK保存路径!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string[] args = new string[4];
+            args[0] = "b";
+            args[1] = "-f";
+            args[2] = strpath;
+            args[3] = strapk;
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "apktool.bat";
+            if (StartProcess(path, args))
+            {
+                _lbinfo2.Text = "完成！";
+            }
+        }
+
+
+
+        private void _btnsign_Click(object sender, EventArgs e)
+        {
+            string strapk = string.Empty;
+            string strsignapk = string.Empty;
+
+            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && File.Exists(_txtbuildapkpath.Text) && _txtbuildapkpath.Text.EndsWith(".apk"))
+            {
+                strapk = _txtbuildapkpath.Text;
+            }
+            else
+            {
+                MessageBox.Show("请选择未签名APK路径!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (_txtsignapk.Text.Length != 0 && _txtsignapk.Text != "" && File.Exists(_txtsignapk.Text) && _txtsignapk.Text.EndsWith(".apk"))
+            {
+                strsignapk = _txtbuildapkpath.Text;
+            }
+            else
+            {
+                MessageBox.Show("请选择签名APK保存路径!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
+
+
+            string[] args = new string[4];
+            args[0] = strapk;
+            args[1] = strsignapk;
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "sign.bat";
+            if (StartProcess(path, args))
+            {
+                _lbinfo2.Text = "完成！";
+            }
+        }
+
+        private void _btnopenapk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
