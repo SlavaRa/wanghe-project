@@ -1,0 +1,9 @@
+D:\andtools\andtools\andtools\bin\Release\andtools.exe
+D:\andtools\andtools\andtools\bin\Release\andtools.pdb
+D:\andtools\andtools\andtools\obj\x86\Release\ResolveAssemblyReference.cache
+D:\andtools\andtools\andtools\obj\x86\Release\andtools.Form1.resources
+D:\andtools\andtools\andtools\obj\x86\Release\andtools.Properties.Resources.resources
+D:\andtools\andtools\andtools\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+D:\andtools\andtools\andtools\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+D:\andtools\andtools\andtools\obj\x86\Release\andtools.exe
+D:\andtools\andtools\andtools\obj\x86\Release\andtools.pdb

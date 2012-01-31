@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this._btnopenpath = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,6 +58,8 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -174,6 +177,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this._btnsavesignapk);
             this.groupBox2.Controls.Add(this._txtsignapk);
             this.groupBox2.Controls.Add(this.label7);
@@ -329,23 +333,44 @@
             // 
             this.saveFileDialog1.Filter = "APK files(*.apk)|*.apk";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 153);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(155, 12);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "提示：APK名称不能包含汉字";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(429, 323);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(227, 12);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Copyright (C) 2012 wanghewin7@163.com";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 326);
+            this.ClientSize = new System.Drawing.Size(675, 344);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AndTools";
+            this.Text = "AndTools V1.0.0";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -380,6 +405,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button _btnsavesignapk;
         private System.Windows.Forms.TextBox _txtsignapk;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 

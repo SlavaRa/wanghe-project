@@ -83,6 +83,7 @@ namespace andtools
             if (StartProcess(path, args))
             {
                 _lbinfo.Text = "完成！";
+                MessageBox.Show("完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -102,28 +103,22 @@ namespace andtools
                     s = s + arg + " ";
                 }
                 s = s.Trim();
-                
-                ProcessStartInfo startInfo = new ProcessStartInfo(filename);
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.WorkingDirectory = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+                startInfo.FileName = filename;
                 startInfo.Arguments = s;
                 startInfo.CreateNoWindow = true;
                 startInfo.UseShellExecute = false;
                 startInfo.RedirectStandardOutput = true;
                 startInfo.RedirectStandardInput = true;
+
                 Process myprocess = Process.Start(startInfo);
-                
 
-                StreamReader reader = myprocess.StandardOutput;
-                string line = reader.ReadLine();
-
-                while (!reader.EndOfStream)
-                {
-                    line = reader.ReadLine();
-                    _lbinfo.Text = line;
-                }
                 myprocess.WaitForExit();
                 myprocess.Close();
 
-                reader.Close();
+
 
                 return true;
             }
@@ -201,7 +196,7 @@ namespace andtools
             }
 
 
-            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && File.Exists(_txtbuildapkpath.Text) && _txtbuildapkpath.Text.EndsWith(".apk"))
+            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && _txtbuildapkpath.Text.EndsWith(".apk"))
             {
                 strapk = _txtbuildapkpath.Text;
             }
@@ -220,17 +215,22 @@ namespace andtools
             if (StartProcess(path, args))
             {
                 _lbinfo2.Text = "完成！";
+                MessageBox.Show("编译成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
 
-
+        /// <summary>
+        /// 签名
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _btnsign_Click(object sender, EventArgs e)
         {
             string strapk = string.Empty;
             string strsignapk = string.Empty;
 
-            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && File.Exists(_txtbuildapkpath.Text) && _txtbuildapkpath.Text.EndsWith(".apk"))
+            if (_txtbuildapkpath.Text.Length != 0 && _txtbuildapkpath.Text != "" && _txtbuildapkpath.Text.EndsWith(".apk"))
             {
                 strapk = _txtbuildapkpath.Text;
             }
@@ -240,9 +240,9 @@ namespace andtools
                 return;
             }
 
-            if (_txtsignapk.Text.Length != 0 && _txtsignapk.Text != "" && File.Exists(_txtsignapk.Text) && _txtsignapk.Text.EndsWith(".apk"))
+            if (_txtsignapk.Text.Length != 0 && _txtsignapk.Text != "" && _txtsignapk.Text.EndsWith(".apk"))
             {
-                strsignapk = _txtbuildapkpath.Text;
+                strsignapk = _txtsignapk.Text;
             }
             else
             {
@@ -250,23 +250,29 @@ namespace andtools
                 return;
             }
 
+            string[] args = new string[6];
+            args[0] = "-jar";
+            args[1] = "signapk.jar";
+            args[2] = "testkey.x509.pem";
+            args[3] = "testkey.pk8";
 
+            args[4] = strapk;
+            args[5] = strsignapk;
 
+            string path = "java";
 
-
-            string[] args = new string[4];
-            args[0] = strapk;
-            args[1] = strsignapk;
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "sign.bat";
             if (StartProcess(path, args))
             {
                 _lbinfo2.Text = "完成！";
+                MessageBox.Show("签名成功！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
         private void _btnopenapk_Click(object sender, EventArgs e)
         {
-
+            if (_txtsignapk.Text.Length == 0) return;
+            FileInfo fi = new FileInfo(_txtsignapk.Text);
+            System.Diagnostics.Process.Start("explorer.exe", fi.DirectoryName);
         }
     }
 }
