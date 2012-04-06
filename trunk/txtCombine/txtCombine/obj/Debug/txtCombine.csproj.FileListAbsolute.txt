@@ -1,0 +1,8 @@
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\txtCombine.FrmMain.resources
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\txtCombine.Properties.Resources.resources
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\txtCombine.csproj.GenerateResource.Cache
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\bin\Debug\txtCombine.exe
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\bin\Debug\txtCombine.pdb
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\txtCombine.exe
+C:\Users\wanghe\Documents\Visual Studio 2008\Projects\txtCombine\txtCombine\obj\Debug\txtCombine.pdb
