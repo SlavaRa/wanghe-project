@@ -2,7 +2,9 @@ package view
 {
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import view.ui.GameView;
 	import view.ui.MainUIView;
+	import view.ui.QuestionView;
 	
 	/**
 	 * ...
@@ -14,6 +16,8 @@ package view
 		public var ui:Titan;
 		
 		public var mainUI:MainUIView;
+		public var questionUI:QuestionView;
+		private var gameUI:GameView;
 		
 		public function TitanMediator(view:Titan) 
 		{
@@ -39,7 +43,18 @@ package view
 			var mainUImediator:MainUIMediator = new MainUIMediator(mainUI);
 			facade.registerMediator(mainUImediator);
 			ui.addChild(mainUI);
+			
+			gameUI = new GameView;
+			var gameUImediator:GameMediator = new GameMediator(gameUI);
+			facade.registerMediator(gameUImediator);
+			ui.addChild(gameUI);
+			gameUI.visible = false;
+			
+			questionUI = new QuestionView;
+			var questionUImediator:QuestionMediator = new QuestionMediator(questionUI);
+			facade.registerMediator(questionUImediator);
+			ui.addChild(questionUI);
+			questionUI.visible = false;
 		}
 	}
-
 }
