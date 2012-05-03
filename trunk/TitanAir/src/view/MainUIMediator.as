@@ -6,16 +6,14 @@ package view
 	
 	/**
 	 * ...
-	 * @author ...
+	 * @author 
 	 */
-	public class TitanMediator extends Mediator 
+	public class MainUIMediator extends Mediator 
 	{
-		public static const NAME:String = "TITAN_MEDIATOR";
-		public var ui:Titan;
+		public static const NAME:String = "MAIN_UI_MEDIATOR";
+		public var ui:MainUIView;
 		
-		public var mainUI:MainUIView;
-		
-		public function TitanMediator(view:Titan) 
+		public function MainUIMediator(view:MainUIView) 
 		{
 			ui = view;
 			super(NAME,view);
@@ -29,16 +27,6 @@ package view
 		override public function handleNotification(notification:INotification):void 
 		{
 			super.handleNotification(notification);
-		}
-		
-		override public function onRegister():void 
-		{
-			super.onRegister();
-			
-			mainUI = new MainUIView;
-			var mainUImediator:MainUIMediator = new MainUIMediator(mainUI);
-			facade.registerMediator(mainUImediator);
-			ui.addChild(mainUI);
 		}
 	}
 

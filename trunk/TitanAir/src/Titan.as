@@ -9,7 +9,7 @@ package
 	import flash.ui.MultitouchInputMode;
 	
 	/**
-	 * ...
+	 * whe
 	 * @author 
 	 */
 	public class Titan extends Sprite 
@@ -30,11 +30,6 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onStageInit);
 			TitanFacade.getInstance().startup(this);
-		}
-		
-		private function deactivate(e:Event):void 
-		{
-			// auto-close
 		}
 		
 	}
