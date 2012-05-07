@@ -1,5 +1,6 @@
 package view 
 {
+	import controller.ConstID;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.GameView;
@@ -20,12 +21,24 @@ package view
 		
 		override public function listNotificationInterests():Array 
 		{
-			return super.listNotificationInterests();
+			return [
+					ConstID.GAME_SET_IMAGE,
+					ConstID.GAME_CLEAR_IMAGE
+					];
 		}
 		
 		override public function handleNotification(notification:INotification):void 
 		{
-			super.handleNotification(notification);
+			switch (notification.getName()) 
+			{
+				case ConstID.GAME_SET_IMAGE:
+					ui.setImage(notification.getBody() as String);
+					break;
+				case ConstID.GAME_CLEAR_IMAGE:
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }

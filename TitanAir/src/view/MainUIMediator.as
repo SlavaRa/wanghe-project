@@ -1,5 +1,6 @@
 package view 
 {
+	import controller.ConstID;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.MainUIView;
@@ -19,6 +20,12 @@ package view
 			super(NAME,view);
 		}
 		
+		override public function onRegister():void 
+		{
+			super.onRegister();
+			ui.onNextClickCall = onNextClick;
+		}
+		
 		override public function listNotificationInterests():Array 
 		{
 			return super.listNotificationInterests();
@@ -27,6 +34,11 @@ package view
 		override public function handleNotification(notification:INotification):void 
 		{
 			super.handleNotification(notification);
+		}
+		
+		private function onNextClick():void
+		{
+			sendNotification(ConstID.GAME_SET_IMAGE,"slidingimage.jpg");
 		}
 	}
 
