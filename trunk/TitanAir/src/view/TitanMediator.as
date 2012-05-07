@@ -48,7 +48,7 @@ package view
 			var gameUImediator:GameMediator = new GameMediator(gameUI);
 			facade.registerMediator(gameUImediator);
 			ui.addChild(gameUI);
-			gameUI.visible = false;
+			gameUI.visible = true;
 			
 			questionUI = new QuestionView;
 			var questionUImediator:QuestionMediator = new QuestionMediator(questionUI);
