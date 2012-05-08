@@ -28,8 +28,8 @@ package view.ui
 		public static const numPiecesHoriz:int = 4;
 		public static const numPiecesVert:int = 4;
 		
-		// random shuffle steps
-		public static const numShuffle:int = 200;
+		// random shuffle steps 打乱步数
+		public static const numShuffle:int = 1;
 		
 		// animation steps and time
 		public static const slideSteps:int = 10;
@@ -49,8 +49,12 @@ package view.ui
 		private var slideAnimation:Timer;
 		
 		private var loader:Loader;
+		
+		public var onPuzzleComplete:Function;
+		
 		public function GameView(){
-			blankPoint = new Point(numPiecesHoriz-1,numPiecesVert-1);
+			blankPoint = new Point(numPiecesHoriz - 1, numPiecesVert - 1);
+			puzzleObjects = new Array();
 		}
 		
 		
@@ -76,12 +80,15 @@ package view.ui
 			// cut into puzzle pieces
 			makePuzzlePieces(image.bitmapData);
 			
-			// shuffle them
-			shufflePuzzlePieces();
+			// shuffle them 打乱丫的
+			//shufflePuzzlePieces();
 		}
 		
 		public function makePuzzlePieces(bitmapData:BitmapData):void {
-			puzzleObjects = new Array();
+			
+			//清理
+			clearPuzzle();
+			
 			for(var x:uint=0;x<numPiecesHoriz;x++) {
 				for (var y:uint=0;y<numPiecesVert;y++) {
 					// skip blank spot
@@ -91,6 +98,7 @@ package view.ui
 					var newPuzzlePieceBitmap:Bitmap = new Bitmap(new BitmapData(pieceWidth,pieceHeight));
 					newPuzzlePieceBitmap.bitmapData.copyPixels(bitmapData,new Rectangle(x*pieceWidth,y*pieceHeight,pieceWidth,pieceHeight),new Point(0,0));
 					var newPuzzlePiece:Sprite = new Sprite();
+					newPuzzlePiece.name = x.toString() + y.toString();
 					newPuzzlePiece.addChild(newPuzzlePieceBitmap);
 					addChild(newPuzzlePiece);
 					
@@ -156,6 +164,8 @@ package view.ui
 		
 		public function clickPuzzlePiece(event:MouseEvent):void {
 			// find piece clicked and move it
+			//TODO 判断一下 是否激活
+			
 			for(var i:int=0;i<puzzleObjects.length;i++) {
 				if (puzzleObjects[i].piece == event.currentTarget) {
 					movePiece(puzzleObjects[i],true);
@@ -209,13 +219,13 @@ package view.ui
 			slideAnimation.start();
 		}
 		
-				// move one step in slide
+		// move one step in slide
 		public function slidePiece(event:Event):void {
 			slidingPiece.piece.x += slideDirection.x/slideSteps;
 			slidingPiece.piece.y += slideDirection.y/slideSteps;
 		}
 		
-				// complete slide
+		// complete slide
 		public function slideDone(event:Event):void{
 			slidingPiece.piece.x = slidingPiece.currentLoc.x*(pieceWidth+pieceSpace) + horizOffset;
 			slidingPiece.piece.y = slidingPiece.currentLoc.y*(pieceHeight+pieceSpace) + vertOffset;
@@ -229,12 +239,16 @@ package view.ui
 			}
 		}
 		
-				// check to see if all pieces are in place
+		// check to see if all pieces are in place
 		public function puzzleComplete():Boolean {
 			for(var i:int=0;i<puzzleObjects.length;i++) {
 				if (!puzzleObjects[i].currentLoc.equals(puzzleObjects[i].homeLoc)) {
 					return false;
 				}
+			}
+			if (onPuzzleComplete != null)
+			{
+				onPuzzleComplete();
 			}
 			return true;
 		}
@@ -245,9 +259,8 @@ package view.ui
 				puzzleObjects[i].piece.removeEventListener(MouseEvent.CLICK,clickPuzzlePiece);
 				removeChild(puzzleObjects[i].piece);
 			}
-			puzzleObjects = null;
+			puzzleObjects.length = 0;
 		}
-		
 		
 	}
 }
