@@ -19,6 +19,11 @@ package view
 			ui = view;
 		}
 		
+		override public function onRegister():void 
+		{
+			ui.onPuzzleComplete = puzzleComplete;
+			super.onRegister();
+		}
 		override public function listNotificationInterests():Array 
 		{
 			return [
@@ -39,6 +44,11 @@ package view
 				default:
 					break;
 			}
+		}
+		
+		private function puzzleComplete():void
+		{
+			
 		}
 	}
 }
