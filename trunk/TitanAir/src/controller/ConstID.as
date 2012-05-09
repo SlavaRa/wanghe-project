@@ -20,6 +20,7 @@ package controller
 		//游戏界面 清除图片
 		public static const GAME_CLEAR_IMAGE:String = "GAME_CLEAR_IMAGE";
 		
+		public static const GAME_ITEM_CLEAR_FILTER:String = "GAME_ITEM_CLEAR_FILTER";
 		
 		
 		

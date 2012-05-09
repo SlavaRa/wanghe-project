@@ -1,6 +1,8 @@
 package view 
 {
 	import controller.ConstID;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.GameView;
@@ -28,7 +30,8 @@ package view
 		{
 			return [
 					ConstID.GAME_SET_IMAGE,
-					ConstID.GAME_CLEAR_IMAGE
+					ConstID.GAME_CLEAR_IMAGE,
+					ConstID.GAME_ITEM_CLEAR_FILTER
 					];
 		}
 		
@@ -41,6 +44,9 @@ package view
 					break;
 				case ConstID.GAME_CLEAR_IMAGE:
 					break;
+				case ConstID.GAME_ITEM_CLEAR_FILTER:
+					setPuzzleItemFilter();
+					break;
 				default:
 					break;
 			}
@@ -49,6 +55,20 @@ package view
 		private function puzzleComplete():void
 		{
 			
+		}
+		
+		private var curItemName:String = "";
+		//点击拼图格子
+		private function onPuzzleItemClick(e:Event):void
+		{
+			var sp:Sprite = e.target as Sprite;
+			curItemName = sp.name;
+			//TODO 把答题界面呼出来
+		}
+		
+		private function setPuzzleItemFilter():void
+		{
+			ui.clearItemFilter(curItemName);
 		}
 	}
 }
