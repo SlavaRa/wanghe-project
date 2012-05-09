@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<dataSet>
+	<entity no="1">
+		<question>1.乳腺癌是女性的专利，是吗？</question>
+		<options>
+			<option no="1">A.是</option>
+			<option no="2">B.不是，男性也有</option>
+			<option no="3">C.不清楚</option>
+		</options>
+		<rightoption>
+			<right>2</right>
+		</rightoption>
+		<explain>答案解析：乳癌的发生是由于乳房细胞内出现恶性肿瘤组织。由于男性也具备乳腺组织，所以同样可能导致乳癌，只是因为生理结构的差异，体内激素的水平不一样，女性患乳癌的几率远大于男性。</explain>
+	</entity>
+	<entity no="2">
+		<question>乳腺癌的好发年龄为_____</question>
+		<options>
+			<option no="1">A.20~40岁</option>
+			<option no="2">B.30~40岁</option>
+			<option no="3">C.40~60岁</option>
+		</options>
+		<rightoption>
+			<right>3</right>
+		</rightoption>
+		<explain>答案解析：有关乳腺癌的确切病因虽然还未能完全明确，但一般认为与卵巢功能、遗传因素、婚育及哺乳等因素有密切关系。因此乳腺癌主要发生于青春期以后的成年妇女。</explain>
+	</entity>
+	<entity no="3">
+		<question>乳腺癌的好发年龄为_____</question>
+		<options>
+			<option no="1">A.20~40岁</option>
+			<option no="2">B.30~40岁</option>
+			<option no="3">C.40~60岁</option>
+		</options>
+		<rightoption>
+			<right>3</right>
+		</rightoption>
+		<explain>答案解析：（1）乳腺癌是女性排名第一的常见恶性肿瘤；病因尚未完全阐明，但与雌激素的长期刺激，遗传，病毒等有关；乳房肿块是乳腺癌最常见的表现。（2）乳房纤维瘤是乳房的常见良性肿瘤，一般认为与雌激素作用活跃有密切关系；常见于青年妇女，肿瘤大多为圆形或椭圆形，边界清楚，活动度大，发展缓慢。</explain>
+	</entity>
+	<entity no="4">
+		<question>4.乳腺癌会有哪些临床症状/体征？（可多选）</question>
+		<options>
+			<option no="1">A.乳房无痛性的单发肿块</option>
+			<option no="2">B.疼痛</option>
+			<option no="3">C.皮肤隆起</option>
+			<option no="4">D.乳头回缩</option>
+			<option no="5">E.乳头溢乳</option>
+			<option no="6">F.腋窝淋巴结的肿大</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>2</right>
+			<right>3</right>
+			<right>4</right>
+			<right>5</right>
+			<right>6</right>
+		</rightoption>
+		<explain>乳癌最早的表现是患乳出现单发的、无痛性并呈进行性生长的小肿块。肿块位于外上象限最多见，其次是乳头、乳晕区和内上象限。少数病人可有不同程度的触痛或刺激和乳头溢液。肿块的生长速度较快，侵及周围组织可引起乳房外形的改变，出现一系列体征。如：肿瘤表面皮肤凹陷；邻近乳头的癌肿可将乳头牵向癌肿方向；乳头内陷等。癌肿较大者，可使整个乳房组织收缩，肿块明显凸出。乳癌的淋巴转移多表现为同侧腋窝淋巴结肿大，初为散在、无痛、质硬，数目较少，可被推动；以后肿大的淋巴结数目增多，互相粘连成团，与皮肤或腋窝深部组织粘连而固定。少数病人可出现对侧腋窝淋巴结转移。</explain>
+	</entity>
+	<entity no="5">
+		<question>5.乳腺癌多发于什么部位？（乳腺以乳头为中心，做一个十字交叉）</question>
+		<options>
+			<option no="1">A.内上象限</option>
+			<option no="2">B.外上象限</option>
+			<option no="3">C.内下象限</option>
+			<option no="4">D.外下象限</option>
+			<option no="5">E.中央乳晕部</option>
+			<option no="6">F.不清楚</option>
+		</options>
+		<rightoption>
+			<right>2</right>
+		</rightoption>
+		<explain>答案解析：乳腺癌的发作部位多位于乳房，通常的症状表现是乳房肿块等。乳腺癌的多发部位以乳房外上象限占多数。乳房肿块也以外上象限最多见。</explain>
+	</entity>
+	<entity no="6">
+		<question>你知道乳腺癌的征兆吗？(可多选)</question>
+		<options>
+			<option no="1">A.乳房内发现不痛不红的结节硬块</option>
+			<option no="2">B.腋窝内有肿块</option>
+			<option no="3">C.30岁以上妇女乳房增生迅速加重</option>
+			<option no="4">D.乳房缩小，乳头抬高</option>
+			<option no="5">E.乳头、乳晕部位发生溃疡</option>
+			<option no="6">F.乳房皮肤向内收缩、凹陷形成“酒窝征”</option>
+			<option no="7">G.乳头反复出现血性溢液</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>2</right>
+			<right>3</right>
+			<right>4</right>
+			<right>5</right>
+			<right>6</right>
+			<right>7</right>
+		</rightoption>
+		<explain>答案解析：乳腺肿块是乳腺癌最常见的症状，早期乳腺癌的肿块一般较小，但也会引起引起局部皮肤的凹陷或乳头回缩等症状。有研究显示，绝经后女性出现乳腺疼痛并伴有腺体增厚者，乳腺癌检出率将增高。乳头溢液可因多种乳腺疾病而引起，在各种乳腺疾病的症状中，其发生率仅次于乳腺肿块和乳腺疼痛。血性溢液大多由良性病变引起，有少数乳腺癌亦可呈血性。近来研究表明，乳头溢液是某些乳腺癌，特别是导管内癌较早期的临场表现，而且在形成明显肿块之前即可单独存在。</explain>
+	</entity>
+	<entity no="7">
+		<question>乳腺癌主要会有哪些并发症？（可多选）</question>
+		<options>
+			<option no="1">A.恶病质综合征（食欲不振、厌食、消瘦、乏力、贫血及发热等症状）</option>
+			<option no="2">B.同侧淋巴结不断肿大</option>
+			<option no="3">C.肺部出现胸痛、胸水、气促</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>2</right>
+			<right>3</right>
+		</rightoption>
+		<explain>答案解析：乳腺癌患者到中晚期可出现“肿瘤食欲不振—恶病质综合征”。食欲不振既是恶病质的原因，又是恶病质的临床表现。可出现食欲不振、厌食、消瘦、乏力、贫血及发热等症状，严重者可引发生命危险。乳腺癌后期可出现淋巴转移，同侧腋窝淋巴结肿大，而且肿大的淋巴结数目不断增多，互相粘连成团，少数患者可以出现对侧腋窝淋巴转移。乳腺癌后期还可以出现远处转移，乳腺癌会转移到肺部，出现胸痛、胸水、气促等症状。</explain>
+	</entity>
+	<entity no="8">
+		<question>乳房视诊应注意哪些方面？(可多选)</question>
+		<options>
+			<option no="1">A.双侧乳房是否对称，有无块物突出</option>
+			<option no="2">B.乳头位置有无内陷或抬高</option>
+			<option no="3">C.乳头有无脱屑、糜烂或湿疹样改变</option>
+			<option no="4">D.乳房皮肤有无红肿、水肿凹陷或酒窝征</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>2</right>
+			<right>3</right>
+			<right>4</right>
+		</rightoption>
+		<explain>答案解析：在乳房检查中，视诊是一项不可忽视与不可缺少的基本检查方法。乳房疾病发展到一定阶段后，总会在乳房局部或全身，产生某些或轻或重的症状和体征。乳房视诊应注意：乳房两侧是否对称；两侧乳头的位置是否对称，有无抬高或降低，乳头是否位于乳房圆顶的最高点；乳头表面有无炎症、皲裂、溃烂；乳房皮肤有无炎症、水肿、橘皮征，有无高起或凹陷，局部皮肤与其深部肿块有无粘连；等等。</explain>
+	</entity>
+	
+	<entity no="9">
+		<question>乳房扪诊应注意哪些方面？(可多选)</question>
+		<options>
+			<option no="1">A.用手指的掌面平坦而轻柔地扪诊</option>
+			<option no="2">B.用手指抓捏检查</option>
+			<option no="3">C.应有顺序地检查各个象限及向腋窝突出的乳腺尾部</option>
+			<option no="4">D.检查不必有一定的顺序</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>3</right>
+		</rightoption>
+		<explain>答案解析：乳腺检查时为了与先天性及良性乳房疾病造成的乳头凹陷相鉴别，可用手轻轻向外摩挲，先天性及良性病变的乳头凹陷常可复出，而乳腺癌造成的乳头凹陷则多不能复出。应有顺序地检查各个象限及向腋窝突出的乳腺尾部，不遗漏每一个体征、每一个细节，不遗漏腋窝淋巴结。</explain>
+	</entity>
+	<entity no="10">
+		<question>早期发现的乳腺癌（未转移），最佳的治疗方法是？</question>
+		<options>
+			<option no="1">A.手术 </option>
+			<option no="2">B.化疗</option>
+			<option no="3">C.放疗</option>
+			<option no="4">D.内分泌治疗</option>
+			<option no="5">E.免疫疗法</option>
+			<option no="6">F.中医治疗</option>
+			<option no="7">G.不清楚</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+		</rightoption>
+		<explain>答案解析：根治性切除乳腺癌的手术疗法已有百年历史，目前仍是乳癌治疗的主要手段，而且对早期尚无腋窝淋巴结转移的乳癌疗效最为满意。</explain>
+	</entity>
+	<entity no="11">
+		<question>您觉得哪些措施可以预防乳腺癌的发生？(可多选)</question>
+		<options>
+			<option no="1">A.合理膳食，戒烟酒</option>
+			<option no="2">B.坚持运动</option>
+			<option no="3">C.定期乳房自查和实验室检查</option>
+			<option no="4">D.不用化妆品 </option>
+			<option no="5">E.穿稳固胸罩</option>
+			<option no="6">F.胸部按摩和热敷</option>
+			<option no="7">G.生活作息规律</option>
+		</options>
+		<rightoption>
+			<right>1</right>
+			<right>2</right>
+			<right>3</right>
+			<right>4</right>
+			<right>6</right>
+			<right>7</right>
+		</rightoption>
+		<explain>答案解析：乳腺癌的预防应该做到膳食结构合理；应经常进行适当的体力活动和体育锻炼；含有雌激素类作用的化妆品不宜使用；重视乳房的自我检查和定期医学体检，重视乳房疾病的及时治疗。</explain>
+	</entity>
+	<entity no="12">
+		<question>你知道哪些食物可以预防乳腺癌的发生吗？</question>
+		<options>
+			<option no="1">A.辛椒、姜、桂皮</option>
+			<option no="2">B.谷物类：玉米、荞麦、燕麦</option>
+			<option no="3">C.含碘食物：海带、紫菜、虾皮</option>
+			<option no="4">D.酒、咖啡、可可、巧克力 </option>
+			<option no="5">E.绿茶、豆浆</option>
+			<option no="6">F.咸鱼、咸肉、咸菜等腌制品</option>
+			<option no="7">G.霉变食物</option>
+			<option no="8">H.油炸食物</option>
+			<option no="9">I.新鲜的水果蔬菜</option>
+		</options>
+		<rightoption>
+			<right>2</right>
+			<right>3</right>
+			<right>5</right>
+			<right>9</right>
+		</rightoption>
+		<explain>答案解析：可以预防乳腺癌的食物：（1）含碘的食物，常吃海带、紫菜等海藻类食物可防止乳腺癌的发生。（2）含硒和锌的食物，含硒量较高的食物有鱼类等，含锌量较高的食物有豆类等。（3）含维生素A的食物，如胡萝卜、土豆等，多吃些新鲜蔬菜、水果。（4）含有植物性激素食物，豆类食品有预防乳腺癌的作用，其原因是豆类食品中含有大量的植物性激素，若每天喝豆浆，豆浆中的植物性激素就能调整女性体内激素含量的高低。</explain>
+	</entity>
+</dataSet>
+</root>
