@@ -11,7 +11,7 @@ package view
 	public class ShareUIMediator extends Mediator 
 	{
 		public static const NAME:String = "SHARE_UIMEDIATOR";
-		
+		public var ui:ShareView;
 		public function ShareUIMediator(view:ShareView) 
 		{
 			ui = view;

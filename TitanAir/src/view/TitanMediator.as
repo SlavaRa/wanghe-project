@@ -5,6 +5,7 @@ package view
 	import view.ui.GameView;
 	import view.ui.MainUIView;
 	import view.ui.QuestionView;
+	import view.ui.ShareView;
 	
 	/**
 	 * ...
@@ -18,6 +19,7 @@ package view
 		public var mainUI:MainUIView;
 		public var questionUI:QuestionView;
 		private var gameUI:GameView;
+		private var shareUI:ShareView;
 		
 		public function TitanMediator(view:Titan) 
 		{
@@ -55,6 +57,13 @@ package view
 			facade.registerMediator(questionUImediator);
 			ui.addChild(questionUI);
 			questionUI.visible = false;
+			
+			shareUI = new ShareView;
+			var shareUIMediator:ShareUIMediator = new ShareUIMediator(shareUI);
+			facade.registerMediator(shareUIMediator);
+			ui.addChild(shareUI);
+			shareUI.visible = false;
+			
 		}
 	}
 }

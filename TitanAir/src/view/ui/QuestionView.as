@@ -8,10 +8,9 @@ package view.ui
 	 */
 	public class QuestionView extends Sprite 
 	{
-		public function QuestionView() 
+		public function QuestionView()
 		{
 			
 		}
 	}
-
 }

@@ -1,5 +1,6 @@
 package view.ui 
 {
+	import display.util.GrayFilter;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Loader;
@@ -29,7 +30,7 @@ package view.ui
 		public static const numPiecesVert:int = 4;
 		
 		// random shuffle steps 打乱步数
-		public static const numShuffle:int = 1;
+		public static const numShuffle:int = 10;
 		
 		// animation steps and time
 		public static const slideSteps:int = 10;
@@ -50,11 +51,17 @@ package view.ui
 		
 		private var loader:Loader;
 		
-		public var onPuzzleComplete:Function;
+		public var onPuzzleComplete:Function;//完成
+		public var onPuzzleClick:Function;//点击方块 在灰色的情况下调用此函数
+		
+		private var mode:int = 0;//0灰色答题 1彩色游戏 两种模式
 		
 		public function GameView(){
 			blankPoint = new Point(numPiecesHoriz - 1, numPiecesVert - 1);
 			puzzleObjects = new Array();
+			
+			loader = new Loader();
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete, false, 0, true);
 		}
 		
 		
@@ -64,9 +71,8 @@ package view.ui
 		}
 		
 		public function loadBitmap(bitmapFile:String):void {
-			var file:File = File.applicationDirectory.resolvePath("air_app_assets/"+bitmapFile);
-			loader = new Loader();
-			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete, false, 0, true);
+			var file:File = File.applicationDirectory.resolvePath("air_app_assets/" + bitmapFile);
+			loader.unload();
 			loader.load(new URLRequest(file.url));
 		}
 		
@@ -81,7 +87,7 @@ package view.ui
 			makePuzzlePieces(image.bitmapData);
 			
 			// shuffle them 打乱丫的
-			//shufflePuzzlePieces();
+			shufflePuzzlePieces();
 		}
 		
 		public function makePuzzlePieces(bitmapData:BitmapData):void {
@@ -98,9 +104,11 @@ package view.ui
 					var newPuzzlePieceBitmap:Bitmap = new Bitmap(new BitmapData(pieceWidth,pieceHeight));
 					newPuzzlePieceBitmap.bitmapData.copyPixels(bitmapData,new Rectangle(x*pieceWidth,y*pieceHeight,pieceWidth,pieceHeight),new Point(0,0));
 					var newPuzzlePiece:Sprite = new Sprite();
-					newPuzzlePiece.name = x.toString() + y.toString();
 					newPuzzlePiece.addChild(newPuzzlePieceBitmap);
 					addChild(newPuzzlePiece);
+					
+					newPuzzlePiece.name = x.toString() + y.toString();
+					GrayFilter.applyGray(newPuzzlePiece);
 					
 					// set location
 					newPuzzlePiece.x = x*(pieceWidth+pieceSpace) + horizOffset;
@@ -111,7 +119,7 @@ package view.ui
 					newPuzzleObject.currentLoc = new Point(x,y);
 					newPuzzleObject.homeLoc = new Point(x,y);
 					newPuzzleObject.piece = newPuzzlePiece;
-					newPuzzlePiece.addEventListener(MouseEvent.CLICK,clickPuzzlePiece);
+					newPuzzlePiece.addEventListener(MouseEvent.CLICK, clickPuzzlePiece, false, 0, true);
 					puzzleObjects.push(newPuzzleObject);
 				}
 			}
@@ -165,6 +173,15 @@ package view.ui
 		public function clickPuzzlePiece(event:MouseEvent):void {
 			// find piece clicked and move it
 			//TODO 判断一下 是否激活
+			if (mode == 0)
+			{
+				if ((event.target as Sprite).filters.length != 0)//无滤镜
+				{
+					if(onPuzzleClick!=null)
+						onPuzzleClick(event);
+				}
+				return;
+			}
 			
 			for(var i:int=0;i<puzzleObjects.length;i++) {
 				if (puzzleObjects[i].piece == event.currentTarget) {
@@ -260,6 +277,27 @@ package view.ui
 				removeChild(puzzleObjects[i].piece);
 			}
 			puzzleObjects.length = 0;
+		}
+		
+		public function clearItemFilter(name:String):void
+		{
+			var count:int = 0;
+			for each (var item:Sprite in puzzleObjects) 
+			{
+				if (item.name==name) 
+				{
+					item.filters = [];
+				}
+				if (item.filters.length!=0)
+				{
+					count++;
+				}
+			}
+			
+			if (count == 0)
+			{
+				mode = 1;
+			}
 		}
 		
 	}
