@@ -1,5 +1,10 @@
 package view 
 {
+	import com.greensock.easing.Bounce;
+	import com.greensock.TweenLite;
+	import controller.ConstID;
+	import flash.display.SpreadMethod;
+	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.GameView;
@@ -21,6 +26,8 @@ package view
 		private var gameUI:GameView;
 		private var shareUI:ShareView;
 		
+		private var childArr:Array;
+		
 		public function TitanMediator(view:Titan) 
 		{
 			ui = view;
@@ -29,41 +36,116 @@ package view
 		
 		override public function listNotificationInterests():Array 
 		{
-			return super.listNotificationInterests();
+			return [
+					ConstID.RESET_SHOW_UI
+					];
 		}
 		
 		override public function handleNotification(notification:INotification):void 
 		{
-			super.handleNotification(notification);
+			switch (notification.getName()) 
+			{
+				case ConstID.RESET_SHOW_UI:
+					manageChildView(notification.getBody() as Sprite,notification.getType());
+					break;
+				default:
+					break;
+			}
 		}
-		
+	
 		override public function onRegister():void 
 		{
 			super.onRegister();
+			childArr = new Array;
 			
 			mainUI = new MainUIView;
 			var mainUImediator:MainUIMediator = new MainUIMediator(mainUI);
 			facade.registerMediator(mainUImediator);
+			childArr.push(mainUI);
 			ui.addChild(mainUI);
 			
 			gameUI = new GameView;
 			var gameUImediator:GameMediator = new GameMediator(gameUI);
 			facade.registerMediator(gameUImediator);
 			ui.addChild(gameUI);
+			childArr.push(gameUI);
 			gameUI.visible = true;
 			
 			questionUI = new QuestionView;
 			var questionUImediator:QuestionMediator = new QuestionMediator(questionUI);
 			facade.registerMediator(questionUImediator);
 			ui.addChild(questionUI);
+			childArr.push(questionUI);
 			questionUI.visible = false;
 			
 			shareUI = new ShareView;
 			var shareUIMediator:ShareUIMediator = new ShareUIMediator(shareUI);
 			facade.registerMediator(shareUIMediator);
 			ui.addChild(shareUI);
+			childArr.push(shareUI);
 			shareUI.visible = false;
+		}
+		
+		private function manageChildView(sp:Sprite, type:String):void 
+		{
+			if (type==ConstID.SHOW_POP_UP)
+			{
+				for each (var item:Sprite in childArr) 
+				{
+					if (item == sp)
+					{
+						item.visible = true;
+						item.mouseEnabled = true;
+						ui.addChild(item);
+						var midX:int = ui.stage.stageWidth / 2;
+						var midY:int = ui.stage.stageHeight / 2;
+						var newX:int = (ui.stage.stageWidth - item.width) / 2;
+						var newY:int = (ui.stage.stageHeight - item.height) / 2;
+						
+						TweenLite.to(item, 0, {x:midX,y:midY, scaleX:0, scaleY:0 } );
+						TweenLite.to(item, 1, { x:newX, y:newY, scaleX:1, scaleY:1 , ease:Bounce.easeOut } );
+					}
+				}	
+			}
+			else if (type==ConstID.SHOW_SWITCH)
+			{
+				for each (var item2:Sprite in childArr) 
+				{
+					if (item == sp)
+					{
+						item.visible = true;
+						ui.addChild(item);
+						var midX2:int = ui.stage.stageWidth / 2;
+						var midY2:int = ui.stage.stageHeight / 2;
+						var newX2:int = (ui.stage.stageWidth - item.width) / 2;
+						var newY2:int = (ui.stage.stageHeight - item.height) / 2;
+						
+						TweenLite.to(item, 0, {x:midX2,y:midY2, scaleX:0, scaleY:0 } );
+						TweenLite.to(item, 1, { x:newX2, y:newY2, scaleX:1, scaleY:1 , ease:Bounce.easeOut, onComplete:hideotherview, onCompleteParams:[item] } );
+						break;
+					}
+				}
+			}
 			
 		}
+		
+		private function hideotherview(sp:Sprite):void
+		{
+			for each (var item:Sprite in childArr) 
+			{
+				if (item != sp)
+				{
+					item.visible = false;
+					item.mouseEnabled = false;
+				}
+				else
+				{
+					item.visible = false;
+					item.mouseEnabled = true;
+				}
+			}
+		}
+		
+		
 	}
 }

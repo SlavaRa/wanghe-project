@@ -18,6 +18,10 @@ package model
 			facade = _facade;
 		}
 		
+		public static function get questionProxy():QuestionProxy
+		{
+			return QuestionProxy(facade.retrieveProxy(QuestionProxy.NAME));
+		}
 	}
 
 }
