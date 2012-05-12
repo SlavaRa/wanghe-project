@@ -24,6 +24,7 @@ package view
 		override public function onRegister():void 
 		{
 			ui.onPuzzleComplete = puzzleComplete;
+			ui.onPuzzleClick = onPuzzleItemClick;
 			super.onRegister();
 		}
 		override public function listNotificationInterests():Array 
@@ -64,6 +65,7 @@ package view
 			var sp:Sprite = e.target as Sprite;
 			curItemName = sp.name;
 			//TODO 把答题界面呼出来
+			sendNotification(ConstID.SHOW_QUESTION,"");
 		}
 		
 		private function setPuzzleItemFilter():void
