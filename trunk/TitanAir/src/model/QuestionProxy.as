@@ -63,6 +63,7 @@ package model
 				item.id = parseInt(no);
 				item.content = entity.question[0];
 				item.explain = entity.explain[0];
+				item.sound = entity.sound[0];
 				item.options = new Array;
 				var options:XMLList = entity.descendants("option") as XMLList;
 				for each (var op:XML in options) 

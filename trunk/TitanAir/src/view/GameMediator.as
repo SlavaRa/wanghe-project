@@ -46,6 +46,7 @@ package view
 				case ConstID.GAME_CLEAR_IMAGE:
 					break;
 				case ConstID.GAME_ITEM_CLEAR_FILTER:
+					sendNotification(ConstID.RESET_SHOW_UI,this,ConstID.SHOW_SWITCH);
 					setPuzzleItemFilter();
 					break;
 				default:

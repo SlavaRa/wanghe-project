@@ -1,5 +1,6 @@
 package display.components 
 {
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	/**
 	 * ...
@@ -10,7 +11,7 @@ package display.components
 		private var arr:Array;//radioButton 数组
 		
 		private var selectedRadioButton:RadioButton;
-		
+		private var _selectIndex:int = -1;
 		public function RadioButtonGroup() 
 		{
 			arr = new Array;
@@ -35,20 +36,36 @@ package display.components
 			}
 		}
 		
-		private function click(e:MouseEvent):void 
+		private function click(e:Event):void 
 		{
-			selectedRadioButton = e.target as RadioButton;
+			selectedRadioButton = e.target.parent as RadioButton;
+			trace();
 			for each (var item:RadioButton in arr) 
 			{
 				if (item == selectedRadioButton)
 				{
 					item.selected = true;
+					_selectIndex = item.index;
 				}
 				else
 				{
 					item.selected = false;
 				}
 			}
+		}
+		
+		public function get SelectIndex():int
+		{
+			return _selectIndex;
+		}
+		
+		public function clear():void
+		{
+			for each(var radiobtn:RadioButton in arr)
+			{
+				radiobtn.removeEventListener(MouseEvent.CLICK, click);
+			}
+			arr.length = 0;
 		}
 	}
 

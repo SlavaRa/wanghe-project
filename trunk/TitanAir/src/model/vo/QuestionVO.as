@@ -11,6 +11,7 @@ package model.vo
 		public var options:Array;
 		public var rightOptions:Array;
 		public var explain:String;
+		public var sound:String;
 		public function QuestionVO() 
 		{	
 		}

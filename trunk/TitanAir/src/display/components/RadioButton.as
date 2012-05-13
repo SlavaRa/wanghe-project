@@ -45,8 +45,8 @@ package display.components
 				_textField.mouseWheelEnabled = false;
 				this.addChild(_textField);
 				textFormat.size = FOND_SIZE;
-				textFormat.font = "华文细黑";
-				textFormat.color = 0xD3FCFE;
+				textFormat.font = "微软雅黑";
+				textFormat.color = 0x000000;
 			}
 		}
 		
@@ -81,7 +81,6 @@ package display.components
 		{
 			_currentFrame = b ? 2 : 1;
 			(mySkin as MovieClip).gotoAndStop(_currentFrame);
-			dispatchEvent(new Event(MouseEvent.CLICK));
 		}
 		
 		private function click(e:MouseEvent):void 
