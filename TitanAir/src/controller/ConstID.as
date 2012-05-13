@@ -32,8 +32,10 @@ package controller
 		//清除游戏方块的滤镜
 		public static const GAME_ITEM_CLEAR_FILTER:String = "GAME_ITEM_CLEAR_FILTER";
 		
-		//文件路径
+		//配置文件路径
 		public static const FILE_PATH:String = "air_app_assets/dataq.xml";
+		//声音文件路径
+		public static const SOUND_PATH:String = "air_app_assets/";
 	}
 
 }

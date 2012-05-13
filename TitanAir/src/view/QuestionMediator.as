@@ -17,12 +17,20 @@ package view
 		public static const NAME:String = "QUESTION_MEDIATOR";
 		public var ui:QuestionView;
 		
+		private var isAnswered:Boolean = false;
+		
 		public function QuestionMediator(view:QuestionView)
 		{
 			ui = view;
 			super(NAME,view);
 		}
 		
+		override public function onRegister():void 
+		{
+			ui.onApplyCall = onApplyCall;
+		}
+		
+
 		override public function listNotificationInterests():Array 
 		{
 			return [ConstID.SHOW_QUESTION];
@@ -41,13 +49,22 @@ package view
 			}
 		}
 		
-		/* INTERFACE model.IQuestionDataObserver */
-		
-		public function notifyQuestionObserver(questionArr:Array):void 
+		public function notifyQuestionObserver(questionArr:Array):void
 		{
 			//TODO 随机选一个 牛逼的问题进行展示
 			ui.setQuestion(questionArr[5] as QuestionVO);
-			trace(questionArr.length);
+		}
+		
+		private function onApplyCall():void 
+		{
+			if (isAnswered == false)
+			{
+				ui.showExplain();
+			}
+			else
+			{
+				sendNotification(ConstID.GAME_ITEM_CLEAR_FILTER);
+			}
 		}
 	}
 
