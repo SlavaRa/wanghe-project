@@ -4,6 +4,9 @@ package display.components
 	import flash.errors.IllegalOperationError;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 	
 	/**
 	 * ...
@@ -14,7 +17,14 @@ package display.components
 		protected var _enabled:Boolean;
 		protected var _currentFrame:int = 1;
 		
-		public function RadioButton() 
+		public var _textField:TextField;
+		
+		private var textFormat:TextFormat = new TextFormat;
+		
+		public var index:int = -1;
+		
+		private var FOND_SIZE:int = 20;
+		public function RadioButton(skin:MovieClip) 
 		{
 			if (skin)
 			{
@@ -26,7 +36,30 @@ package display.components
 				skin.mouseChildren = false;
 				skin.gotoAndStop(1);
 				addEvents();
+				_textField = new TextField();
+				_textField.width = 100;
+				_textField.autoSize = TextFieldAutoSize.LEFT;
+				_textField.selectable = false;
+				_textField.multiline = false;
+				_textField.mouseEnabled = false;
+				_textField.mouseWheelEnabled = false;
+				this.addChild(_textField);
+				textFormat.size = FOND_SIZE;
+				textFormat.font = "华文细黑";
+				textFormat.color = 0xD3FCFE;
 			}
+		}
+		
+		public function set text(txt:String):void
+		{
+			_textField.text = txt;
+			_textField.x = skinWidth;
+			_textField.setTextFormat(textFormat);
+		}
+		
+		public function get comWidth():int
+		{
+			return _textField.x + _textField.text.length * FOND_SIZE;
 		}
 		
 		protected function addEvents():void
@@ -48,7 +81,7 @@ package display.components
 		{
 			_currentFrame = b ? 2 : 1;
 			(mySkin as MovieClip).gotoAndStop(_currentFrame);
-			dispatchEvent(new Event(MouseEvent.CLICK);
+			dispatchEvent(new Event(MouseEvent.CLICK));
 		}
 		
 		private function click(e:MouseEvent):void 

@@ -13,6 +13,7 @@ package display.components
 		protected var _enabled:Boolean;
 		protected var _currentFrame:int = 1;
 		
+		
 		public function CheckBox(skin:MovieClip)
 		{
 			if (skin)

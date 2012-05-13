@@ -1,6 +1,10 @@
 package display.components
 {
 	import display.container.UISprite;
+	import flash.display.DisplayObject;
+	import flash.display.DisplayObjectContainer;
+	import flash.display.MovieClip;
+	import flash.events.Event;
 	
 	/**
 	 * ...
@@ -16,7 +20,7 @@ package display.components
 		protected var skinWidth:int;
 		protected var skinHeight:int;
 		
-		public function AbstractComponent()
+		public function AbstractComponent(skin:MovieClip)
 		{
 			super();
 			if (skin != null)

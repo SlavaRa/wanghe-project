@@ -3,6 +3,7 @@ package view
 	import controller.ConstID;
 	import model.IQuestionDataObserver;
 	import model.P;
+	import model.vo.QuestionVO;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.QuestionView;
@@ -45,6 +46,7 @@ package view
 		public function notifyQuestionObserver(questionArr:Array):void 
 		{
 			//TODO 随机选一个 牛逼的问题进行展示
+			ui.setQuestion(questionArr[5] as QuestionVO);
 			trace(questionArr.length);
 		}
 	}
