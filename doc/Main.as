@@ -62,7 +62,6 @@ package ttair
 			txt2.text = event.afterOrientation;
 			switch (event.afterOrientation)
 			{
-				
 				case StageOrientation.DEFAULT: 
 					// re-orient display objects based on 
 					// the default (right-side up) orientation. 
@@ -83,6 +82,9 @@ package ttair
 					// Re-orient display objects based on 
 					// upside-down orientation. 
 					//txt.text = "StageOrientation.UPSIDE_DOWN";
+					event.preventDefault();
+					break;
+				default:
 					event.preventDefault();
 					break;
 			}
