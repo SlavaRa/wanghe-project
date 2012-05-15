@@ -81,7 +81,8 @@ package
 		
 		private function deactivate(e:Event):void
 		{
-			NativeApplication.nativeApplication.exit();
+			//自动退出
+			//NativeApplication.nativeApplication.exit();
 		}
 		
 	}

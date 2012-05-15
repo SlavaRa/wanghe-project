@@ -52,6 +52,9 @@ package view.ui
 		
 		private var loader:Loader;
 		
+		private var leftImgLoader:Loader;		
+		private var leftImgArr:Array = ["0.jpg", "1.jpg", "2.jpg", "3.jpg"];
+		
 		public var onPuzzleComplete:Function; //完成
 		public var onPuzzleClick:Function; //点击方块 在灰色的情况下调用此函数
 		
@@ -61,7 +64,6 @@ package view.ui
 		
 		public function GameView()
 		{
-			
 			gameUI = new PuzzleGame;
 			gameUI.mouseChildren = true;
 			gameUI.mouseEnabled = true;
@@ -77,14 +79,47 @@ package view.ui
 			loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadComplete, false, 0, true);
 			
-			gameUI.btnStart.addEventListener(MouseEvent.CLICK, onStartClick);
+			leftImgLoader = new Loader;
+			leftImgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, leftImgLoadComplete, false, 0, true);
+			beginLoadLeftImg();
 		}
 		
-		//justtest
-		private function onStartClick(e:MouseEvent):void 
+		private var imgindex:int = 0;
+		private function beginLoadLeftImg():void
 		{
-			setImage("slidingimage.jpg");
+			if (imgindex == leftImgArr.length) return;
+			var filename:String =  leftImgArr[imgindex] as String;
+			var file:File = File.applicationDirectory.resolvePath("air_app_assets/" + filename);
+			leftImgLoader.unload();
+			leftImgLoader.load(new URLRequest(file.url));
 		}
+		
+		private function leftImgLoadComplete(e:Event):void 
+		{
+			var sp:Sprite = gameUI.getChildByName("imageBox" + imgindex.toString()) as Sprite;
+			
+			sp.mouseEnabled = true;
+			sp.buttonMode = true;
+			sp.addEventListener(MouseEvent.CLICK, onLeftImgClick, false, 0, true);
+			
+			if (sp == null) return;
+			var image:Bitmap = Bitmap(e.target.content);
+			image.width = 150;
+			image.height = 150;
+			sp.addChild(image);
+			imgindex++;
+			beginLoadLeftImg();
+		}
+		
+		private function onLeftImgClick(e:MouseEvent):void 
+		{
+			var name:String = (e.target  as Sprite).name;
+			name = name.substring(8);
+			var index:int = parseInt(name);
+			
+			setImage(leftImgArr[index] as String);
+		}
+		
 		
 		public function setImage(filename:String):void
 		{
@@ -235,7 +270,6 @@ package view.ui
 		
 		public function movePiece(puzzleObject:Object, slideEffect:Boolean):void
 		{
-			// get direction of blank space
 			switch (validMove(puzzleObject))
 			{
 				case "up": 
@@ -332,7 +366,7 @@ package view.ui
 			for (var i:int = 0; i < puzzleObjects.length; i++)
 			{
 				puzzleObjects[i].piece.removeEventListener(MouseEvent.CLICK, clickPuzzlePiece);
-				removeChild(puzzleObjects[i].piece);
+				gameUI.gameBox.removeChild(puzzleObjects[i].piece);
 			}
 			puzzleObjects.length = 0;
 		}

@@ -8,6 +8,7 @@ package view.ui
 	import display.components.CheckBox;
 	import display.components.RadioButton;
 	import display.components.RadioButtonGroup;
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -42,7 +43,7 @@ package view.ui
 		private var radiobtnGroup:RadioButtonGroup = new RadioButtonGroup;
 		
 		public var onApplyCall:Function;
-		
+		public var onReturn:Function;
 		public function QuestionView()
 		{
 			ui = new questionUI;
@@ -60,7 +61,8 @@ package view.ui
 			question.autoSize = TextFieldAutoSize.LEFT;
 			ui.addChild(question);
 			
-			ui.btnApply.addEventListener(MouseEvent.CLICK, onApply, false, 0, true);
+			ui.btnAnswer.addEventListener(MouseEvent.CLICK, onApply, false, 0, true);
+			ui.btnReturn.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
 			
 			optionsArr = new Array;
 			
@@ -72,6 +74,8 @@ package view.ui
 			ui.addChild(plybtn);
 			plybtn.addEventListener(MouseEvent.CLICK, onPlayClick, false, 0, true);
 			
+			
+			
 			sound = new Sound();
 			sound.addEventListener(Event.COMPLETE, completeHandler);
             sound.addEventListener(Event.ID3, id3Handler);
@@ -79,16 +83,45 @@ package view.ui
             sound.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 		}
 		
-
+		private function onReturnClick(e:MouseEvent):void 
+		{
+			if (onReturn!=null)
+			{
+				onReturn();
+			}
+		}
 		
 		public function setQuestion(quesVO:QuestionVO):void
 		{
+			resetUI();
+			if (quesVO == null)
+			{
+				return;
+			}
 			_cureVO = quesVO;
+			//TODO 可能修改的逻辑
+			quesVO.state = 0;
+			
 			question.text = quesVO.content;
 			question.setTextFormat(textFormat);
 			setOptions();
 			
 			soundChannel = null;
+		}
+		
+		public function resetUI():void 
+		{
+			question.text = "";
+			_cureVO = null;
+			for each(var item:Object in optionsArr)
+			{
+				if (ui.contains(item.display as DisplayObject))
+				{
+					ui.removeChild(item.display as DisplayObject);
+				}
+			}
+			optionsArr.length = 0;
+			radiobtnGroup.clear();
 		}
 		
 		//设置选项
@@ -137,8 +170,7 @@ package view.ui
 					checkBox.x = lengthCount;
 					checkBox.y = yPosition + lineCount * OPTION_PADDING;
 					lengthCount += checkBox.comWidth;
-					optionsArr.push({display: checkBox, index: op.no});
-					
+					optionsArr.push( { display: checkBox, index: op.no } );
 				}
 			}
 		}

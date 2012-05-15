@@ -12,12 +12,13 @@ package controller
 		//显示我
 		public static const RESET_SHOW_UI:String = "RESET_SHOWUI";
 		
-		//从中间pop出来
+		//切换
 		public static const SHOW_SWITCH:String = "SHOW_SWITCH";
 		
-		
+		//从中间pop出来
 		public static const SHOW_POP_UP:String = "SHOW_POP_UP";
-		
+		//从中间缩小至消失
+		public static const HIDE_SHRINK:String = "HIDE_SHRINK";
 		
 		//显示问题界面
 		public static const SHOW_QUESTION:String = "SHOW_QUESTION";

@@ -83,6 +83,41 @@ package model
 				questions.push(item);
 			}
 		}
+		
+		//获取未答的问题
+		public function getUnAnswerQuestions():Array
+		{
+			var tempArr:Array = new Array;
+			for each(var item:QuestionVO in questions)
+			{
+				if (item.state == -1)
+				{
+					tempArr.push(item);
+				}
+			}
+			return tempArr;
+		}
+		
+		//重置问题
+		public function resetQuestion():void
+		{
+			for each(var item:QuestionVO in questions)
+			{
+				item.state == -1;
+			}
+		}
+		
+		//获取随机的未回答的问题
+		public function getRandomUnAnswerQuestion():QuestionVO
+		{
+			var arr:Array = getUnAnswerQuestions();
+			if (arr.length == 0)
+			{
+				return null;
+			}
+			var index:int = Math.round(Math.random() * (arr.length-1));
+			return arr[index] as QuestionVO;
+		}
 	
 	}
 
