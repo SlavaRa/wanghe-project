@@ -50,7 +50,7 @@
 		<visible>true</visible>
 		<fullScreen>true</fullScreen>
 		<!--<autoOrients>false</autoOrients>-->
-		<!--<aspectRatio>landscape</aspectRatio>-->
+		<aspectRatio>landscape</aspectRatio>
 		<renderMode>direct</renderMode>
 	</initialWindow>
 	
