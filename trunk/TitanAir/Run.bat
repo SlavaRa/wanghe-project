@@ -16,7 +16,8 @@ goto desktop
 
 ::set SCREEN_SIZE=NexusOne
 ::set SCREEN_SIZE=SamsungGalaxyTab
-set SCREEN_SIZE=986x600:1024x600;
+::set SCREEN_SIZE=986x600:1024x600;
+set SCREEN_SIZE=600x986:600x1024;
 ::set SCREEN_SIZE=iPhoneRetina
 
 :desktop-run
