@@ -111,41 +111,31 @@ package view
 			{
 				for each (var item2:Sprite in childArr) 
 				{
-					if (item == sp)
+					if (item2 == sp)
 					{
-						item.visible = true;
-						ui.addChild(item);
-						var midX2:int = ui.stage.stageWidth / 2;
-						var midY2:int = ui.stage.stageHeight / 2;
-						var newX2:int = (ui.stage.stageWidth - item.width) / 2;
-						var newY2:int = (ui.stage.stageHeight - item.height) / 2;
-						
-						TweenLite.to(item, 0, {x:midX2,y:midY2, scaleX:0, scaleY:0 } );
-						TweenLite.to(item, 1, { x:newX2, y:newY2, scaleX:1, scaleY:1 , ease:Bounce.easeOut, onComplete:hideotherview, onCompleteParams:[item] } );
-						break;
+						item2.visible = true;
+						ui.addChild(item2);
+					}
+					else
+					{
+						item2.visible = false;
 					}
 				}
 			}
-			
-		}
-		
-		private function hideotherview(sp:Sprite):void
-		{
-			for each (var item:Sprite in childArr) 
+			else if (type==ConstID.HIDE_SHRINK)
 			{
-				if (item != sp)
-				{
-					item.visible = false;
-					item.mouseEnabled = false;
-				}
-				else
-				{
-					item.visible = false;
-					item.mouseEnabled = true;
-				}
+				var newX3:int = ui.stage.stageWidth / 2;
+				var newY3:int = ui.stage.stageHeight / 2;
+				
+				TweenLite.to(sp, 1, { x:newX3, y:newY3, scaleX:0, scaleY:0 , ease:Bounce.easeOut, onComplete:hideme, onCompleteParams:[sp] } );
 			}
 		}
 		
-		
+		private function hideme(sp:Sprite):void
+		{
+			sp.visible = false;
+			sp.mouseEnabled = false;
+		}
+
 	}
 }

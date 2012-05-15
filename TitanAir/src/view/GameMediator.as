@@ -3,6 +3,7 @@ package view
 	import controller.ConstID;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import model.P;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.GameView;
@@ -46,7 +47,7 @@ package view
 				case ConstID.GAME_CLEAR_IMAGE:
 					break;
 				case ConstID.GAME_ITEM_CLEAR_FILTER:
-					sendNotification(ConstID.RESET_SHOW_UI,this,ConstID.SHOW_SWITCH);
+					sendNotification(ConstID.RESET_SHOW_UI,this.ui,ConstID.SHOW_SWITCH);
 					setPuzzleItemFilter();
 					break;
 				default:
@@ -71,6 +72,8 @@ package view
 		
 		private function setPuzzleItemFilter():void
 		{
+			if(P.questionProxy.questions)
+			
 			ui.clearItemFilter(curItemName);
 		}
 	}
