@@ -31,7 +31,7 @@ package view.ui
 		public static const numPiecesVert:int = 4;
 		
 		// random shuffle steps 打乱步数
-		public static const numShuffle:int = 10;
+		public static const numShuffle:int = 1;
 		
 		// animation steps and time
 		public static const slideSteps:int = 10;
@@ -58,10 +58,14 @@ package view.ui
 		public var onPuzzleComplete:Function; //完成
 		public var onPuzzleClick:Function; //点击方块 在灰色的情况下调用此函数
 		
-		private var mode:int = 0; //0灰色答题 1彩色游戏 两种模式
+		//分享 测试用
+		public var onShareClickCall:Function;
+		
+		private var mode:int = 0; //0灰色答题 1彩色游戏 2完成 三种模式
 		
 		private var gameUI:PuzzleGame;
 		
+		private var isMoveing:Boolean = false;
 		public function GameView()
 		{
 			gameUI = new PuzzleGame;
@@ -69,6 +73,7 @@ package view.ui
 			gameUI.mouseEnabled = true;
 			gameUI.gameBox.mouseChildren = true;
 			gameUI.gameBox.mouseEnabled = true;
+			gameUI.btnShare.addEventListener(MouseEvent.CLICK, onShareClick, false, 0, true);
 			
 			
 			this.addChild(gameUI);
@@ -82,6 +87,14 @@ package view.ui
 			leftImgLoader = new Loader;
 			leftImgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, leftImgLoadComplete, false, 0, true);
 			beginLoadLeftImg();
+		}
+		
+		private function onShareClick(e:MouseEvent):void 
+		{
+			if (onShareClickCall != null)
+			{
+				onShareClickCall();
+			}
 		}
 		
 		private var imgindex:int = 0;
@@ -245,9 +258,9 @@ package view.ui
 		
 		public function clickPuzzlePiece(event:MouseEvent):void
 		{
-			// find piece clicked and move it
-			//TODO 判断一下 是否激活
-			trace(event.target.name);
+			// find piece clicked and move i
+			if (mode == 2) return;
+			
 			if (mode == 0)
 			{
 				if ((event.target as Sprite).filters.length != 0) //无滤镜
@@ -270,6 +283,7 @@ package view.ui
 		
 		public function movePiece(puzzleObject:Object, slideEffect:Boolean):void
 		{
+			if (isMoveing) return;
 			switch (validMove(puzzleObject))
 			{
 				case "up": 
@@ -298,7 +312,7 @@ package view.ui
 			if (slideEffect)
 			{
 				// start animation
-				startSlide(puzzleObject, dx * (430/numPiecesHoriz + pieceSpace), dy * (pieceHeight + pieceSpace));
+				startSlide(puzzleObject, dx * (430/numPiecesHoriz + pieceSpace), dy * (430/numPiecesVert + pieceSpace));
 			}
 			else
 			{
@@ -307,6 +321,7 @@ package view.ui
 				puzzleObject.piece.y = puzzleObject.currentLoc.y * (430/numPiecesVert + pieceSpace) + vertOffset;
 			}
 		}
+		
 		
 		public function startSlide(puzzleObject:Object, dx:Number, dy:Number):void
 		{
@@ -318,6 +333,7 @@ package view.ui
 			slideAnimation.addEventListener(TimerEvent.TIMER, slidePiece);
 			slideAnimation.addEventListener(TimerEvent.TIMER_COMPLETE, slideDone);
 			slideAnimation.start();
+			isMoveing = true;
 		}
 		
 		// move one step in slide
@@ -330,16 +346,19 @@ package view.ui
 		// complete slide
 		public function slideDone(event:Event):void
 		{
-			slidingPiece.piece.x = slidingPiece.currentLoc.x * (pieceWidth + pieceSpace) + horizOffset;
-			slidingPiece.piece.y = slidingPiece.currentLoc.y * (pieceHeight + pieceSpace) + vertOffset;
+			isMoveing = false;
+			
+			slidingPiece.piece.x = slidingPiece.currentLoc.x * (430/numPiecesHoriz  + pieceSpace) + horizOffset;
+			slidingPiece.piece.y = slidingPiece.currentLoc.y * (430/numPiecesVert + pieceSpace) + vertOffset;
 			slideAnimation.stop();
 			slideAnimation = null;
 			
 			// check to see if puzzle is complete now
 			if (puzzleComplete())
 			{
-				clearPuzzle();
-					//gotoAndStop("gameover");
+				//clearPuzzle();
+				mode = 2;
+				trace("完成");
 			}
 		}
 		
@@ -390,6 +409,15 @@ package view.ui
 			{
 				mode = 1;
 			}
+		}
+		
+		public function clearAllFilter():void
+		{
+			for each (var item:Object in puzzleObjects)
+			{
+				item.piece.filters = [];
+			}
+			mode = 1;
 		}
 	
 	}

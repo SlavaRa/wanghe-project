@@ -37,6 +37,12 @@ package controller
 		public static const FILE_PATH:String = "air_app_assets/dataq.xml";
 		//声音文件路径
 		public static const SOUND_PATH:String = "air_app_assets/";
+		
+		//显示分享界面
+		public static const SHOW_SHARE_VIEW:String = "SHOW_SHARE_VIEW";
+		
+		//隐藏
+		public static const HIDE_ME:String = "HIDE_ME";
 	}
 
 }

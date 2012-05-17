@@ -1,5 +1,7 @@
 package view 
 {
+	import controller.ConstID;
+	import model.P;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.ShareView;
@@ -18,14 +20,43 @@ package view
 			super(NAME, view);
 		}
 		
+		override public function onRegister():void 
+		{
+			ui.onCloseCall = onClose;
+			ui.onShareCall = onShare;
+		}
+		
 		override public function listNotificationInterests():Array 
 		{
-			return super.listNotificationInterests();
+			return [ConstID.SHOW_SHARE_VIEW];
 		}
 		
 		override public function handleNotification(notification:INotification):void 
 		{
-			super.handleNotification(notification);
+			switch(notification.getName())
+			{
+				case ConstID.SHOW_SHARE_VIEW:
+					ui.visible = true;
+					ui.mouseEnabled = true;
+					ui.setText(notification.getBody() as String);
+					ui.setSize(1024, 600);
+					sendNotification(ConstID.SHOW_ME,ui);
+					break;
+				default:
+					break;
+			}
+		}
+		
+		private function onClose():void
+		{
+			ui.visible = false;
+			ui.mouseEnabled = false;
+			sendNotification(ConstID.HIDE_ME,ui);
+		}
+		
+		private function onShare():void
+		{
+			
 		}
 	}
 
