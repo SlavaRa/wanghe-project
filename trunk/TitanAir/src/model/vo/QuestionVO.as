@@ -11,6 +11,8 @@ package model.vo
 		public var options:Array;
 		public var rightOptions:Array;
 		public var explain:String;
+		public var explainimg:String;
+		
 		public var sound:String;
 		//-1未回答
 		//0错误

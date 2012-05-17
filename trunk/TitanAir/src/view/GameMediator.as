@@ -26,6 +26,7 @@ package view
 		{
 			ui.onPuzzleComplete = puzzleComplete;
 			ui.onPuzzleClick = onPuzzleItemClick;
+			ui.onShareClickCall = onShareClick;
 			super.onRegister();
 		}
 		override public function listNotificationInterests():Array 
@@ -72,9 +73,19 @@ package view
 		
 		private function setPuzzleItemFilter():void
 		{
-			if(P.questionProxy.questions)
-			
-			ui.clearItemFilter(curItemName);
+			if (P.questionProxy.getRandomUnAnswerQuestion() == null)
+			{
+				ui.clearAllFilter();
+			}
+			else
+			{
+				ui.clearItemFilter(curItemName);
+			}
+		}
+		
+		private function onShareClick():void
+		{
+			sendNotification(ConstID.SHOW_SHARE_VIEW,"分享到新浪微博。。。");
 		}
 	}
 }

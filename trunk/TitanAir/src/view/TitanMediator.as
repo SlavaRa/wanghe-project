@@ -3,6 +3,7 @@ package view
 	import com.greensock.easing.Bounce;
 	import com.greensock.TweenLite;
 	import controller.ConstID;
+	import flash.display.ShaderPrecision;
 	import flash.display.SpreadMethod;
 	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
@@ -37,7 +38,9 @@ package view
 		override public function listNotificationInterests():Array 
 		{
 			return [
-					ConstID.RESET_SHOW_UI
+					ConstID.RESET_SHOW_UI, 
+					ConstID.HIDE_ME,
+					ConstID.SHOW_ME
 					];
 		}
 		
@@ -47,6 +50,12 @@ package view
 			{
 				case ConstID.RESET_SHOW_UI:
 					manageChildView(notification.getBody() as Sprite,notification.getType());
+					break;
+				case ConstID.HIDE_ME:
+					hideme(notification.getBody() as Sprite);
+					break;
+				case ConstID.SHOW_ME:
+					onShowme(notification.getBody() as Sprite);
 					break;
 				default:
 					break;
@@ -82,7 +91,7 @@ package view
 			var shareUIMediator:ShareUIMediator = new ShareUIMediator(shareUI);
 			facade.registerMediator(shareUIMediator);
 			ui.addChild(shareUI);
-			childArr.push(shareUI);
+			//childArr.push(shareUI);
 			shareUI.visible = false;
 		}
 		
@@ -99,11 +108,10 @@ package view
 						ui.addChild(item);
 						var midX:int = ui.stage.stageWidth / 2;
 						var midY:int = ui.stage.stageHeight / 2;
-						var newX:int = (ui.stage.stageWidth - item.width) / 2;
-						var newY:int = (ui.stage.stageHeight - item.height) / 2;
-						
-						TweenLite.to(item, 0, {x:midX,y:midY, scaleX:0, scaleY:0 } );
-						TweenLite.to(item, 1, { x:newX, y:newY, scaleX:1, scaleY:1 , ease:Bounce.easeOut } );
+						//var newX:int = (ui.stage.stageWidth) / 2;
+						//var newY:int = (ui.stage.stageHeight) / 2;
+						TweenLite.to(item, 0, {x:midX,y:midY, scaleX:0.1, scaleY:0.1 } );
+						TweenLite.to(item, 1, { x:0, y:0, scaleX:1, scaleY:1 , ease:Bounce.easeOut } );
 					}
 				}	
 			}
@@ -136,6 +144,14 @@ package view
 			sp.visible = false;
 			sp.mouseEnabled = false;
 		}
+		
+		private function onShowme(sp:Sprite):void
+		{
+			sp.visible = true;
+			sp.mouseEnabled = true;
+			ui.addChild(sp);
+		}
+		
 
 	}
 }
