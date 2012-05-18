@@ -80,6 +80,7 @@ package view.ui
 			explain = new TextField;
 			explain.multiline = true;
 			explain.wordWrap = true;
+			explain.autoSize = "left";
 			explain.x = 139;
 			explain.width = 776;
 			explain.selectable = false;
@@ -120,6 +121,8 @@ package view.ui
 		{
 			if (onReturn!=null)
 			{
+				if (_cureVO.state == -1)
+					_cureVO.state = 0;
 				onReturn();
 				if(soundChannel)
 					soundChannel.stop();
@@ -140,7 +143,6 @@ package view.ui
 			
 			answer.y = question.y + question.numLines * QUES_FOND_SIZE + ANSWER_PADDING;
 			answer.text = "";
-			//answer.setTextFormat(answertextFormat);
 			
 			setOptions();
 			
@@ -226,16 +228,16 @@ package view.ui
 		{
 			if (_cureVO.state != -1) return;
 			
-			if (null != onApplyCall)
-			{
-				onApplyCall();
-			}
-			
 			if (checkAnswer())
 			{
 				_cureVO.state = 1;
 			}else{
 				_cureVO.state = 0;
+			}
+			
+			if (null != onApplyCall)
+			{
+				onApplyCall();
 			}
 		}
 		
@@ -246,7 +248,7 @@ package view.ui
 			if (_cureVO.rightOptions.length == 1)
 			{
 				var opindex:int = radiobtnGroup.SelectIndex;
-				if (_cureVO.options[0] == opindex)
+				if (_cureVO.rightOptions[0] == opindex)
 				{
 					return true;
 				}
@@ -266,11 +268,15 @@ package view.ui
 					}
 				}
 				
-				for each(var op:int in _cureVO.options)
+				if (arr.length != _cureVO.rightOptions.length) 
+					return false;
+				
+				for each(var op:int in _cureVO.rightOptions)
 				{
 					if (arr.indexOf(op) == -1)
 					 return false;
 				}
+				
 				return true;
 			}
 			return false;
@@ -281,8 +287,16 @@ package view.ui
 		{
 			//TODO 显示解释和配音
 			loadmusic(_cureVO.sound);
+			var rightAnswer:String = '';
+			if (_cureVO.state != 1)
+			{
+				rightAnswer = "回答错误  正确答案:";
+			}
+			else
+			{
+				rightAnswer = "回答正确  正确答案:";
+			}
 			
-			var rightAnswer:String = "正确答案:";
 			for each(var i:int in _cureVO.rightOptions)
 			{
 				for each (var op:OptionVO in _cureVO.options) 
