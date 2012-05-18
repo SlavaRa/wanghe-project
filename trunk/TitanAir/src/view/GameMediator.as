@@ -4,6 +4,7 @@ package view
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import model.P;
+	import model.vo.QuestionVO;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.GameView;
@@ -76,6 +77,14 @@ package view
 			if (P.questionProxy.getRandomUnAnswerQuestion() == null)
 			{
 				ui.clearAllFilter();
+				var score:int = 0;
+				for each(var item:QuestionVO in P.questionProxy.questions)
+				{
+					if (item.state == 1)
+						score++;
+				}
+				ui.setScore(score);
+				sendNotification(ConstID.SHOW_SHARE_VIEW,"我在健康知识问答中获得"+(score*10).toString()+"分,快来答题吧~！");
 			}
 			else
 			{

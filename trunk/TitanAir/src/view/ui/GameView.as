@@ -74,7 +74,7 @@ package view.ui
 			gameUI.gameBox.mouseChildren = true;
 			gameUI.gameBox.mouseEnabled = true;
 			gameUI.btnShare.addEventListener(MouseEvent.CLICK, onShareClick, false, 0, true);
-			
+			gameUI.txtScore.visible = false;
 			
 			this.addChild(gameUI);
 			
@@ -129,10 +129,9 @@ package view.ui
 			var name:String = (e.target  as Sprite).name;
 			name = name.substring(8);
 			var index:int = parseInt(name);
-			
+			gameUI.txtNotice.text = "点击拼图回答问题";
 			setImage(leftImgArr[index] as String);
 		}
-		
 		
 		public function setImage(filename:String):void
 		{
@@ -418,6 +417,12 @@ package view.ui
 				item.piece.filters = [];
 			}
 			mode = 1;
+		}
+		
+		public function setScore(score:int):void
+		{
+			gameUI.txtScore.text = "得分:" + (score * 10).toString();
+			gameUI.txtScore.visible = true;
 		}
 	
 	}
