@@ -23,7 +23,7 @@ package display.components
 		
 		public var index:int = -1;
 		
-		private var FOND_SIZE:int = 20;
+		private var FOND_SIZE:int = 18;
 		public function RadioButton(skin:MovieClip) 
 		{
 			if (skin)

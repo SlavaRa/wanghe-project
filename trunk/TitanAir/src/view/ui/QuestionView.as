@@ -42,10 +42,12 @@ package view.ui
 		private var answer:TextField;
 		private var explain:TextField;
 		
-		private var QUES_FOND_SIZE:int = 25;
+		private var QUES_FOND_SIZE:int = 24;
 		private var ANSWER_FOND_SIZE:int = 20;
 		private var OPTION_PADDING:int = 40;
 		private var ANSWER_PADDING:int = 10;
+		private var LEFT_PADDING:int = 50;
+		
 		
 		private var radiobtnGroup:RadioButtonGroup = new RadioButtonGroup;
 		
@@ -58,31 +60,33 @@ package view.ui
 			
 			question = new TextField();
 			question.multiline = true;
-			question.x = 139;
-			question.y = 92;
-			question.width = 776;
+			question.x = LEFT_PADDING;
+			question.y = 122;
+			question.width = 512;
 			question.height = 200;
 			question.selectable = false;
 			question.mouseEnabled = false;
-			question.autoSize = TextFieldAutoSize.LEFT;
+			//question.autoSize = TextFieldAutoSize.LEFT;
 			ui.addChild(question);
 			
 			answer = new TextField;
 			answer.multiline = false;
-			answer.x = 139;
-			answer.width = 920;
+			answer.x = LEFT_PADDING;
+			answer.width = 512;
 			answer.selectable = false;
 			answer.mouseEnabled = false;
 			answer.autoSize = TextFieldAutoSize.LEFT;
 			answer.text = "正确答案";
 			ui.addChild(answer);
 			
+			//TODO fix position
 			explain = new TextField;
 			explain.multiline = true;
 			explain.wordWrap = true;
 			explain.autoSize = "left";
-			explain.x = 139;
-			explain.width = 776;
+			explain.x = 620;
+			explain.y = 180;
+			explain.width = 380;
 			explain.selectable = false;
 			explain.mouseEnabled = false;
 			ui.addChild(explain);
@@ -95,15 +99,15 @@ package view.ui
 			
 			textFormat.size = QUES_FOND_SIZE;
 			textFormat.font = "微软雅黑";
-			textFormat.color = 0x000000;
+			textFormat.color = 0x595959;
 			
 			answertextFormat.size = ANSWER_FOND_SIZE;
 			answertextFormat.font = "微软雅黑";
-			answertextFormat.color = 0xFF0000;
+			answertextFormat.color = 0x595959;
 			
 			explaintextFormat.size = ANSWER_FOND_SIZE;
 			explaintextFormat.font = "微软雅黑";
-			explaintextFormat.color = 0xFF0000;
+			explaintextFormat.color = 0x8AC234;
 			
 			
 			plybtn = new CheckBox(ui.plybtn);
@@ -145,7 +149,6 @@ package view.ui
 			answer.text = "";
 			
 			setOptions();
-			
 			soundChannel = null;
 		}
 		
@@ -172,7 +175,7 @@ package view.ui
 		{
 			optionsArr.length = 0;
 			radiobtnGroup.clear();
-			var lengthCount:Number = 139;
+			var lengthCount:Number = LEFT_PADDING;
 			var yPosition:Number = question.y + question.numLines * QUES_FOND_SIZE + OPTION_PADDING;
 			lineCount = 0;
 			ypo = 0;
@@ -186,10 +189,10 @@ package view.ui
 					radiobtn.text = op.content;
 					radiobtn.index = op.no;
 					radiobtn.x = lengthCount;
-					if ((radiobtn.x + radiobtn.comWidth) > stage.stageWidth)
+					if ((radiobtn.x + radiobtn.comWidth) > 565)
 					{
 						lineCount++;
-						lengthCount = 139;
+						lengthCount = LEFT_PADDING;
 					}
 					radiobtn.x = lengthCount;
 					radiobtn.y = yPosition + lineCount * OPTION_PADDING;
@@ -208,10 +211,10 @@ package view.ui
 					checkBox.text = op.content;
 					checkBox.index = op.no;
 					checkBox.x = lengthCount;
-					if ((checkBox.x + checkBox.comWidth) > stage.stageWidth)
+					if ((checkBox.x + checkBox.comWidth) > 565)
 					{
 						lineCount++;
-						lengthCount = 139;
+						lengthCount = LEFT_PADDING;
 					}
 					checkBox.x = lengthCount;
 					checkBox.y = yPosition + lineCount * OPTION_PADDING;
@@ -312,7 +315,7 @@ package view.ui
 			
 			explain.text = _cureVO.explain;
 			explain.setTextFormat(explaintextFormat);
-			explain.y = ypo + 40;
+			//explain.y = ypo + 40;
 		}
 		
 		private var position:int = 0;

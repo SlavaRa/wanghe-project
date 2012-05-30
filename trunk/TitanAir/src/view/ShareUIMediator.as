@@ -1,6 +1,8 @@
 package view 
 {
 	import controller.ConstID;
+	import flash.net.navigateToURL;
+	import flash.net.URLRequest;
 	import model.P;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
@@ -56,7 +58,16 @@ package view
 		
 		private function onShare():void
 		{
+			var shareText:String = ui.ShareText;
+			var url:String = "http://qipu.mopsgame.com/shareManage.do?actions=qipuShareUI";
+			var title:String = "title=乳腺健康知识问答";
+			var content:String = "url=";
+			var uri:String = url +"&" + title +"&" +content + shareText;
+			var newuri:String = encodeURI(uri);
 			
+			var _Newurl:URLRequest=new URLRequest(newuri);
+			var _fangshi:String="_blank";
+			navigateToURL(_Newurl,_fangshi);
 		}
 	}
 
