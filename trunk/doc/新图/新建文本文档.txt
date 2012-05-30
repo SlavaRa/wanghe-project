@@ -1,0 +1,1 @@
+http://api.t.sina.com.cn/statuses/update.json?source=2961195243&status=%C7%EB%B9%D8%D7%A2%C8%E9%CF%D9%BD%A1%BF%B5
