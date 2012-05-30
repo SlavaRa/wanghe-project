@@ -61,6 +61,11 @@ package view.ui
 			ui.shareText.text = txt;
 		}
 		
+		public function get ShareText():String
+		{
+			return ui.shareText.text;
+		}
+		
 		public function setSize(w:int,h:int):void
 		{
 			sw = w;

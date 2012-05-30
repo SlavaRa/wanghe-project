@@ -21,7 +21,7 @@ package display.components
 		private var textFormat:TextFormat = new TextFormat;
 		
 		public var index:int = -1;
-		private var FOND_SIZE:int = 20;
+		private var FOND_SIZE:int = 18;
 		
 		public function CheckBox(skin:MovieClip)
 		{
