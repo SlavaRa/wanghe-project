@@ -8,6 +8,7 @@ package view
 	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import view.ui.AboutUpdate;
 	import view.ui.GameView;
 	import view.ui.MainUIView;
 	import view.ui.QuestionView;
@@ -26,6 +27,7 @@ package view
 		public var questionUI:QuestionView;
 		private var gameUI:GameView;
 		private var shareUI:ShareView;
+		private var aboutUI:AboutUpdate;
 		
 		private var childArr:Array;
 		
@@ -93,6 +95,12 @@ package view
 			ui.addChild(shareUI);
 			//childArr.push(shareUI);
 			shareUI.visible = false;
+			
+			aboutUI = new AboutUpdate;
+			var aboutMediator:AboutUpdateMediator = new AboutUpdateMediator(aboutUI);
+			facade.registerMediator(aboutMediator);
+			ui.addChild(aboutUI);
+			aboutUI.visible = false;
 		}
 		
 		private function manageChildView(sp:Sprite, type:String):void 
