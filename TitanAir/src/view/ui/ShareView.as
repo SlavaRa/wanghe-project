@@ -6,7 +6,7 @@ package view.ui
 	import flash.events.MouseEvent;
 	
 	/**
-	 * ...
+	 * 分享
 	 * @author ...
 	 */
 	public class ShareView extends Sprite 
@@ -24,7 +24,6 @@ package view.ui
 		
 		public function ShareView() 
 		{
-			bg = new Shape;
 			bg = new Shape();
 			bg.graphics.beginFill(0x000000, 0.6);
 			bg.graphics.drawRect(0, 0, sw, sh);
