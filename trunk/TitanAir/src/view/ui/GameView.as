@@ -57,7 +57,7 @@ package view.ui
 		
 		public var onPuzzleComplete:Function; //完成
 		public var onPuzzleClick:Function; //点击方块 在灰色的情况下调用此函数
-		
+		public var onSettingClickCall:Function;//设置按钮
 		//分享 测试用
 		public var onShareClickCall:Function;
 		
@@ -76,6 +76,8 @@ package view.ui
 			gameUI.btnShare.addEventListener(MouseEvent.CLICK, onShareClick, false, 0, true);
 			gameUI.txtScore.visible = false;
 			
+			gameUI.btnSetting.addEventListener(MouseEvent.CLICK,onSettingClick,false,0,true);
+			
 			this.addChild(gameUI);
 			
 			blankPoint = new Point(numPiecesHoriz - 1, numPiecesVert - 1);
@@ -87,6 +89,12 @@ package view.ui
 			leftImgLoader = new Loader;
 			leftImgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, leftImgLoadComplete, false, 0, true);
 			beginLoadLeftImg();
+		}
+		
+		private function onSettingClick(e:MouseEvent):void 
+		{
+			if (onSettingClickCall != null)
+				onSettingClickCall();
 		}
 		
 		private function onShareClick(e:MouseEvent):void 

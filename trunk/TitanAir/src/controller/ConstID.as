@@ -38,8 +38,14 @@ package controller
 		//声音文件路径
 		public static const SOUND_PATH:String = "air_app_assets/";
 		
+		//升级文件URL
+		public static const UPDATE_DAT_URL:String = "http://192.168.1.104/php100/res_data.rar";
+		
 		//显示分享界面
 		public static const SHOW_SHARE_VIEW:String = "SHOW_SHARE_VIEW";
+		
+		//显示设置界面
+		public static const SHOW_SETTING_VIEW:String = "SHOW_SETTING_VIEW";
 		
 		//隐藏
 		public static const HIDE_ME:String = "HIDE_ME";

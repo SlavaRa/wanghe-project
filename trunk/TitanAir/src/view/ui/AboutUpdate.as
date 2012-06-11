@@ -27,7 +27,7 @@ package view.ui
 		//设置进度条进度
 		public function setProgressBar(valueNow:Number,valueTotal:Number):void
 		{
-			ui.probar.setProgress(valueNow,valueTotal);
+			//ui.probar.setProgress(valueNow,valueTotal);
 		}
 		
 		
