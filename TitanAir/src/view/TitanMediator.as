@@ -101,6 +101,7 @@ package view
 			facade.registerMediator(aboutMediator);
 			ui.addChild(aboutUI);
 			aboutUI.visible = false;
+			childArr.push(aboutUI);
 		}
 		
 		private function manageChildView(sp:Sprite, type:String):void 

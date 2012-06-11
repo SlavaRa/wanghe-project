@@ -28,8 +28,11 @@ package view
 			ui.onPuzzleComplete = puzzleComplete;
 			ui.onPuzzleClick = onPuzzleItemClick;
 			ui.onShareClickCall = onShareClick;
+			ui.onSettingClickCall = onSettingClick;
 			super.onRegister();
 		}
+		
+
 		override public function listNotificationInterests():Array 
 		{
 			return [
@@ -95,6 +98,11 @@ package view
 		private function onShareClick():void
 		{
 			sendNotification(ConstID.SHOW_SHARE_VIEW,"分享到新浪微博。。。");
+		}
+		
+		private function onSettingClick():void 
+		{
+			sendNotification(ConstID.SHOW_SETTING_VIEW);
 		}
 	}
 }
