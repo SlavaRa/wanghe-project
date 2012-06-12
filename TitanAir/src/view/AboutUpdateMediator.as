@@ -1,6 +1,10 @@
 package view
 {
+	import com.riaidea.utils.zip.ZipArchive;
+	import com.riaidea.utils.zip.ZipEvent;
+	import com.riaidea.utils.zip.ZipFile;
 	import controller.ConstID;
+	import flash.desktop.NativeApplication;
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
@@ -97,21 +101,24 @@ package view
 		
 		private function progressHandler(event:ProgressEvent):void
 		{
-		
+			ui.setProgressBar(event.bytesLoaded, event.bytesTotal);
 		}
 		
 		private function completeHandler(event:Event):void
 		{
-			var f:File = new File(File.applicationDirectory.resolvePath("air_app_assets/" + "res_data.rar").nativePath);
+			var f:File = new File(File.applicationDirectory.resolvePath("air_app_assets/" + "res_data.zip").nativePath);
 			var fs:FileStream = new FileStream();
 			fs.open(f, FileMode.WRITE);
 			fs.writeBytes(event.target.data);
 			fs.close();
 			trace("下载完成！！");
+			ui.txt = "下载完成！";
+			loadzipFile(File.applicationDirectory.resolvePath("air_app_assets/" + "res_data.zip").nativePath);
 		}
 		
 		private function ioErrorHandler(event:IOErrorEvent):void
 		{
+			ui.txt = "下载出错，请检查网络状态~";
 			trace("错误信息: " + event);
 		}
 		
@@ -119,6 +126,52 @@ package view
 		{
 			trace("securityErrorHandler: " + event);
 		}
+		
+		private var zip1:ZipArchive = new ZipArchive();
+		
+		private function loadzipFile(str:String):void
+		{
+			zip1.addEventListener(ZipEvent.PROGRESS, loading);
+			zip1.addEventListener(ZipEvent.INIT, inited);
+			zip1.addEventListener(ZipEvent.ERROR, failed);
+			zip1.load(str);
+		}
+		
+		private function inited(e:ZipEvent):void
+		{
+			zip1.removeEventListener(ZipEvent.PROGRESS, loading);
+			zip1.removeEventListener(ZipEvent.INIT, inited);
+			zip1.removeEventListener(ZipEvent.ERROR, failed);
+			
+			var len:int = zip1.numFiles;
+			
+			for (var i:int = 0; i < len; i++)
+			{
+				var newZipFile:ZipFile = zip1.getFileAt(i);
+				var byteArray:ByteArray = new ByteArray();
+				byteArray = newZipFile.data;
+				var fileStr:FileStream = new FileStream();
+				var file:File = new File(File.applicationDirectory.resolvePath("air_app_assets/" +  newZipFile.name).nativePath); //创建新的File方便后面向File写入数据
+				fileStr.open(file, FileMode.UPDATE); //以更新形式打开文件，准备更新
+				fileStr.position = fileStr.bytesAvailable; //将指针指向文件尾
+				fileStr.writeBytes(byteArray, 0, byteArray.length); //在文件中写入新下载的数据
+				fileStr.close(); //关闭文件流
+			}
+			
+			ui.txt = "更新完成！请重启应用程序!";
+			
+		}
+		
+		private function failed(e:ZipEvent):void
+		{
+		
+		}
+		
+		private function loading(e:ZipEvent):void
+		{
+		
+		}
+	
 	}
 
 }
