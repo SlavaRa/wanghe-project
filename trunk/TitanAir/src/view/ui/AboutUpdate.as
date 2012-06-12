@@ -27,7 +27,8 @@ package view.ui
 		//设置进度条进度
 		public function setProgressBar(valueNow:Number,valueTotal:Number):void
 		{
-			//ui.probar.setProgress(valueNow,valueTotal);
+			var w:Number = (valueNow / valueTotal) * 600;
+			ui.progress.width = w;
 		}
 		
 		
@@ -36,6 +37,11 @@ package view.ui
 		{
 			if (null != onUpdateCall)
 				onUpdateCall();
+		}
+		
+		public function set txt(str:String):void
+		{
+			ui.txt.text = str;
 		}
 	}
 
