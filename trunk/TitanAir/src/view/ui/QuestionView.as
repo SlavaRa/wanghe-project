@@ -115,10 +115,6 @@ package view.ui
 			plybtn.addEventListener(MouseEvent.CLICK, onPlayClick, false, 0, true);
 			
 			sound = new Sound();
-			sound.addEventListener(Event.COMPLETE, completeHandler);
-            sound.addEventListener(Event.ID3, id3Handler);
-            sound.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
-            sound.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 		}
 		
 		private function onReturnClick(e:MouseEvent):void 
@@ -327,6 +323,10 @@ package view.ui
 		{
 			plybtn.selected = false;
 			sound = new Sound;
+			sound.addEventListener(Event.COMPLETE, completeHandler, false, 0, true);
+            sound.addEventListener(Event.ID3, id3Handler, false, 0, true);
+            sound.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler, false, 0, true);
+            sound.addEventListener(ProgressEvent.PROGRESS, progressHandler, false, 0, true);
 			var file:File = File.applicationDirectory.resolvePath(ConstID.SOUND_PATH + path);
 			sound.load(new URLRequest(file.url),buffer);
 			soundChannel = sound.play();
@@ -347,19 +347,19 @@ package view.ui
 		}
 		
 		private function completeHandler(event:Event):void {
-            //trace("completeHandler: " + event);
+            trace("completeHandler: " + event);
         }
 
         private function id3Handler(event:Event):void {
-            //trace("id3Handler: " + event);
+            trace("id3Handler: " + event);
         }
 
         private function ioErrorHandler(event:Event):void {
-            //trace("ioErrorHandler: " + event);
+            trace("ioErrorHandler: " + event);
         }
 
         private function progressHandler(event:ProgressEvent):void {
-            //trace("progressHandler: " + event);
+            trace("progressHandler: " + event);
         }
 
 		public function stopPlaySound():void

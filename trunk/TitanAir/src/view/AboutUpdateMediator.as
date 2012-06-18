@@ -152,7 +152,7 @@ package view
 				byteArray = newZipFile.data;
 				var fileStr:FileStream = new FileStream();
 				var file:File = new File(File.applicationDirectory.resolvePath("air_app_assets/" +  newZipFile.name).nativePath); //创建新的File方便后面向File写入数据
-				fileStr.open(file, FileMode.UPDATE); //以更新形式打开文件，准备更新
+				fileStr.open(file, FileMode.WRITE); //以写入形式打开文件，准备更新
 				fileStr.position = fileStr.bytesAvailable; //将指针指向文件尾
 				fileStr.writeBytes(byteArray, 0, byteArray.length); //在文件中写入新下载的数据
 				fileStr.close(); //关闭文件流
@@ -164,7 +164,7 @@ package view
 		
 		private function failed(e:ZipEvent):void
 		{
-		
+			ui.txt = "更新出错！请重试！";
 		}
 		
 		private function loading(e:ZipEvent):void
