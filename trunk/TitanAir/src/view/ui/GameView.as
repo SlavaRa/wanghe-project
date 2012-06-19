@@ -65,7 +65,10 @@ package view.ui
 		
 		private var gameUI:PuzzleGame;
 		
-		private var isMoveing:Boolean = false;
+		private var isMoveing:Boolean = false;//是否正在移动中
+		
+		private var isPlaying:Boolean = false;//是否正在游戏中，在游戏中，不能切换图片
+		
 		public function GameView()
 		{
 			gameUI = new PuzzleGame;
@@ -132,20 +135,37 @@ package view.ui
 			beginLoadLeftImg();
 		}
 		
+		/**
+		 * 右侧图片点击
+		 * @param	e
+		 */
 		private function onLeftImgClick(e:MouseEvent):void 
 		{
 			var name:String = (e.target  as Sprite).name;
 			name = name.substring(8);
 			var index:int = parseInt(name);
 			gameUI.txtNotice.text = "点击拼图回答问题";
+			if (isPlaying)
+			{
+				gameUI.txtNotice.text = "回答完毕,才能换图";
+				return;
+			}
 			setImage(leftImgArr[index] as String);
 		}
 		
+		/**
+		 * 设置右侧图片
+		 * @param	filename
+		 */
 		public function setImage(filename:String):void
 		{
 			loadBitmap(filename);
 		}
 		
+		/**
+		 * 
+		 * @param	bitmapFile
+		 */
 		public function loadBitmap(bitmapFile:String):void
 		{
 			var file:File = File.applicationDirectory.resolvePath("air_app_assets/" + bitmapFile);
@@ -273,7 +293,10 @@ package view.ui
 				if ((event.target as Sprite).filters.length != 0) //无滤镜
 				{
 					if (onPuzzleClick != null)
+					{
 						onPuzzleClick(event);
+						isPlaying = true;//正在游戏中
+					}
 				}
 				return;
 			}
@@ -288,6 +311,11 @@ package view.ui
 			}
 		}
 		
+		/**
+		 * 
+		 * @param	puzzleObject
+		 * @param	slideEffect
+		 */
 		public function movePiece(puzzleObject:Object, slideEffect:Boolean):void
 		{
 			if (isMoveing) return;
@@ -365,6 +393,7 @@ package view.ui
 			{
 				//clearPuzzle();
 				mode = 2;
+				isPlaying = false;//完成
 				trace("完成");
 			}
 		}
