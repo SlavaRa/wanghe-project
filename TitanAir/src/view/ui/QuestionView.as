@@ -1,5 +1,6 @@
 package view.ui
 {
+	import adobe.utils.ProductManager;
 	import com.titan.checkboxskin;
 	import com.titan.playbtn;
 	import com.titan.questionUI;
@@ -15,6 +16,8 @@ package view.ui
 	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
 	import flash.filesystem.File;
+	import flash.filters.BitmapFilterQuality;
+	import flash.filters.GlowFilter;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundLoaderContext;
@@ -47,6 +50,7 @@ package view.ui
 		private var OPTION_PADDING:int = 40;
 		private var ANSWER_PADDING:int = 10;
 		private var LEFT_PADDING:int = 50;
+		private var EXPLAIN_FOND_SIZE:int = 16;
 		
 		
 		private var radiobtnGroup:RadioButtonGroup = new RadioButtonGroup;
@@ -62,7 +66,7 @@ package view.ui
 			question.multiline = true;
 			question.x = LEFT_PADDING;
 			question.y = 122;
-			question.width = 512;
+			question.width = 600;
 			question.height = 200;
 			question.selectable = false;
 			question.mouseEnabled = false;
@@ -94,6 +98,10 @@ package view.ui
 			
 			ui.btnAnswer.addEventListener(MouseEvent.CLICK, onApply, false, 0, true);
 			ui.btnReturn.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
+			ui.btnReturnAfter.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
+			ui.btnReturnAfter.visible = false;
+			ui.btnReturnAfter.enabled = false;
+			ui.btnReturnAfter.mouseEnabled = false;
 			
 			optionsArr = new Array;
 			
@@ -105,7 +113,8 @@ package view.ui
 			answertextFormat.font = "微软雅黑";
 			answertextFormat.color = 0x595959;
 			
-			explaintextFormat.size = ANSWER_FOND_SIZE;
+			explaintextFormat.size = EXPLAIN_FOND_SIZE;
+			explaintextFormat.leading = 2;
 			explaintextFormat.font = "微软雅黑";
 			explaintextFormat.color = 0x8AC234;
 			
@@ -162,6 +171,14 @@ package view.ui
 			}
 			optionsArr.length = 0;
 			radiobtnGroup.clear();
+			
+			ui.btnReturnAfter.visible = false;
+			ui.btnReturnAfter.enabled = false;
+			ui.btnReturnAfter.mouseEnabled = false;
+			
+			ui.btnAnswer.visible = true;
+			ui.btnAnswer.enabled = true;
+			ui.btnAnswer.mouseEnabled = true;
 		}
 		
 		private var lineCount:int = 0;
@@ -192,7 +209,11 @@ package view.ui
 					}
 					radiobtn.x = lengthCount;
 					radiobtn.y = yPosition + lineCount * OPTION_PADDING;
-					
+					if (radiobtn.comWidth > 565)
+					{
+						radiobtn.setTextMulitLine(530);
+						lineCount++;//如果单行 单答案超过尺寸 换行}
+					}
 					ypo = radiobtn.y;
 					
 					lengthCount += radiobtn.comWidth;
@@ -210,11 +231,16 @@ package view.ui
 					if ((checkBox.x + checkBox.comWidth) > 565)
 					{
 						lineCount++;
+
 						lengthCount = LEFT_PADDING;
 					}
 					checkBox.x = lengthCount;
 					checkBox.y = yPosition + lineCount * OPTION_PADDING;
-					
+					if (checkBox.comWidth > 565) 
+					{
+						checkBox.setTextMulitLine(530);
+						lineCount++;
+					}
 					ypo = checkBox.y;
 					
 					lengthCount += checkBox.comWidth;
@@ -238,6 +264,14 @@ package view.ui
 			{
 				onApplyCall();
 			}
+			
+			ui.btnReturnAfter.visible = true;
+			ui.btnReturnAfter.enabled = true;
+			ui.btnReturnAfter.mouseEnabled = true;
+			
+			ui.btnAnswer.visible = false;
+			ui.btnAnswer.enabled = false;
+			ui.btnAnswer.mouseEnabled = false;
 		}
 		
 		private function checkAnswer():Boolean
@@ -311,7 +345,6 @@ package view.ui
 			
 			explain.text = _cureVO.explain;
 			explain.setTextFormat(explaintextFormat);
-			//explain.y = ypo + 40;
 		}
 		
 		private var position:int = 0;

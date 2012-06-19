@@ -97,7 +97,7 @@ package view
 		
 		private function onShareClick():void
 		{
-			sendNotification(ConstID.SHOW_SHARE_VIEW,"分享到新浪微博。。。");
+			sendNotification(ConstID.SHOW_SHARE_VIEW,"分享到社区。。。");
 		}
 		
 		private function onSettingClick():void 

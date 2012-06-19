@@ -60,6 +60,16 @@ package display.components
 			_textField.setTextFormat(textFormat);
 		}
 		
+				
+		//设置换行
+		public function setTextMulitLine(width:Number):void
+		{
+			_textField.width = width;
+			_textField.multiline = true;
+			_textField.wordWrap = true;
+		}
+		
+		
 		public function get comWidth():int
 		{
 			return _textField.x + _textField.text.length * FOND_SIZE;

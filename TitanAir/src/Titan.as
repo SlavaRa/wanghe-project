@@ -35,7 +35,6 @@ package
 			if (stage.supportedOrientations)
 			{
 				stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGING, onOrientationChangeing);
-				//stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, onOrientationChange);
 			}
 		}
 		private function onOrientationChangeing(event:StageOrientationEvent):void 
@@ -58,20 +57,6 @@ package
 			}
 		}
 		
-/*		private function onOrientationChange(event:StageOrientationEvent):void
-		{
-			switch (event.afterOrientation)
-			{
-				case StageOrientation.DEFAULT: 
-					break;
-				case StageOrientation.ROTATED_RIGHT: 
-					break;
-				case StageOrientation.ROTATED_LEFT: 
-					break;
-				case StageOrientation.UPSIDE_DOWN: 
-					break;
-			}
-		}*/
 		
 		private function onStageInit(e:Event):void 
 		{
@@ -82,7 +67,7 @@ package
 		private function deactivate(e:Event):void
 		{
 			//自动退出
-			NativeApplication.nativeApplication.exit();
+			//NativeApplication.nativeApplication.exit();
 		}
 		
 	}
