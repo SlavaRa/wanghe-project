@@ -1,6 +1,7 @@
 package view.ui 
 {
 	import com.titan.updateUI;
+	import controller.ConstID;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -14,6 +15,7 @@ package view.ui
 		private var ui:updateUI;
 		
 		public var onUpdateCall:Function;
+		public var onReutrnCall:Function;
 		
 		public function AboutUpdate() 
 		{
@@ -21,7 +23,13 @@ package view.ui
 			addChild(ui);
 			
 			ui.btnUpdate.addEventListener(MouseEvent.CLICK, onBtnUpadteClick);
-			
+			ui.btnReturn.addEventListener(MouseEvent.CLICK, onReturnClick);
+		}
+		
+		private function onReturnClick(e:MouseEvent):void 
+		{
+			 if (onReutrnCall != null)
+				onReutrnCall();
 		}
 		
 		//设置进度条进度

@@ -45,11 +45,14 @@ package view
 		override public function onRegister():void
 		{
 			ui.onUpdateCall = onUpdateCall;
+			ui.onReutrnCall = onReturnCall;
 		}
+		
+
 		
 		override public function listNotificationInterests():Array
 		{
-			return [ConstID.SHOW_SETTING_VIEW];
+			return [ConstID.SHOW_SETTING_VIEW,ConstID.CHECK_VERSION];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -59,6 +62,9 @@ package view
 				case ConstID.SHOW_SETTING_VIEW: 
 					sendNotification(ConstID.RESET_SHOW_UI, ui, ConstID.SHOW_POP_UP);
 					break;
+				case ConstID.CHECK_VERSION:
+					
+					break;
 				default: 
 					break;
 			}
@@ -67,6 +73,11 @@ package view
 		private function onUpdateCall():void
 		{
 			downLoad(ConstID.UPDATE_DAT_URL);
+		}
+		
+		private function onReturnCall():void 
+		{
+			sendNotification(ConstID.HIDE_SHRINK,ui);
 		}
 		
 		public function downLoad(netFileURL:String):void
