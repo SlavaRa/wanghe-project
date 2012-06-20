@@ -18,6 +18,9 @@ package view
 		public static const NAME:String = "GAME_MEDIATOR";
 		
 		public var ui:GameView;
+		
+		private var ischecked:Boolean = false;//是否检查过版本
+		
 		public function GameMediator(view:GameView) 
 		{	
 			ui = view;
@@ -72,7 +75,14 @@ package view
 			var sp:Sprite = e.target as Sprite;
 			curItemName = sp.name;
 			//TODO 把答题界面呼出来
-			sendNotification(ConstID.SHOW_QUESTION,"");
+			sendNotification(ConstID.SHOW_QUESTION, "");
+			
+			//version 检查版本
+			if (!ischecked)
+			{
+				sendNotification(ConstID.CHECK_VERSION);
+				ischecked = true;
+			}
 		}
 		
 		private function setPuzzleItemFilter():void
