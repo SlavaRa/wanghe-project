@@ -1,6 +1,8 @@
 package view.ui
 {
 	import adobe.utils.ProductManager;
+	import com.greensock.easing.Bounce;
+	import com.greensock.TweenLite;
 	import com.titan.checkboxskin;
 	import com.titan.playbtn;
 	import com.titan.questionUI;
@@ -9,12 +11,15 @@ package view.ui
 	import display.components.CheckBox;
 	import display.components.RadioButton;
 	import display.components.RadioButtonGroup;
+	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
+	import flash.events.TextEvent;
 	import flash.filesystem.File;
 	import flash.filters.BitmapFilterQuality;
 	import flash.filters.GlowFilter;
@@ -57,6 +62,11 @@ package view.ui
 		
 		public var onApplyCall:Function;
 		public var onReturn:Function;
+		
+		private var loader:Loader;//解析图片
+		
+		private var explainSprite:Sprite;
+		
 		public function QuestionView()
 		{
 			ui = new questionUI;
@@ -103,6 +113,11 @@ package view.ui
 			ui.btnReturnAfter.enabled = false;
 			ui.btnReturnAfter.mouseEnabled = false;
 			
+			ui.lbTujie.htmlText = "<a href='event:tujie'>图解</a>";
+			ui.lbTujie.addEventListener(TextEvent.LINK, onTujieClick);
+			ui.lbTujie.visible = false;
+			//ui.lbTujie.enabled = false;
+			
 			optionsArr = new Array;
 			
 			textFormat.size = QUES_FOND_SIZE;
@@ -124,6 +139,52 @@ package view.ui
 			plybtn.addEventListener(MouseEvent.CLICK, onPlayClick, false, 0, true);
 			
 			sound = new Sound();
+			
+			loader = new Loader;
+		}
+		
+		//图解点击 弹出图片
+		private function onTujieClick(e:TextEvent):void 
+		{
+			trace(e.text);
+			loader.unload();
+			
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onTujieComplete);
+			loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			var file:File = File.applicationDirectory.resolvePath("air_app_assets/" + _cureVO.explainimg);
+			loader.load(new URLRequest(file.url));
+			
+			
+
+		}
+		
+		//图解图片load完成
+		private function onTujieComplete(e:Event):void 
+		{
+			var image:Bitmap = Bitmap(e.target.content);
+			if (explainSprite!=null&&this.contains(explainSprite))
+			{
+				removeChild(explainSprite);
+			}
+			explainSprite = new Sprite;
+			explainSprite.addChild(image);
+			explainSprite.addEventListener(MouseEvent.CLICK, onExplainImgClick);
+			addChild(explainSprite);
+			var midX:int = ui.stage.stageWidth / 2;
+			var midY:int = ui.stage.stageHeight / 2;
+			
+			var newX:int = (ui.stage.stageWidth - image.width) / 2;
+			var newY:int = (ui.stage.stageHeight - image.height) / 2;
+			
+			TweenLite.to(explainSprite, 0, {x:midX,y:midY, scaleX:0.1, scaleY:0.1 } );
+			TweenLite.to(explainSprite, 1, { x:newX, y:newY, scaleX:1, scaleY:1 , ease:Bounce.easeOut } );
+		}
+		
+		private function onExplainImgClick(e:MouseEvent):void 
+		{
+			var sp:Sprite = e.target as Sprite;
+			if (sp.parent != null)
+				sp.parent.removeChild(sp);
 		}
 		
 		private function onReturnClick(e:MouseEvent):void 
@@ -179,6 +240,13 @@ package view.ui
 			ui.btnAnswer.visible = true;
 			ui.btnAnswer.enabled = true;
 			ui.btnAnswer.mouseEnabled = true;
+			
+			ui.lbTujie.visible = false;
+			
+			if (explainSprite!=null&&this.contains(explainSprite))
+			{
+				removeChild(explainSprite);
+			}
 		}
 		
 		private var lineCount:int = 0;
@@ -345,6 +413,11 @@ package view.ui
 			
 			explain.text = _cureVO.explain;
 			explain.setTextFormat(explaintextFormat);
+			
+			if (_cureVO.explainimg!="")
+			{
+				ui.lbTujie.visible = true;
+			}
 		}
 		
 		private var position:int = 0;

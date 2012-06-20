@@ -93,7 +93,7 @@ package view
 			var shareUIMediator:ShareUIMediator = new ShareUIMediator(shareUI);
 			facade.registerMediator(shareUIMediator);
 			ui.addChild(shareUI);
-			//childArr.push(shareUI);
+			childArr.push(shareUI);
 			shareUI.visible = false;
 			
 			aboutUI = new AboutUpdate;
