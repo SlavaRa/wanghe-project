@@ -38,7 +38,6 @@ package model
 			{
 				iobserver.notifyQuestionObserver(questions);
 			}
-			
 		}
 		
 		private function onComplete(e:Event):void 

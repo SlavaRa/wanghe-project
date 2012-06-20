@@ -49,6 +49,9 @@ package controller
 		
 		//隐藏
 		public static const HIDE_ME:String = "HIDE_ME";
+		
+		//检查更新
+		public static const CHECK_VERSION:String = "CHECK_VERSION";
 	}
 
 }
