@@ -1,8 +1,8 @@
 package model 
 {
 	/**
-	 * ...
-	 * @author ...
+	 * whe
+	 * @author whe
 	 */
 	public interface IQuestionDataObserver 
 	{

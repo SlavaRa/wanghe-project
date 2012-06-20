@@ -22,6 +22,11 @@ package model
 		{
 			return QuestionProxy(facade.retrieveProxy(QuestionProxy.NAME));
 		}
+		
+		public static function get versionProxy():VersionProxy
+		{
+			return VersionProxy(facade.retrieveProxy(QuestionProxy.NAME));
+		}
 	}
 
 }
