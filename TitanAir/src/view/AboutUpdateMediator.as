@@ -20,6 +20,8 @@ package view
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
+	import model.P;
+	import model.vo.VersionVO;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import view.ui.AboutUpdate;
@@ -35,6 +37,9 @@ package view
 		
 		private var downFileURL:URLRequest;
 		private var netFile:URLLoader;
+		
+		private var nowVersion:VersionVO;//当前的版本
+		private var newVersion:VersionVO;//新的版本
 		
 		public function AboutUpdateMediator(viewComponent:AboutUpdate)
 		{
@@ -63,10 +68,44 @@ package view
 					sendNotification(ConstID.RESET_SHOW_UI, ui, ConstID.SHOW_POP_UP);
 					break;
 				case ConstID.CHECK_VERSION:
-					
+					checkVersion();
 					break;
 				default: 
 					break;
+			}
+		}
+		
+		//检查版本
+		private function checkVersion():void 
+		{
+			nowVersion = new VersionVO;
+			nowVersion.completeCall = nowVersionCall;
+			P.versionProxy.registerVersionOberver("version.xml", nowVersion,'now');
+		}
+		
+		//现在版本回调
+		private function nowVersionCall(vo:VersionVO):void 
+		{
+			P.versionProxy.nowverVO = vo;
+			nowVersion = vo;
+			trace(vo.NO);
+			newVersion = new VersionVO;
+			newVersion.completeCall = newVersionCall;
+			P.versionProxy.registerVersionOberver(ConstID.UPDATE_XML_URL,newVersion,'new');
+		}
+		
+		//新版本回调
+		private function newVersionCall(vo:VersionVO):void 
+		{
+			P.versionProxy.newverVO = vo;
+			newVersion = vo;
+			trace(vo.NO);
+			if (newVersion.NO != null && newVersion.NO != ""&&nowVersion.NO!=null&&nowVersion.NO!="")
+			{
+				if (newVersion.NO != nowVersion.NO)
+				{
+					sendNotification(ConstID.RESET_SHOW_UI, ui, ConstID.SHOW_POP_UP);
+				}
 			}
 		}
 		
@@ -77,7 +116,7 @@ package view
 		
 		private function onReturnCall():void 
 		{
-			sendNotification(ConstID.HIDE_SHRINK,ui);
+			sendNotification(ConstID.HIDE_ME,ui);
 		}
 		
 		public function downLoad(netFileURL:String):void
@@ -123,7 +162,7 @@ package view
 			fs.writeBytes(event.target.data);
 			fs.close();
 			trace("下载完成！！");
-			ui.txt = "下载完成！";
+			ui.txt = "下载完成！正在解压!请耐心等待";
 			loadzipFile(File.applicationDirectory.resolvePath("air_app_assets/" + "res_data.zip").nativePath);
 		}
 		
@@ -164,11 +203,12 @@ package view
 				var fileStr:FileStream = new FileStream();
 				var file:File = new File(File.applicationDirectory.resolvePath("air_app_assets/" +  newZipFile.name).nativePath); //创建新的File方便后面向File写入数据
 				fileStr.open(file, FileMode.WRITE); //以写入形式打开文件，准备更新
-				fileStr.position = fileStr.bytesAvailable; //将指针指向文件尾
+				//fileStr.position = fileStr.bytesAvailable; //将指针指向文件尾
 				fileStr.writeBytes(byteArray, 0, byteArray.length); //在文件中写入新下载的数据
 				fileStr.close(); //关闭文件流
 			}
 			
+			P.versionProxy.writeVersion();
 			ui.txt = "更新完成！请重启应用程序!";
 			
 		}
@@ -180,7 +220,7 @@ package view
 		
 		private function loading(e:ZipEvent):void
 		{
-		
+			//ui.setProgressBar(e.message.bytesLoaded, e.message.bytesTotal);
 		}
 	
 	}

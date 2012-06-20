@@ -25,7 +25,7 @@ package model
 		
 		public static function get versionProxy():VersionProxy
 		{
-			return VersionProxy(facade.retrieveProxy(QuestionProxy.NAME));
+			return VersionProxy(facade.retrieveProxy(VersionProxy.NAME));
 		}
 	}
 
