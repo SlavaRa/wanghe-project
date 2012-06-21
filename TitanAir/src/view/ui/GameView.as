@@ -79,7 +79,7 @@ package view.ui
 			gameUI.btnShare.addEventListener(MouseEvent.CLICK, onShareClick, false, 0, true);
 			gameUI.txtScore.visible = false;
 			
-			gameUI.btnSetting.addEventListener(MouseEvent.CLICK,onSettingClick,false,0,true);
+			//gameUI.btnSetting.addEventListener(MouseEvent.CLICK,onSettingClick,false,0,true);
 			
 			this.addChild(gameUI);
 			
