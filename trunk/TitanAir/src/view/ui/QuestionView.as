@@ -76,7 +76,7 @@ package view.ui
 			question.multiline = true;
 			question.x = LEFT_PADDING;
 			question.y = 122;
-			question.width = 600;
+			question.width = 1024;
 			question.height = 200;
 			question.selectable = false;
 			question.mouseEnabled = false;
@@ -107,7 +107,7 @@ package view.ui
 			
 			
 			ui.btnAnswer.addEventListener(MouseEvent.CLICK, onApply, false, 0, true);
-			ui.btnReturn.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
+			//ui.btnReturn.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
 			ui.btnReturnAfter.addEventListener(MouseEvent.CLICK, onReturnClick, false, 0, true);
 			ui.btnReturnAfter.visible = false;
 			ui.btnReturnAfter.enabled = false;
@@ -465,7 +465,7 @@ package view.ui
         }
 
         private function progressHandler(event:ProgressEvent):void {
-            trace("progressHandler: " + event);
+            //trace("progressHandler: " + event);
         }
 
 		public function stopPlaySound():void
