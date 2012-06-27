@@ -75,7 +75,7 @@ package view.ui
 			question = new TextField();
 			question.multiline = true;
 			question.x = LEFT_PADDING;
-			question.y = 122;
+			question.y = 110;
 			question.width = 1024;
 			question.height = 200;
 			question.selectable = false;
