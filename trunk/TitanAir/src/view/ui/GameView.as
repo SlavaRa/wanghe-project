@@ -394,6 +394,7 @@ package view.ui
 				//clearPuzzle();
 				mode = 2;
 				isPlaying = false;//完成
+				gameUI.txtNotice.text = "恭喜游戏过关!你真棒！";
 				trace("完成");
 			}
 		}
