@@ -2,7 +2,7 @@
 <root>
 <dataSet>
 	<entity no="1">
-		<question>1.乳腺癌是女性的专利，是吗？</question>
+		<question>乳腺癌是女性的专利，是吗？</question>
 		<options>
 			<option no="1">A.是</option>
 			<option no="2">B.不是，男性也有</option>
@@ -44,7 +44,7 @@
 		<explainimg>p3.jpg</explainimg>
 	</entity>
 	<entity no="4">
-		<question>4.乳腺癌会有哪些临床症状/体征？（可多选）</question>
+		<question>乳腺癌会有哪些临床症状/体征？（可多选）</question>
 		<options>
 			<option no="1">A.乳房出现无痛、形状不规则的硬块，而且只有一边乳房有，并在皮肤下移动</option>
 			<option no="2">B.疼痛</option>
@@ -66,7 +66,7 @@
 		<explainimg>p4.jpg</explainimg>
 	</entity>
 	<entity no="5">
-		<question>5.乳腺癌多发于什么部位？</question>
+		<question>乳腺癌多发于什么部位？</question>
 		<options>
 			<option no="1">A.接近心脏的部位</option>
 			<option no="2">B.接近腋窝的部位</option>
@@ -99,7 +99,7 @@
 		<explainimg></explainimg>
 	</entity>
 	<entity no="7">
-		<question>7.自我检查方法：乳房视诊（用眼睛来检查）应注意哪些方面？(可多选)</question>
+		<question>自我检查方法：乳房视诊（用眼睛来检查）应注意哪些方面？(可多选)</question>
 		<options>
 			<option no="1">A.双侧乳房是否对称，有无块物突出</option>
 			<option no="2">B.乳头位置有无内陷或抬高</option>
@@ -117,7 +117,7 @@
 		<explainimg></explainimg>
 	</entity>
 	<entity no="8">
-		<question>8. 自我检查：乳房扪诊（用手指轻压乳房）应注意哪些方面？(可多选)</question>
+		<question>自我检查：乳房扪诊（用手指轻压乳房）应注意哪些方面？(可多选)</question>
 		<options>
 			<option no="1">A.用手指的掌面平坦而轻柔地扪诊</option>
 			<option no="2">B.用手指抓捏检查</option>
@@ -133,7 +133,7 @@
 		<explainimg>p8.jpg</explainimg>
 	</entity>
 	<entity no="9">
-		<question>9.早期发现的乳腺癌（未转移前），最佳的治疗方法是？</question>
+		<question>早期发现的乳腺癌（未转移前），最佳的治疗方法是？</question>
 		<options>
 			<option no="1">A.手术 </option>
 			<option no="2">B.化疗</option>
@@ -174,7 +174,7 @@
 		<explainimg></explainimg>
 	</entity>
 	<entity no="11">
-		<question>11.你知道哪些食物可以预防乳腺癌的发生吗？</question>
+		<question>你知道哪些食物可以预防乳腺癌的发生吗？</question>
 		<options>
 			<option no="1">A.辛椒、姜、桂皮</option>
 			<option no="2">B.谷物类：玉米、荞麦、燕麦</option>
