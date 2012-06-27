@@ -103,7 +103,7 @@ package model
 		{
 			for each(var item:QuestionVO in questions)
 			{
-				item.state == -1;
+				item.state = -1;
 			}
 		}
 		

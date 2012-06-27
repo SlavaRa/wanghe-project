@@ -32,8 +32,11 @@ package view
 			ui.onPuzzleClick = onPuzzleItemClick;
 			ui.onShareClickCall = onShareClick;
 			ui.onSettingClickCall = onSettingClick;
+			ui.onResetImage = onResetQuestion;
 			super.onRegister();
 		}
+		
+
 		
 
 		override public function listNotificationInterests():Array 
@@ -113,6 +116,11 @@ package view
 		private function onSettingClick():void 
 		{
 			sendNotification(ConstID.SHOW_SETTING_VIEW);
+		}
+		
+		private function onResetQuestion():void 
+		{
+			P.questionProxy.resetQuestion();
 		}
 	}
 }
