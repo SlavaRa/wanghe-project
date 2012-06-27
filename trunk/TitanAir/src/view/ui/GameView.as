@@ -60,6 +60,7 @@ package view.ui
 		public var onSettingClickCall:Function;//设置按钮
 		//分享 测试用
 		public var onShareClickCall:Function;
+		public var onResetImage:Function;//重置图片的时候 重置问题
 		
 		private var mode:int = 0; //0灰色答题 1彩色游戏 2完成 三种模式
 		
@@ -186,6 +187,14 @@ package view.ui
 			
 			// shuffle them 打乱丫的
 			shufflePuzzlePieces();
+			
+			mode = 0;
+			
+			if (onResetImage!= null)
+			{
+				onResetImage();
+			}
+			
 		}
 		
 		public function makePuzzlePieces(bitmapData:BitmapData):void
