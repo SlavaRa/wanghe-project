@@ -23,6 +23,7 @@ package
 			stage.align = StageAlign.TOP_LEFT;
 			addEventListener(Event.ADDED_TO_STAGE, onStageInit, false, 0, true);
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
+			
 			// touch or gesture?
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			
