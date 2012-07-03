@@ -90,7 +90,7 @@ package view.ui
 			answer.selectable = false;
 			answer.mouseEnabled = false;
 			answer.autoSize = TextFieldAutoSize.LEFT;
-			answer.text = "正确答案";
+			answer.text = "";
 			ui.addChild(answer);
 			
 			//TODO fix position
@@ -213,7 +213,7 @@ package view.ui
 			
 			answer.y = question.y + question.numLines * QUES_FOND_SIZE + ANSWER_PADDING;
 			answer.text = "";
-			
+			ui.lb_answer.text = "";
 			setOptions();
 			soundChannel = null;
 		}
@@ -408,8 +408,8 @@ package view.ui
 					}
 				}
 			}
-			answer.text = rightAnswer;
-			answer.setTextFormat(answertextFormat);
+			ui.lb_answer.text = rightAnswer;
+			//answer.setTextFormat(answertextFormat);
 			
 			explain.text = _cureVO.explain;
 			explain.setTextFormat(explaintextFormat);
