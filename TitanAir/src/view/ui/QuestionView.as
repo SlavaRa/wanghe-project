@@ -1,6 +1,7 @@
 package view.ui
 {
 	import adobe.utils.ProductManager;
+	import com.greensock.BlitMask;
 	import com.greensock.easing.Bounce;
 	import com.greensock.TweenLite;
 	import com.titan.checkboxskin;
@@ -48,14 +49,14 @@ package view.ui
 		private var explaintextFormat:TextFormat = new TextFormat;
 		
 		private var answer:TextField;
-		private var explain:TextField;
+		//private var explain:TextField;
 		
 		private var QUES_FOND_SIZE:int = 24;
 		private var ANSWER_FOND_SIZE:int = 20;
 		private var OPTION_PADDING:int = 40;
 		private var ANSWER_PADDING:int = 10;
 		private var LEFT_PADDING:int = 50;
-		private var EXPLAIN_FOND_SIZE:int = 16;
+		private var EXPLAIN_FOND_SIZE:int = 20;
 		
 		
 		private var radiobtnGroup:RadioButtonGroup = new RadioButtonGroup;
@@ -65,7 +66,10 @@ package view.ui
 		
 		private var loader:Loader;//解析图片
 		
-		private var explainSprite:Sprite;
+		private var explainSprite:Sprite;//答案解析图片
+		
+		private var explainTwnSprite:Sprite;//答案解析文字滚动容器
+		private var bm:BlitMask;
 		
 		public function QuestionView()
 		{
@@ -93,17 +97,16 @@ package view.ui
 			answer.text = "";
 			ui.addChild(answer);
 			
-			//TODO fix position
-			explain = new TextField;
-			explain.multiline = true;
-			explain.wordWrap = true;
-			explain.autoSize = "left";
-			explain.x = 620;
-			explain.y = 180;
-			explain.width = 380;
-			explain.selectable = false;
-			explain.mouseEnabled = false;
-			ui.addChild(explain);
+			//explain = new TextField;
+			//explain.multiline = true;
+			//explain.wordWrap = true;
+			//explain.autoSize = "left";
+			//explain.x = 620;
+			//explain.y = 180;
+			//explain.width = 380;
+			//explain.selectable = false;
+			//explain.mouseEnabled = false;
+			//ui.addChild(explain);
 			
 			
 			ui.btnAnswer.addEventListener(MouseEvent.CLICK, onApply, false, 0, true);
@@ -221,7 +224,35 @@ package view.ui
 		public function resetUI():void 
 		{
 			question.text = "";
-			explain.text = "";
+			//explain.text = "";
+			
+			if (explainTwnSprite != null)
+			{
+				TweenLite.killTweensOf(explainTwnSprite);
+				if (ui.contains(explainTwnSprite))
+				{
+					if (ui.contains(bm))
+					{
+						ui.removeChild(bm);
+					}
+					var numchild:int = explainTwnSprite.numChildren;
+					for (var i:int = 0;i<numchild; i++)
+					{
+						var obj:TextField = explainTwnSprite.getChildAt(0) as TextField;
+						obj.text = "";
+						if (obj.parent != null)
+						{
+							obj.parent.removeChild(obj);
+						}
+					}
+					
+					ui.removeChild(explainTwnSprite);
+					//removeChild(explainTwnSprite);
+				}
+			}
+			
+			
+			
 			_cureVO = null;
 			for each(var item:Object in optionsArr)
 			{
@@ -411,13 +442,49 @@ package view.ui
 			ui.lb_answer.text = rightAnswer;
 			//answer.setTextFormat(answertextFormat);
 			
-			explain.text = _cureVO.explain;
-			explain.setTextFormat(explaintextFormat);
+			setExplainText(_cureVO.explain);
+			//explain.text = _cureVO.explain;
+			//explain.setTextFormat(explaintextFormat);
 			
 			if (_cureVO.explainimg!="")
 			{
 				ui.lbTujie.visible = true;
 			}
+		}
+		
+		
+		/**
+		 * 显示答案 并且滚动
+		 * @param	txt
+		 */
+		private function setExplainText(txt:String):void
+		{
+			if (explainTwnSprite!=null&&ui.contains(explainTwnSprite))
+			{
+				ui.removeChild(explainTwnSprite);
+			}
+			explainTwnSprite = new Sprite;
+			explainTwnSprite.x = 620;
+			explainTwnSprite.y = 180;
+			ui.addChild(explainTwnSprite);
+			for (var i:int = 0; i < 14; i++)
+			{
+				var tf:TextField = new TextField();
+				tf.text = txt + "\n\n\n" + txt + "\n\n\n" + txt;
+				tf.multiline = tf.wordWrap = true;
+				tf.antiAliasType = "normal";
+				tf.selectable = false;
+				tf.width = 380;
+				tf.height = 280;
+				tf.setTextFormat(explaintextFormat);
+				explainTwnSprite.addChild(tf);
+				tf.y = tf.height * (i - 2) + 5;
+			}
+			
+			bm = new BlitMask(explainTwnSprite, explainTwnSprite.x, explainTwnSprite.y, 400, 280, false);
+			explainTwnSprite.addChild(bm);
+			var time:int = explainTwnSprite.height / 10;
+			TweenLite.to(explainTwnSprite, time, { y: -3000, onUpdate: bm.update } );
 		}
 		
 		private var position:int = 0;
