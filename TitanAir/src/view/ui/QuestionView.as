@@ -56,7 +56,7 @@ package view.ui
 		private var OPTION_PADDING:int = 40;
 		private var ANSWER_PADDING:int = 10;
 		private var LEFT_PADDING:int = 50;
-		private var EXPLAIN_FOND_SIZE:int = 20;
+		private var EXPLAIN_FOND_SIZE:int = 24;
 		
 		
 		private var radiobtnGroup:RadioButtonGroup = new RadioButtonGroup;
@@ -470,12 +470,13 @@ package view.ui
 			for (var i:int = 0; i < 14; i++)
 			{
 				var tf:TextField = new TextField();
-				tf.text = txt + "\n\n\n" + txt + "\n\n\n" + txt;
+				tf.text = txt + "\n\n\n";
 				tf.multiline = tf.wordWrap = true;
 				tf.antiAliasType = "normal";
 				tf.selectable = false;
 				tf.width = 380;
-				tf.height = 280;
+				//tf.height = 280;
+				tf.autoSize = "left";
 				tf.setTextFormat(explaintextFormat);
 				explainTwnSprite.addChild(tf);
 				tf.y = tf.height * (i - 2) + 5;
@@ -484,7 +485,8 @@ package view.ui
 			bm = new BlitMask(explainTwnSprite, explainTwnSprite.x, explainTwnSprite.y, 400, 280, false);
 			explainTwnSprite.addChild(bm);
 			var time:int = explainTwnSprite.height / 10;
-			TweenLite.to(explainTwnSprite, time, { y: -3000, onUpdate: bm.update } );
+			bm.update();
+			TweenLite.to(explainTwnSprite, time, { y: -3000, onUpdate: bm.update ,delay:10} );
 		}
 		
 		private var position:int = 0;
