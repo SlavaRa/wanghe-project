@@ -31,7 +31,7 @@ package view.ui
 		public static const numPiecesVert:int = 4;
 		
 		// random shuffle steps 打乱步数
-		public static const numShuffle:int = 2;
+		public static const numShuffle:int = 88;
 		
 		// animation steps and time
 		public static const slideSteps:int = 10;
