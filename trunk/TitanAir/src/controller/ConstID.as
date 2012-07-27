@@ -40,10 +40,10 @@ package controller
 		
 		//升级文件URL
 		//public static const UPDATE_DAT_URL:String = "http://221.5.4.221/update/res_data.rar";
-		public static const UPDATE_DAT_URL:String = "http://192.168.1.104/php100/res_data.zip";
+		public static const UPDATE_DAT_URL:String = "http://qipubbs.stu.edu.cn/qpbbsftp/res_data.zip";
 		
 		//版本文件XML
-		public static const UPDATE_XML_URL:String = "http://192.168.1.104/php100/version.xml";
+		public static const UPDATE_XML_URL:String = "http://qipubbs.stu.edu.cn/qpbbsftp/version.xml";
 		
 		//显示分享界面
 		public static const SHOW_SHARE_VIEW:String = "SHOW_SHARE_VIEW";

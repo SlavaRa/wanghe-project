@@ -59,7 +59,7 @@ package view
 		private function onShare():void
 		{
 			var shareText:String = ui.ShareText;
-			var url:String = "http://qipu.mopsgame.com/shareManage.do?actions=qipuShareUI";
+			var url:String = "http://qipubbs.stu.edu.cn/shareManage.do?actions=qipuShareUI";
 			var title:String = "title=乳腺健康知识问答";
 			var content:String = "url=";
 			var uri:String = url +"&" + title +"&" +content + shareText;
