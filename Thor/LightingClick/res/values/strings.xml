@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LightingClickActivity!</string>
+    <string name="app_name">闪电指</string>
+	<string name="author">by Wanghe</string>
+	<string name="select_ip_title">IP地址</string>
+	<string name="select_check_title">选择</string>
+	<string name="btn_search_text">搜索</string>
+	<string name="btn_close_text">关机</string>
+</resources>

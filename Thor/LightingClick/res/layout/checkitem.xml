@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+<LinearLayout android:gravity="center"
+    				   android:orientation="horizontal"
+    				   android:layout_width="fill_parent"
+    				   android:layout_height="40dip " android:weightSum="10">
+    				   <TextView
+    				       android:id="@+id/dispatch_item_select_ip"
+    				       android:textColor="#ffffff"
+    				       android:layout_marginLeft="10dip"
+    				       android:layout_weight="2"
+    				       android:layout_width="fill_parent" 
+    				       android:layout_height="wrap_content"/>
+    				   <LinearLayout
+    				        android:gravity="center"
+    				        android:layout_weight="8"
+    				        android:layout_width="fill_parent"
+    				        android:layout_height="wrap_content" >
+    				       <CheckBox
+    				           style="@style/MyCheckBox"
+    				           android:id="@+id/dispatch_item_select_ip_ckb"
+    				           android:focusable="false"
+    				           android:layout_width="wrap_content"
+    				           android:layout_height="wrap_content"
+    				           />
+    				   </LinearLayout>
+</LinearLayout>
+</LinearLayout>
