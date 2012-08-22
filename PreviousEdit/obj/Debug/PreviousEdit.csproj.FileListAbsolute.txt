@@ -1,0 +1,9 @@
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Debug\PreviousEdit.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Debug\PreviousEdit.pdb
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Debug\PluginCore.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Debug\PluginCore.pdb
+E:\FD\FlashDevelop\Bin\Debug\Plugins\PreviousEdit.dll
+E:\FD\FlashDevelop\Bin\Debug\Plugins\PreviousEdit.pdb
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Debug\ResolveAssemblyReference.cache
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Debug\PreviousEdit.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Debug\PreviousEdit.pdb

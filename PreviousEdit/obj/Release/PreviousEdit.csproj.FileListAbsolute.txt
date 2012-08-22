@@ -1,0 +1,8 @@
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Release\PreviousEdit.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Release\PreviousEdit.pdb
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Release\ASCompletion.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Release\PluginCore.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\bin\Release\ASCompletion.pdb
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Release\ResolveAssemblyReference.cache
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Release\PreviousEdit.dll
+E:\FD\External\Plugins\PreviousEdit\PreviousEdut\obj\Release\PreviousEdit.pdb
