@@ -1,0 +1,5 @@
+E:\FD\FlashDevelop\Bin\Debug\Plugins\HighlightSelection.dll
+E:\FD\External\Plugins\HighlightSelection\obj\x86\Release\ResolveAssemblyReference.cache
+E:\FD\External\Plugins\HighlightSelection\obj\x86\Release\HighlightSelection.Resources.en_US.resources
+E:\FD\External\Plugins\HighlightSelection\obj\x86\Release\HighlightSelection.csproj.GenerateResource.Cache
+E:\FD\External\Plugins\HighlightSelection\obj\x86\Release\HighlightSelection.dll
