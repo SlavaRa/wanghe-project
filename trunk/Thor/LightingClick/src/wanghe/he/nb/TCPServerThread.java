@@ -11,41 +11,39 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-public class TCPServerThread implements  Runnable
- {
-	private static final String tag="TCPServerThread";
-	private Handler handler=null;
-	
-	private ServerSocket sock=null;
-	private boolean running=false;
-	private int port=6850;
-	private Context context=null;
+public class TCPServerThread implements Runnable {
+	private static final String tag = "TCPServerThread";
+	private Handler handler = null;
+
+	private ServerSocket sock = null;
+	private boolean running = false;
+	private int port = 4860;
+	private Context context = null;
 	private static final int BUFF_SIZE = 1024;
-	
-	public  TCPServerThread(Handler handler,int port,Context context)
-	{
-		this.handler=handler;
-		this.port=port;
-		this.context=context;
+
+	public TCPServerThread(Handler handler, int port, Context context) {
+		this.handler = handler;
+		this.port = port;
+		this.context = context;
 		try {
 			Log.v(tag, "ServerSocket start at port");
 		} catch (Exception e) {
 		}
 	}
-	
-	public void run()
-	{
+
+	public void run() {
 		try {
-			sock=new ServerSocket(port);
+			sock = new ServerSocket(port);
 			Socket socket = sock.accept();
 			InputStream inputStream = socket.getInputStream();
-			byte buffer [] = new byte[BUFF_SIZE];
+			byte buffer[] = new byte[BUFF_SIZE];
 			int len = 0;
-			len= inputStream.read(buffer);
-			String strdata= new String(buffer,0,len);
-			Message msg= new Message();
-			Bundle bundle = new Bundle(); 
-			bundle.putString("msg", strdata); 
+			len = inputStream.read(buffer);
+			String strdata = new String(buffer, 0, len);
+			Message msg = new Message();
+			Bundle bundle = new Bundle();
+			bundle.putString("msg", strdata);
+			msg.what=0x1245;
 			msg.setData(bundle);
 			handler.sendMessage(msg);
 			Log.v(tag, strdata);
