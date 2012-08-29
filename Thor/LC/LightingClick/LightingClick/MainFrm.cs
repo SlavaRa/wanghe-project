@@ -57,6 +57,7 @@ namespace LightingClick
         {
             dd a = delegate()
             {
+                rtxt_log.AppendText(Environment.NewLine);
                 rtxt_log.AppendText(e.info);
             };
             rtxt_log.Invoke(a);

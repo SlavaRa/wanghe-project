@@ -24,9 +24,9 @@ namespace LightingClick
                 byte[] bytes = Encoding.UTF8.GetBytes(msg);
                 socket.Send(bytes, bytes.Length, 0);
             }
-            catch
+            catch(Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
         }
     }
