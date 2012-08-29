@@ -7,7 +7,7 @@
                 android:orientation="horizontal"  
                 android:layout_width="fill_parent"  
                 android:layout_height="28dip" android:weightSum="10"  >
-                        <TextView   
+				<TextView   
                     android:id="@+id/dispatch_section_ip"   
                     android:layout_marginLeft="10dip"  
                     android:text="@string/select_ip_title"
@@ -31,29 +31,31 @@
                 </LinearLayout> 
               <LinearLayout   
                 android:layout_width="fill_parent"  
-                android:layout_height="fill_parent" >"
-                <ListView   
-                    android:id="@+id/ip_list"  
-                    android:layout_height="wrap_content"  
-                    android:cacheColorHint="#00000000"  
-                    android:layout_width="fill_parent"></ListView>  
+                android:layout_height="fill_parent" >
+
+                <ListView
+                    android:id="@+id/ip_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="453dp"
+                    android:cacheColorHint="#000000" >
+</ListView>  
             </LinearLayout> 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="30dip"
+                android:layout_height="50dip"
                 android:layout_alignParentBottom="true">
                 <Button
                     android:id="@+id/btn_search"
                     android:text="@string/btn_search_text" 
                     android:layout_width="120dip"
-                    android:layout_height="30dip"
+                    android:layout_height="40dip"
                     />
+
                 <Button
                     android:id="@+id/btn_close"
-                    android:text="@string/btn_close_text"
                     android:layout_width="120dip"
-                    android:layout_height="30dip"
-                    />
+                    android:layout_height="40dip"
+                    android:text="@string/btn_close_text" />
             </LinearLayout>
 </RelativeLayout>
