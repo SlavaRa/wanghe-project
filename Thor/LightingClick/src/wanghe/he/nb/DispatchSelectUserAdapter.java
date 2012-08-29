@@ -25,25 +25,21 @@ public class DispatchSelectUserAdapter extends BaseAdapter {
 	    }  
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return mComputerList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return mComputerList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		 if (convertView == null) {  
 	            convertView = mInflater.inflate(mResource, parent, false);  
 	        } 
@@ -53,7 +49,6 @@ public class DispatchSelectUserAdapter extends BaseAdapter {
 	                R.id.dispatch_item_select_ip_ckb);  
 	        ComputerVO computer= mComputerList.get(position);  
 	        tvUserName.setText(computer.ip);  
-	        System.out.println(computer.ip);  
 	        ckbItem.setChecked(computer.checked);  
 	        ckbItem.setOnClickListener(new View.OnClickListener() { 
 	            @Override  
