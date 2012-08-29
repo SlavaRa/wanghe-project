@@ -95,7 +95,7 @@ namespace LightingClick
                     AndSocketReceived(this,e);
                 }
 
-                MyClient.SendMessage(androidIP, 4860, "HELLO");
+                MyClient.SendMessage("127.0.0.1", 4861, "HELLO");
             }
         }
 
