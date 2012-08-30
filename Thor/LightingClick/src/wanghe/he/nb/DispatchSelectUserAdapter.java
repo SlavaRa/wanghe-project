@@ -58,5 +58,10 @@ public class DispatchSelectUserAdapter extends BaseAdapter {
 	        });  
 	        return convertView;
 	}
-
+	
+	public void addItem(String ip,int port)
+	{
+		ComputerVO vo= new ComputerVO(ip, port);
+		mComputerList.add(vo);
+	}
 }

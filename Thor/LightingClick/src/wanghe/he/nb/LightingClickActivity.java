@@ -6,6 +6,7 @@ import java.net.MulticastSocket;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -77,7 +78,11 @@ public class LightingClickActivity extends Activity {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == 0x1245) {
-					Log.v("MainActivity", msg.getData().getString("msg"));
+					String str= msg.getData().getString("msg");
+					Log.v("MainActivity", str);
+
+					adapter.addItem(str, 4861);
+					adapter.notifyDataSetChanged();
 				}
 			}
 		};
