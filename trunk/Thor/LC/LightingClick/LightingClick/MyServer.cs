@@ -95,8 +95,16 @@ namespace LightingClick
                     AndSocketReceived(this,e);
                 }
 
-                MyClient.SendMessage("127.0.0.1", 4861, "HELLO");
+                MyClient.SendMessage("127.0.0.1", 4861, GetIP());
             }
+        }
+
+
+        protected string GetIP()   //获取本地IP 
+        {
+            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddr = ipHost.AddressList[0];
+            return ipAddr.ToString();
         }
 
 

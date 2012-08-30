@@ -6,3 +6,11 @@ D:\LightingClick\LightingClick\LightingClick\obj\Debug\LightingClick.Properties.
 D:\LightingClick\LightingClick\LightingClick\obj\Debug\LightingClick.csproj.GenerateResource.Cache
 D:\LightingClick\LightingClick\LightingClick\obj\Debug\LightingClick.exe
 D:\LightingClick\LightingClick\LightingClick\obj\Debug\LightingClick.pdb
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\LightingClick.exe
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\LightingClick.pdb
+E:\WorkSpace\LC\LightingClick\LightingClick\bin\Debug\LightingClick.exe
+E:\WorkSpace\LC\LightingClick\LightingClick\bin\Debug\LightingClick.pdb
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\ResolveAssemblyReference.cache
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\LightingClick.MainFrm.resources
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\LightingClick.Properties.Resources.resources
+E:\WorkSpace\LC\LightingClick\LightingClick\obj\Debug\LightingClick.csproj.GenerateResource.Cache
