@@ -94,17 +94,25 @@ namespace LightingClick
                 {
                     AndSocketReceived(this,e);
                 }
-
-                MyClient.SendMessage("127.0.0.1", 4861, GetIP());
+                if (androidIP.StartsWith("IP;"))
+                {
+                    MyClient.SendMessage(androidIP.Split(';')[1], 4860, GetIP());
+                }
             }
         }
 
 
         protected string GetIP()   //获取本地IP 
         {
-            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddr = ipHost.AddressList[0];
-            return ipAddr.ToString();
+            IPHostEntry ipHost = Dns.GetHostEntry("");
+            foreach (IPAddress ipAddr in ipHost.AddressList)
+            {
+                if (ipAddr.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ipAddr.ToString();
+                }
+            }
+            return "";
         }
 
 

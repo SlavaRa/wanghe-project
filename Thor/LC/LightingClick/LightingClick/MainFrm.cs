@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Net;
 
 namespace LightingClick
 {
@@ -61,6 +62,18 @@ namespace LightingClick
                 rtxt_log.AppendText(e.info);
             };
             rtxt_log.Invoke(a);
+
+            if (e.info.StartsWith("SHUT_DOWN;"))
+            {
+                String tip=e.info.Split(';')[1];
+                IPAddress[] ips = Utils.GetIPs();
+
+                foreach (IPAddress ip in ips)
+                {
+                    if(ip.ToString()==tip)
+                        ShowDownWindow();
+                }
+            }
             
         }
 
