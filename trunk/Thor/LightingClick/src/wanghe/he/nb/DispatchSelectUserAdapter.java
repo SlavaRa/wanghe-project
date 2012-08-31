@@ -1,7 +1,9 @@
 package wanghe.he.nb;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +59,25 @@ public class DispatchSelectUserAdapter extends BaseAdapter {
 	            }  
 	        });  
 	        return convertView;
+	}
+	
+	//获取选中项 
+	public List<ComputerVO> getCheckedItems()
+	{
+		List<ComputerVO> list = new ArrayList<ComputerVO>(); 
+		for(int i=0;i<mComputerList.size();i++)
+		{
+			if(mComputerList.get(i).checked==true)
+			{
+				list.add(mComputerList.get(i));
+			}
+		}
+		return list;
+	}
+	
+	public void clearItems()
+	{
+		mComputerList.clear();
 	}
 	
 	public void addItem(String ip,int port)

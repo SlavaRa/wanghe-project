@@ -6,7 +6,7 @@ import java.net.MulticastSocket;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.string;
+import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -47,6 +47,10 @@ public class LightingClickActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
+					
+					adapter.clearItems();
+					adapter.notifyDataSetChanged();
+					
 					InetAddress serverAddr = InetAddress.getByName(multicastHost);
 					MulticastSocket msocket = new MulticastSocket(4850);
 					msocket.setTimeToLive(50);
@@ -60,6 +64,7 @@ public class LightingClickActivity extends Activity {
 					if (str == null) {
 						str = "NO_ADDRESS";
 					}
+					str="IP;"+str;
 					byte[] data = str.getBytes();
 					dataPacket.setData(data);
 					dataPacket.setLength(data.length);
@@ -73,7 +78,50 @@ public class LightingClickActivity extends Activity {
 				}
 			}
 		});
+		
+		Button btn_shutdown= (Button) findViewById(R.id.btn_close);
+		btn_shutdown.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				try
+				{
+					List<ComputerVO> list = adapter.getCheckedItems();
+					if(list.size()==0) return;
+					for(int i =0;i<list.size();i++)
+					{
+						InetAddress serverAddr = InetAddress.getByName(multicastHost);
+						MulticastSocket msocket = new MulticastSocket(4850);
+						msocket.setTimeToLive(50);
+						msocket.joinGroup(serverAddr);
+						msocket.setLoopbackMode(true);
 
+						DatagramPacket dataPacket = null;
+						dataPacket = new DatagramPacket(buffer,
+								MAX_DATA_PACKET_LENGTH);
+						String str = list.get(i).ip;
+						if (str == null) {
+							continue;
+						}
+						str="SHUT_DOWN;"+str;
+						byte[] data = str.getBytes();
+						dataPacket.setData(data);
+						dataPacket.setLength(data.length);
+						dataPacket.setPort(4850);
+						dataPacket.setAddress(serverAddr);// 224.0.0.1
+						msocket.send(dataPacket);
+						msocket.close();
+						multicastLock.release();
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		
+		
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
@@ -99,6 +147,9 @@ public class LightingClickActivity extends Activity {
 	private ListView getListView() {
 		return (ListView) findViewById(R.id.ip_list);
 	}
+	
+	
+	
 
 	private void allowMulticast() {
 		WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
