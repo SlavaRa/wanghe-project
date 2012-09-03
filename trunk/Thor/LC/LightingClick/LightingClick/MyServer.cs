@@ -68,7 +68,8 @@ namespace LightingClick
                 catch { }
             }
             IPAddress multicastIpAddress = IPAddress.Parse("224.0.0.1");
-            _socket = new UdpClient(_port);
+            _socket = new UdpClient(_port,AddressFamily.InterNetwork);
+            _socket.EnableBroadcast = true;
             _socket.JoinMulticastGroup(multicastIpAddress, 50);
             if (mysign == null)
             {
@@ -76,8 +77,6 @@ namespace LightingClick
                 mysign.sign = true;
             }
 
-            //_socket.Listen(50);
-            //_acceptSocket = _socket.Accept();
             MyProcess();
         }
 
@@ -85,7 +84,7 @@ namespace LightingClick
         {
             while (mysign.sign)
             {
-                IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
+                IPEndPoint sender = new IPEndPoint(IPAddress.Any,0);
                 byte[] recv = _socket.Receive(ref sender);
 
                 string androidIP = Encoding.UTF8.GetString(recv, 0, recv.Length);
