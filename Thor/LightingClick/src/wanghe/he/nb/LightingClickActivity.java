@@ -6,7 +6,6 @@ import java.net.MulticastSocket;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -90,6 +89,7 @@ public class LightingClickActivity extends Activity {
 					for(int i =0;i<list.size();i++)
 					{
 						InetAddress serverAddr = InetAddress.getByName(multicastHost);
+						//TODO： 全局只用一个MulticastSocket
 						MulticastSocket msocket = new MulticastSocket(4850);
 						msocket.setTimeToLive(50);
 						msocket.joinGroup(serverAddr);
