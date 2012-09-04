@@ -71,12 +71,12 @@ namespace LightingClick
             _socket = new UdpClient(_port,AddressFamily.InterNetwork);
             _socket.EnableBroadcast = true;
             _socket.JoinMulticastGroup(multicastIpAddress, 50);
+            _socket.EnableBroadcast = true;
             if (mysign == null)
             {
                 mysign = new MySign();
                 mysign.sign = true;
             }
-
             MyProcess();
         }
 
