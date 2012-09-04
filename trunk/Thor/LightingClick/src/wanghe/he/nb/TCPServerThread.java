@@ -16,7 +16,7 @@ public class TCPServerThread implements Runnable {
 	private Handler handler = null;
 
 	private ServerSocket sock = null;
-	private boolean running = true;
+	public boolean running = true;
 	private int port = 4860;
 	private Context context = null;
 	private static final int BUFF_SIZE = 1024;

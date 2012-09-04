@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.MulticastLock;
 import android.os.Bundle;
@@ -29,6 +31,8 @@ public class LightingClickActivity extends Activity {
 
 	private Handler handler;
 
+	private Thread tcpThread;// TCP线程
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,11 +50,12 @@ public class LightingClickActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					
+
 					adapter.clearItems();
 					adapter.notifyDataSetChanged();
-					
-					InetAddress serverAddr = InetAddress.getByName(multicastHost);
+
+					InetAddress serverAddr = InetAddress
+							.getByName(multicastHost);
 					MulticastSocket msocket = new MulticastSocket(4850);
 					msocket.setTimeToLive(50);
 					msocket.joinGroup(serverAddr);
@@ -63,7 +68,7 @@ public class LightingClickActivity extends Activity {
 					if (str == null) {
 						str = "NO_ADDRESS";
 					}
-					str="IP;"+str;
+					str = "IP;" + str;
 					byte[] data = str.getBytes();
 					dataPacket.setData(data);
 					dataPacket.setLength(data.length);
@@ -77,19 +82,19 @@ public class LightingClickActivity extends Activity {
 				}
 			}
 		});
-		
-		Button btn_shutdown= (Button) findViewById(R.id.btn_close);
+
+		Button btn_shutdown = (Button) findViewById(R.id.btn_close);
 		btn_shutdown.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				try
-				{
+				try {
 					List<ComputerVO> list = adapter.getCheckedItems();
-					if(list.size()==0) return;
-					for(int i =0;i<list.size();i++)
-					{
-						InetAddress serverAddr = InetAddress.getByName(multicastHost);
-						//TODO： 全局只用一个MulticastSocket
+					if (list.size() == 0)
+						return;
+					for (int i = 0; i < list.size(); i++) {
+						InetAddress serverAddr = InetAddress
+								.getByName(multicastHost);
+						// TODO： 全局只用一个MulticastSocket
 						MulticastSocket msocket = new MulticastSocket(4850);
 						msocket.setTimeToLive(50);
 						msocket.joinGroup(serverAddr);
@@ -102,7 +107,7 @@ public class LightingClickActivity extends Activity {
 						if (str == null) {
 							continue;
 						}
-						str="SHUT_DOWN;"+str;
+						str = "SHUT_DOWN;" + str;
 						byte[] data = str.getBytes();
 						dataPacket.setData(data);
 						dataPacket.setLength(data.length);
@@ -112,21 +117,18 @@ public class LightingClickActivity extends Activity {
 						msocket.close();
 						multicastLock.release();
 					}
-				}
-				catch(Exception e)
-				{
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
 		});
-		
-		
+
 		handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				if (msg.what == 0x1245) {
-					String str= msg.getData().getString("msg");
+					String str = msg.getData().getString("msg");
 					Log.v("MainActivity", str);
 
 					adapter.addItem(str, 4861);
@@ -135,7 +137,32 @@ public class LightingClickActivity extends Activity {
 			}
 		};
 
-		new Thread(new TCPServerThread(handler, 4860, this)).start();
+		tcpThread = new Thread(new TCPServerThread(handler, 4860, this));
+		tcpThread.start();
+	}
+
+	@Override
+	public void onBackPressed() {
+		new AlertDialog.Builder(this).setTitle("确认退出吗？")
+				.setIcon(android.R.drawable.ic_dialog_info)
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// 点击“确认”后的操作
+						if (tcpThread != null) {
+							tcpThread.interrupt();
+							tcpThread = null;
+						}
+						LightingClickActivity.this.finish();
+					}
+				})
+				.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// 点击“返回”后的操作,这里不设置没有任何操作
+					}
+				}).show();
 	}
 
 	private void initListData(List<ComputerVO> personList) {
@@ -147,9 +174,6 @@ public class LightingClickActivity extends Activity {
 	private ListView getListView() {
 		return (ListView) findViewById(R.id.ip_list);
 	}
-	
-	
-	
 
 	private void allowMulticast() {
 		WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
