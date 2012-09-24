@@ -1,0 +1,8 @@
+E:\FD\External\Plugins\NumToColor\NumToColor\bin\Release\NumToColor.dll
+E:\FD\External\Plugins\NumToColor\NumToColor\bin\Release\NumToColor.pdb
+E:\FD\External\Plugins\NumToColor\NumToColor\bin\Release\PluginCore.dll
+E:\FD\External\Plugins\NumToColor\NumToColor\obj\Release\ResolveAssemblyReference.cache
+E:\FD\External\Plugins\NumToColor\NumToColor\obj\Release\NumToColor.ColorCube.resources
+E:\FD\External\Plugins\NumToColor\NumToColor\obj\Release\NumToColor.csproj.GenerateResource.Cache
+E:\FD\External\Plugins\NumToColor\NumToColor\obj\Release\NumToColor.dll
+E:\FD\External\Plugins\NumToColor\NumToColor\obj\Release\NumToColor.pdb
