@@ -19,6 +19,7 @@ namespace NumToColor
 
         private ColorCube cb;
         private int startPosition;
+		private bool isActive = false;
         #region IPlugin 成员
 
         public void Dispose()
@@ -88,17 +89,39 @@ namespace NumToColor
                     {
                         PluginBase.MainForm.CurrentDocument.SciControl.DoubleClick -= new ScintillaNet.DoubleClickHandler(SciControl_DoubleClick);
                         PluginBase.MainForm.CurrentDocument.SciControl.Modified -= new ScintillaNet.ModifiedHandler(SciControl_Modified);
+                        PluginBase.MainForm.CurrentDocument.SciControl.UpdateUI -= new ScintillaNet.UpdateUIHandler(SciControl_UpdateUI);
                         PluginBase.MainForm.CurrentDocument.SciControl.DoubleClick += new ScintillaNet.DoubleClickHandler(SciControl_DoubleClick);
                         PluginBase.MainForm.CurrentDocument.SciControl.Modified += new ScintillaNet.ModifiedHandler(SciControl_Modified);
-                       
+                        PluginBase.MainForm.CurrentDocument.SciControl.UpdateUI += new ScintillaNet.UpdateUIHandler(SciControl_UpdateUI);
                     }
                     break;
                 case EventType.FileModify:
                     cb.Visible = false;
+					isActive = false;
                     break;
                 default:
                     break;
             };
+        }
+		
+		void SciControl_UpdateUI(ScintillaNet.ScintillaControl sci)
+        {
+            if(sci!=null&&sci.IsFocus)
+            {
+                if (isActive && checkPosition(sci.CurrentPos))
+                    return;
+                else
+                {
+                    cb.Visible = false;
+                    isActive = false;
+                }
+            }
+        }
+		
+		private bool checkPosition(Int32 position)
+        {
+            if (startPosition == position) return true;
+            else return false;
         }
 
         /// <summary>
@@ -109,9 +132,10 @@ namespace NumToColor
             string color = getColorByString(sender.SelText.Trim());
             if (color != "")
             {
-                startPosition = sender.SelectionStart;
+                startPosition = sender.SelectionEnd;
                 cb.Visible = true;
                 cb.ShowColor(color);
+				isActive = true;
                 Point coord = new Point(sender.PointXFromPosition(startPosition), sender.PointYFromPosition(startPosition));
                 coord = sender.PointToScreen(coord);
                 coord = ((Form)PluginBase.MainForm).PointToClient(coord);
@@ -122,6 +146,7 @@ namespace NumToColor
             else
             {
                 cb.Visible = false;
+				isActive = false;
             }
         }
 
@@ -131,6 +156,7 @@ namespace NumToColor
         public void SciControl_Modified(ScintillaNet.ScintillaControl sender, int position, int modificationType, string text, int length, int linesAdded, int line, int intfoldLevelNow, int foldLevelPrev)
         {
             cb.Visible = false;
+			isActive = false;
         }
 
 
