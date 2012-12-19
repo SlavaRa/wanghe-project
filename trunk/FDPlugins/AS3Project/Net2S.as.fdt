@@ -1,0 +1,24 @@
+package $(Package) $(CSLB){
+	import com.main.common.utils.net.Net2S;
+	import flash.utils.ByteArray;
+	
+	/**
+	$(CBI)* ...
+	$(CBI)* @author $(DefaultUser)
+	$(CBI)*/
+	public class $(FileName) extends Net2S $(CSLB){
+		
+		public function $(FileName)()
+		{
+			super();
+		}
+		override public function encode():ByteArray
+		{
+			var byte:ByteArray=new ByteArray();
+			$(EntryPoint)
+			return byte;
+		}
+		
+	}
+	
+}

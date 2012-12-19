@@ -1,0 +1,30 @@
+package $(Package) $(CSLB){
+	import com.main.common.utils.frame.BaseProcessor;
+	import com.zcp.frame.event.ModuleEvent;
+	import com.zcp.frame.Module;
+	/**
+	$(CBI)* ...
+	$(CBI)* @author $(DefaultUser)
+	$(CBI)*/
+	public class $(FileName) extends BaseProcessor $(CSLB){
+		
+		public function $(FileName)(module:Module) $(CSLB){
+			super(module);
+			$(EntryPoint)
+		}
+		
+		override protected function listenModuleEvents():Array 
+		{
+			return [];
+		}
+	
+		override protected function receivedModuleEvent($me:ModuleEvent):void
+		{
+			switch ($me.getClass())
+			{
+				default: 
+					break;
+			}
+		}
+	}
+}

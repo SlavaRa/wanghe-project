@@ -1,0 +1,19 @@
+package $(Package) $(CSLB){
+	import com.zcp.frame.Module;
+	/**
+	$(CBI)* ...
+	$(CBI)* @author $(DefaultUser)
+	$(CBI)*/
+	public class $(FileName) extends Module $(CSLB){
+		
+		public function $(FileName)() $(CSLB){
+			$(EntryPoint)
+		}
+		
+		override protected function listProcessors():Array 
+		{
+			return [
+			];
+		}
+	}
+}
