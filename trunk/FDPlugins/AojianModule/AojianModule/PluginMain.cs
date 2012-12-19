@@ -228,6 +228,8 @@ namespace AojianModule
 
                 templeFile = di + "\\" + "Normal_Processor.as.fdt";
                 mainForm.FileFromTemplate(templeFile, path + "\\" + moduleName + "_Processor.as");
+				
+				lastFileFromTemplate = null;
             }
             
         }
