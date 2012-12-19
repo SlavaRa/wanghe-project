@@ -1,0 +1,4825 @@
+<?xml version="1.0"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EmptyLine>
+    <Label />
+    <Description>Use This special tag to set what suggestions should be shown on empty documentation lines</Description>
+    <Value />
+    <ListFlags>199</ListFlags>
+    <NoTagTag>true</NoTagTag>
+    <SpecialFlags />
+    <SpecialArgs />
+    <CodeFlags>0</CodeFlags>
+    <SubCodeFlags>0</SubCodeFlags>
+    <CodeAccessFlags>0</CodeAccessFlags>
+    <CustomList />
+    <Tag />
+  </EmptyLine>
+  <AsDocTags>
+    <AsDocTag>
+      <Label>@author</Label>
+      <Description>[B]@author[~B] [I]author name[~I] [COLOR=#909090](javaDoc)[COLOR=#000000] :
+ Specifies the author(s) of the class or interface 
+
+[B]Example[~B][COLOR=#004000] :
+ @author m0rkeulv</Description>
+      <Value />
+      <ListFlags>32</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags>
+        <int>2</int>
+      </SpecialFlags>
+      <SpecialArgs>
+        <string>DefaultUser</string>
+      </SpecialArgs>
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@author </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@copy</Label>
+      <Description>[B]@copy[~B] [I]reference[~I] :
+Copies an ASDoc comment from the referenced location. The main description, [I]@param[~I], and  [I]@return[~I] content is copied; other tags are not copied.
+
+You typically use the [I]@copy[~I] tag to copy information from a source class or interface not in the inheritance list of the destination class. If the source class or interface is in the inheritance list, use the [I]@inheritDoc[~I] tag instead.
+
+You can add content to the ASDoc comment before the [I]@copy[~I] tag.
+Specify the location by using the same syntax as you do for the @see tag. For more information, see Using the [I]@see[~I] tag. 
+
+[B]Example[~B][COLOR=#004000] :
+ @copy #stop
+ @copy flash.display.MovieClip#stop()</Description>
+      <Value />
+      <ListFlags>8</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>96</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>4</CodeAccessFlags>
+      <CustomList />
+      <Tag>@copy </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@default</Label>
+      <Description>[B]@default[~B] [I]value[~I] :
+Specifies the default value for a property, style, or effect. The ASDoc tool automatically creates a sentence in the following form when it encounters an [I]@default[~I] tag:The default value is [I]value[~I]. 
+
+[B]Example[~B][COLOR=#004000] :
+  @default 0xCCCCCC</Description>
+      <Value />
+      <ListFlags>2</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@default </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@deprecated</Label>
+      <Description>[B]@deprecated[~B] [I]deprecated text[~I] [COLOR=#909090](javaDoc)[COLOR=#000000] :
+Marks a class, interface or method as deprecated. 
+
+[B]Example[~B][COLOR=#004000] :
+ @deprecated Replaced by &lt;code&gt;functionName(params:Array)&lt;/code&gt;</Description>
+      <Value />
+      <ListFlags>2</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@deprecated </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@eventType</Label>
+      <Description>[B]@eventType[~B] [I]package.class.CONSTANT@eventType String[~I] :
+Use the first form in a comment for an [[I]Event[~I]] metadata tag. It specifies the constant that defines the value of the [I]Event.type[~I] property of the event object associated with the event. The ASDoc tool copies the description of the event constant to the referencing class.
+
+Use the second form in the comment for the constant definition. It specifies the name of the event associated with the constant. If the tag is omitted, ASDoc cannot copy the constant's comment to a referencing class. </Description>
+      <Value />
+      <ListFlags>8</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>34</CodeFlags>
+      <SubCodeFlags>262144</SubCodeFlags>
+      <CodeAccessFlags>4</CodeAccessFlags>
+      <CustomList />
+      <Tag>@eventType </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@example</Label>
+      <Description>[B]@example[~B] [I]exampleText[~I] :
+Defines a code example in an ASDoc comment. By preceding the code example with this tag, ASDoc applies style properties, generates a heading, and puts the code example in the correct location.
+
+Enclose the code in [I]&lt;listing version="3.0"&gt;&lt;/listing&gt;[~I] tags.
+
+Whitespace formatting is preserved and the code is displayed in a gray, horizontally scrolling box.
+
+If the code inside the &lt;listing&gt; tags uses literal “&lt;“, “&gt;”, or”&amp;” characters, convert them to the HTML character-code equivalent. 
+
+[B]Example[~B][COLOR=#004000] :
+  [I]@example[~I] The following code sets the volume level for your sound:
+ &lt;listing version="3.0"&gt;
+  var mySound:Sound = new Sound(); mySound.setVolume(VOL_HIGH);
+ &lt;/listing&gt;</Description>
+      <Value />
+      <ListFlags>18</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@example </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@exampleText</Label>
+      <Description>[B]@exampleText[~B] [I]string[~I] :
+Use this tag in an ASDoc comment in an external example file that is referenced by the [I]@includeExample[~I] tag. The ASDoc comment must precede the first line of the example, or follow the last line of the example.
+
+External example files support one comment before and one comment after example code. 
+
+[B]Example[~B][COLOR=#004000] :
+/**
+* This text does not appear
+* in the output.
+* @exampleText But this does.
+*/</Description>
+      <Value />
+      <ListFlags>2</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@exampleText </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@exception</Label>
+      <Description>@exception</Description>
+      <Value />
+      <ListFlags>0</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@exception </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@haxe</Label>
+      <Description>[B]@@haxe[~B] [I]compiler parameters[~I] :
+This tag is used to set Quick Build arguments.
+
+Quick Build is an alternative to Project compilation. This allows you to quickly compile the currently open class without setting up a project. 
+
+By default the generated SWF will be named after your class and placed at the root of your project directory. 
+
+[B]Example (haXe):[~B][COLOR=#004000]
+/**
+* @haxe -swf-header 400:300:30 -swf bin.output.swf
+*/</Description>
+      <Value />
+      <ListFlags>1024</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@haxe </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@inheritDoc</Label>
+      <Description>[B]@inheritDoc[~B] :
+Copies the comment from the superclass into the subclass, or from an interface implemented by the subclass. Use this tag in the comment of an overridden method or property. You cannot use this tag with comments on metadata tags.
+
+The main ASDoc comment, [I]@param[~I], and [I]@return[~I] content are copied; other tags are not. You can add content to the comment before the [I]@inheritDoc[~I] tag.
+
+When you include this tag, ASDoc uses the following search order:
+
+1. Interfaces implemented by the current class, in alphabetical order of the package and class name, and all their base-interfaces.
+
+2. Immediate superclass of current class.
+
+3. Interfaces of immediate superclass and all their base-interfaces.
+
+4. Repeat steps 2 and 3 until the Object class is reached.
+
+You can also use the @copy tag, but the [I]@copy[~I] tag is for copying information from a source class or interface that is not in the inheritance chain of the subclass. 
+
+[B]Example[~B][COLOR=#004000] :
+ @inheritDoc</Description>
+      <Value />
+      <ListFlags>64</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@inheritDoc </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@internal</Label>
+      <Description>[B]@internal[~B] [I]text[~I] :
+Hides the text attached to the tag in the generated output. The hidden text can be used for internal comments. 
+
+[B]Example[~B][COLOR=#004000] :
+ @internal Please do not publicize the undocumented use of the third parameter in this method.</Description>
+      <Value />
+      <ListFlags>2</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@internal </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@includeExample</Label>
+      <Description>[B]@includeExample[~B] [I]textFile[~I] :
+Imports an example text file into the ASDoc output. ASDoc searches for the example file based on the package name of the class and the directory specified by the [I]-examples-path[~I] option to the ASDoc tool.
+
+For example, you use the [I]examples-path[~I] option to set the directory to [I]c:\examples[~I]. To add an example for the mx.controls.Button class, place it in the mx\controls\directory under 
+c:\examples, meaning the c:\examples\mx\controls directory.
+
+You can further qualify the location of the file by specifying a path to the [I]@includeExample[~I] tag. For example, you specify the [I]@includeExample[~I] as shown below:
+
+[COLOR=#004000]@includeExample buttonExample/ButtonExample.mxml[COLOR=#000000]
+
+ASDoc looks for an example in the directory c:\examples\mx\controls\buttonExample.
+
+If you insert this tag in the comment for a class, the example appears at the end of the output HTML file. If you insert it in the ASDoc comment for a class element, the example appears in the detailed description of the element.</Description>
+      <Value />
+      <ListFlags>32</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags>
+        <int>8</int>
+      </SpecialFlags>
+      <SpecialArgs>
+        <string>relative-to-project</string>
+      </SpecialArgs>
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@includeExample </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@link</Label>
+      <Description>@link</Description>
+      <Value />
+      <ListFlags>16</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@link </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@mtasc</Label>
+      <Description>[B]@mtasc[~B] [I]compiler parameters[~I] :
+This tag is used to set Quick Build arguments.
+
+Quick Build is an alternative to Project compilation. This allows you to quickly compile the currently open class without setting up a project. 
+
+By default the generated SWF will be named after your class and placed at the root of your project directory. 
+
+[B]Example (AS2):[~B][COLOR=#004000]
+/**
+* @mtasc -header 400:300:30 -swf bin/output.swf
+*/ </Description>
+      <Value />
+      <ListFlags>4096</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList>
+        <string>-swf</string>
+        <string>-swf</string>
+        <string>-cp</string>
+        <string>-cp</string>
+        <string>-main</string>
+        <string>-main</string>
+        <string>-mx</string>
+        <string>-mx</string>
+      </CustomList>
+      <Tag>@mtasc </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@mxmlc</Label>
+      <Description>[B]@mxmlc[~B] [I]compiler parameters[~I] :
+This tag is used to set Quick Build arguments.
+
+Quick Build is an alternative to Project compilation. This allows you to quickly compile the currently open class without setting up a project. 
+
+By default the generated SWF will be named after your class and placed at the root of your project directory. 
+
+[B]Example (AS3):[~B][COLOR=#004000]
+/**
+* @mxmlc -o bin/output.swf -cp ../common/lib/TweenLiteAS3/src
+*/
+[COLOR=#000000][B]Example (MXML):[~B][COLOR=#004000]
+&lt; !-- @mxmlc -default-size 400 300 -o bin/output.swf -- &gt;</Description>
+      <Value />
+      <ListFlags>2048</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@mxmlc </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@param</Label>
+      <Description>[B]@param[~B] [I]paramName[~I] [I]description[~I] :
+Adds a descriptive comment to a method parameter. The [I]paramName[~I] argument must match a parameter definition in the method signature. 
+
+[B]Example[~B][COLOR=#004000] :
+ @param fileName The name of the file to load.</Description>
+      <Value />
+      <ListFlags>38</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags>
+        <int>4</int>
+      </SpecialFlags>
+      <SpecialArgs>
+        <string />
+      </SpecialArgs>
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@param </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@private</Label>
+      <Description>[B]@private[~B] :
+Exclude the element from the generated output.
+
+To omit an entire class, put the [I]@private[~I] tag in the ASDoc comment for the class; to omit a single class element, put the [I]@private[~I] tag in the ASDoc comment for the element. 
+
+[B]Example[~B][COLOR=#004000] :
+ @private</Description>
+      <Value />
+      <ListFlags>64</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@private </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@return</Label>
+      <Description>[B]@return[~B] [I]description[~I] :
+Adds a Returns section to a method description with the specified text. ASDoc automatically determines the data type of the return value. 
+
+[B]Example[~B][COLOR=#004000] :
+ @return The translated message.</Description>
+      <Value />
+      <ListFlags>6</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@return </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@see</Label>
+      <Description>[B]@see[~B] [I]reference[displayText][~I]:
+ Adds a See Also heading with a link to a class element.
+
+Do not include HTML formatting characters in the arguments to the [I]@see[~I] tag.
+
+[B]Example[~B][COLOR=#004000] :
+ @see "Just a label"  		[I](Text string)[~I]
+ @see http://www.cnn.com 	[I](External web site)[~I]
+ @see package-detail.html 		[I](Local HTML file)[~I]
+ @see AccessibilityProperties 	[I](Class in same package)[~I]
+ @see flash.display.TextField 	[I](Class in different package)[~I]
+
+more examples at :
+http://help.adobe.com/en_US/flex/using/WSd0ded3821e0d52fe1e63e3d11c2f44bc36-7ff8.html</Description>
+      <Value />
+      <ListFlags>24</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>1572898</CodeFlags>
+      <SubCodeFlags>24903680</SubCodeFlags>
+      <CodeAccessFlags>4</CodeAccessFlags>
+      <CustomList />
+      <Tag>@see </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@serial</Label>
+      <Description>[B]@serial[~B]  [I]field-description[~I] [COLOR=#909090](javaDoc)[COLOR=#000000] :
+Used in the doc comment for a default serializable field.
+
+An optional field-description should explain the meaning of the field and list the acceptable values. If needed, the description can span multiple lines.</Description>
+      <Value />
+      <ListFlags>0</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@serial </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@serialData</Label>
+      <Description>[B]@serialData[~B] [I]data-description[~I] [COLOR=#909090](javaDoc)[COLOR=#000000] :
+The data-description documents the types and order of data in the serialized form. Specifically, this data includes the optional data written by the writeObject method and all data (including base classes) written by the Externalizable.writeExternal method. </Description>
+      <Value />
+      <ListFlags>0</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@serialData </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@serialField</Label>
+      <Description>[B]@serialField[~B]  [I]field-name  field-type  field-description [~I] [COLOR=#909090](javaDoc)[COLOR=#000000] :
+Documents an ObjectStreamField component of a Serializable class' serialPersistentFields member. One @serialField tag should be used for each ObjectStreamField component. </Description>
+      <Value />
+      <ListFlags>0</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@serialField </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@since</Label>
+      <Description>[B]@since[~B] [I]text[~I] :
+Adds a Since section to a class or element. 
+
+[B]Example[~B][COLOR=#004000] :
+ @since January 12, 2009</Description>
+      <Value />
+      <ListFlags>32</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags>
+        <int>1</int>
+        <int>1</int>
+        <int>1</int>
+      </SpecialFlags>
+      <SpecialArgs>
+        <string>g</string>
+        <string>d</string>
+        <string>U LANGUAGE:en-US</string>
+      </SpecialArgs>
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@since </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@throws</Label>
+      <Description>[B]@throws[~B] [I]package.class.className[~I]  [I]description[~I] :
+Documents an error that a method can throw. 
+
+[B]Example[~B][COLOR=#004000] :
+ @throws [I]SecurityError[~I] Local untrusted SWFs may not communicate with the Internet</Description>
+      <Value />
+      <ListFlags>10</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>32</CodeFlags>
+      <SubCodeFlags>32</SubCodeFlags>
+      <CodeAccessFlags>4</CodeAccessFlags>
+      <CustomList />
+      <Tag>@throws </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@usage</Label>
+      <Description>@usage</Description>
+      <Value />
+      <ListFlags>2</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList />
+      <Tag>@usage </Tag>
+    </AsDocTag>
+    <AsDocTag>
+      <Label>@version</Label>
+      <Description>[B]@version[~B] [I]version information[~I] [COLOR=#909090](javaDoc)[COLOR=#000000]  :
+Adds version information to a class.
+
+[B]Example[~B][COLOR=#004000] :
+ @version 1.2</Description>
+      <Value />
+      <ListFlags>16</ListFlags>
+      <NoTagTag>false</NoTagTag>
+      <SpecialFlags />
+      <SpecialArgs />
+      <CodeFlags>0</CodeFlags>
+      <SubCodeFlags>0</SubCodeFlags>
+      <CodeAccessFlags>0</CodeAccessFlags>
+      <CustomList>
+        <string>1.0.0</string>
+        <string>1.0.0</string>
+        <string>1.0</string>
+        <string>1.0</string>
+      </CustomList>
+      <Tag>@version </Tag>
+    </AsDocTag>
+  </AsDocTags>
+  <HtmlTags>
+    <HtmlTag>
+      <Label>&lt;b&gt;</Label>
+      <Description>bold text</Description>
+      <Value />
+      <OpenTag>&lt;b&gt;</OpenTag>
+      <CloseTag>&lt;/b&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;br/&gt;</Label>
+      <Description>line break</Description>
+      <Value />
+      <OpenTag>&lt;br/&gt;</OpenTag>
+      <CloseTag />
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;blockquote&gt;</Label>
+      <Description>long quotation</Description>
+      <Value />
+      <OpenTag>&lt;blockquote&gt;</OpenTag>
+      <CloseTag>&lt;/blockquote&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;code&gt;</Label>
+      <Description>computer code text</Description>
+      <Value />
+      <OpenTag>&lt;code&gt;</OpenTag>
+      <CloseTag>&lt;/code&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;dd&gt;</Label>
+      <Description>definition list item</Description>
+      <Value />
+      <OpenTag>&lt;dd&gt;</OpenTag>
+      <CloseTag>&lt;/dd&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;dl&gt;</Label>
+      <Description>definition list</Description>
+      <Value />
+      <OpenTag>&lt;dl&gt;</OpenTag>
+      <CloseTag>&lt;/dl&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;dt&gt;</Label>
+      <Description>definition list</Description>
+      <Value />
+      <OpenTag>&lt;dt&gt;</OpenTag>
+      <CloseTag>&lt;/dt&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;em&gt;</Label>
+      <Description>emphasized text</Description>
+      <Value />
+      <OpenTag>&lt;em&gt;</OpenTag>
+      <CloseTag>&lt;/em&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h1&gt;</Label>
+      <Description>HTML heading 1</Description>
+      <Value />
+      <OpenTag>&lt;h1&gt;</OpenTag>
+      <CloseTag>&lt;/h1&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h2&gt;</Label>
+      <Description>HTML heading 2</Description>
+      <Value />
+      <OpenTag>&lt;h2&gt;</OpenTag>
+      <CloseTag>&lt;/h2&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h3&gt;</Label>
+      <Description>HTML heading 3</Description>
+      <Value />
+      <OpenTag>&lt;h3&gt;</OpenTag>
+      <CloseTag>&lt;/h3&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h4&gt;</Label>
+      <Description>HTML heading 4</Description>
+      <Value />
+      <OpenTag>&lt;h4&gt;</OpenTag>
+      <CloseTag>&lt;/h4&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h5&gt;</Label>
+      <Description>HTML heading 5</Description>
+      <Value />
+      <OpenTag>&lt;h5&gt;</OpenTag>
+      <CloseTag>&lt;/h5&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;h6&gt;</Label>
+      <Description>HTML heading 6</Description>
+      <Value />
+      <OpenTag>&lt;h6&gt;</OpenTag>
+      <CloseTag>&lt;/h6&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;hr&gt;</Label>
+      <Description>horizontal line</Description>
+      <Value />
+      <OpenTag>&lt;hr&gt;</OpenTag>
+      <CloseTag>&lt;/hr&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;i&gt;</Label>
+      <Description>Italic text</Description>
+      <Value />
+      <OpenTag>&lt;i&gt;</OpenTag>
+      <CloseTag>&lt;/i&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;li&gt;</Label>
+      <Description>list item</Description>
+      <Value />
+      <OpenTag>&lt;li&gt;</OpenTag>
+      <CloseTag>&lt;/li&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;nl&gt;</Label>
+      <Description>Navigation list</Description>
+      <Value />
+      <OpenTag>&lt;nl&gt;</OpenTag>
+      <CloseTag>&lt;/nl&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;ol&gt;</Label>
+      <Description>ordered list</Description>
+      <Value />
+      <OpenTag>&lt;ol&gt;</OpenTag>
+      <CloseTag>&lt;/ol&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;p&gt;</Label>
+      <Description>paragraph</Description>
+      <Value />
+      <OpenTag>&lt;p&gt;</OpenTag>
+      <CloseTag>&lt;/p&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;pre&gt;</Label>
+      <Description>preformatted text</Description>
+      <Value />
+      <OpenTag>&lt;pre&gt;</OpenTag>
+      <CloseTag>&lt;/pre&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;q&gt;</Label>
+      <Description>short quotation</Description>
+      <Value />
+      <OpenTag>&lt;q&gt;</OpenTag>
+      <CloseTag>&lt;/q&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;strong&gt;</Label>
+      <Description>strong (highlighted) text</Description>
+      <Value />
+      <OpenTag>&lt;strong&gt;</OpenTag>
+      <CloseTag>&lt;/strong&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;td&gt;</Label>
+      <Description>HTML table cell</Description>
+      <Value />
+      <OpenTag>&lt;td&gt;</OpenTag>
+      <CloseTag>&lt;/td&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;th&gt;</Label>
+      <Description>HTML table cell header </Description>
+      <Value />
+      <OpenTag>&lt;th&gt;</OpenTag>
+      <CloseTag>&lt;/th&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;tr&gt;</Label>
+      <Description>HTML table row</Description>
+      <Value />
+      <OpenTag>&lt;tr&gt;</OpenTag>
+      <CloseTag>&lt;/tr&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;tt&gt;</Label>
+      <Description>Teletype text</Description>
+      <Value />
+      <OpenTag>&lt;tt&gt;</OpenTag>
+      <CloseTag>&lt;/tt&gt;</CloseTag>
+    </HtmlTag>
+    <HtmlTag>
+      <Label>&lt;ul&gt;</Label>
+      <Description>unordered HTML list</Description>
+      <Value />
+      <OpenTag>&lt;ul&gt;</OpenTag>
+      <CloseTag>&lt;/ul&gt;</CloseTag>
+    </HtmlTag>
+  </HtmlTags>
+  <haXe>
+    <Arguments>
+      <Label>-cp</Label>
+      <Description>[B]-cp[~B] [I]path[~I] :
+
+add a directory to find source files</Description>
+      <Value />
+      <Argument>-cp</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-js</Label>
+      <Description>[B]-js[~B] [I]file[~I] : 
+
+compile code to JavaScript file</Description>
+      <Value />
+      <Argument>-js</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-swf</Label>
+      <Description>[B]-swf[~B] [I]file[~I] : 
+
+compile code to Flash SWF file</Description>
+      <Value />
+      <Argument>-swf</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-as3</Label>
+      <Description>[B]-as3[~B] [I]directory[~I] : 
+
+generate AS3 code into target directory</Description>
+      <Value />
+      <Argument>-as3</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-neco</Label>
+      <Description>[B]-neko[~B] [I]file[~I] : 
+
+compile code to Neko Binary</Description>
+      <Value />
+      <Argument>-neco</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-php</Label>
+      <Description>[B]-php[~B] [I]directory[~I] : 
+
+generate PHP code into target directory</Description>
+      <Value />
+      <Argument>-php</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-cpp</Label>
+      <Description>[B]-cpp[~B] [I]directory[~I] : 
+
+generate C++ code into target directory</Description>
+      <Value />
+      <Argument>-cpp</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-xml</Label>
+      <Description>[B]-xml[~B] [I]file[~I] : 
+
+generate XML types description</Description>
+      <Value />
+      <Argument>-xml</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-main</Label>
+      <Description>[B]-main[~B] [I]class[~I] : 
+
+select startup class</Description>
+      <Value />
+      <Argument>-main</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-lib</Label>
+      <Description>[B]-lib[~B] [I]library[:version][~I] : 
+
+use a haxelib library</Description>
+      <Value />
+      <Argument>-lib</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-D</Label>
+      <Description>[B]-D[~B] [I]var[~I] : 
+
+define a conditional compilation flag</Description>
+      <Value />
+      <Argument>-D</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-v</Label>
+      <Description>[B]-v[~B] : 
+
+turn on verbose mode</Description>
+      <Value />
+      <Argument>-v</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-debug</Label>
+      <Description>[B]-debug[~B] : 
+
+add debug informations to the compiled code</Description>
+      <Value />
+      <Argument>-debug</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-swf-version</Label>
+      <Description>[B]-swf-version[~B] [I]version[~I] : 
+
+change the SWF version (6 to 10)</Description>
+      <Value />
+      <Argument>-swf-version</Argument>
+      <SuggestionValues>
+        <string>10</string>
+        <string>9</string>
+        <string>8</string>
+        <string>7</string>
+        <string>6</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>10</string>
+        <string>9</string>
+        <string>8</string>
+        <string>7</string>
+        <string>6</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-swf-header</Label>
+      <Description>[B]-swf-header[~B] [I]header[~I] : 
+
+define SWF header (width:height:fps:color)</Description>
+      <Value />
+      <Argument>-swf-header</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-swf-lib</Label>
+      <Description>[B]-swf-lib[~B] [I]file[~I] : 
+
+add the SWF library to the compiled SWF</Description>
+      <Value />
+      <Argument>-swf-lib</Argument>
+      <SuggestionValues>
+        <string>$(file.open,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-x</Label>
+      <Description>[B]-x[~B] [I]file[~I] : 
+
+shortcut for compiling and executing a neko file</Description>
+      <Value />
+      <Argument>-x</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-resource</Label>
+      <Description>[B]-resource[~B] [I]file[~I][@name] : 
+
+add a named resource file</Description>
+      <Value />
+      <Argument>-resource</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-prompt</Label>
+      <Description>[B]-prompt[~B] : 
+
+prompt on error</Description>
+      <Value />
+      <Argument>-prompt</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-cmd</Label>
+      <Description>[B]-cmd[~B] : 
+
+run the specified command after successful compilation</Description>
+      <Value />
+      <Argument>-cmd</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--flash-strict</Label>
+      <Description>[B]--flash-strict[~B] : 
+
+more type strict flash API</Description>
+      <Value />
+      <Argument>--flash-strict</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--no-traces</Label>
+      <Description>[B]--no-traces[~B] : 
+
+don't compile trace calls in the program</Description>
+      <Value />
+      <Argument>--no-traces</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--flash-use-stage</Label>
+      <Description>[B]--flash-use-stage[~B] : 
+
+place objects found on the stage of the SWF lib</Description>
+      <Value />
+      <Argument>--flash-use-stage</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--gen-hx-classes</Label>
+      <Description>[B]--gen-hx-classes[~B] : 
+
+generate hx headers for all input classes</Description>
+      <Value />
+      <Argument>--gen-hx-classes</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--next</Label>
+      <Description>[B]--next[~B] : 
+
+separate several haxe compilations</Description>
+      <Value />
+      <Argument>--next</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--display</Label>
+      <Description>[B]--display[~B] : 
+
+display code tips</Description>
+      <Value />
+      <Argument>--display</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--no-output</Label>
+      <Description>[B]--no-output[~B] : 
+
+compiles but does not generate any file</Description>
+      <Value />
+      <Argument>--no-output</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--times</Label>
+      <Description>[B]--times[~B] : 
+
+measure compilation times</Description>
+      <Value />
+      <Argument>--times</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--no-inline</Label>
+      <Description>[B]--no-inline[~B] : 
+
+disable inlining</Description>
+      <Value />
+      <Argument>--no-inline</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--no-opt</Label>
+      <Description>[B]--no-opt[~B] : 
+
+disable code optimizations</Description>
+      <Value />
+      <Argument>--no-opt</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--php-front</Label>
+      <Description>[B]--php-front[~B] [I]filename[~I] : 
+
+select the name for the php front file</Description>
+      <Value />
+      <Argument>--php-front</Argument>
+      <SuggestionValues>
+        <string>$(file.open,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--php-lib</Label>
+      <Description>[B]--php-lib[~B] [I]filename[~I] : 
+
+select the name for the php lib folder</Description>
+      <Value />
+      <Argument>--php-lib</Argument>
+      <SuggestionValues>
+        <string>$(file.open,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--php-prefix</Label>
+      <Description>[B]--php-prefix[~B] [I]name[~I] : 
+
+prefix all classes with given name</Description>
+      <Value />
+      <Argument>--php-prefix</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--js-namespace</Label>
+      <Description>[B]--js-namespace[~B] [I]namespace[~I] : 
+
+create a namespace where root types are defined</Description>
+      <Value />
+      <Argument>--js-namespace</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--remap</Label>
+      <Description>[B]--remap[~B] [I]package:target[~I] : 
+
+remap a package to another one</Description>
+      <Value />
+      <Argument>--remap</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--interp</Label>
+      <Description>[B]--interp[~B] : 
+
+interpret the program using internal macro system</Description>
+      <Value />
+      <Argument>--interp</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--macro</Label>
+      <Description>[B]--macro[~B]  : 
+
+call the given macro before typing anything else</Description>
+      <Value />
+      <Argument>--macro</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>--dead-code-elimination</Label>
+      <Description>[B]--dead-code-elimination[~B]  : 
+
+remove unused methods</Description>
+      <Value />
+      <Argument>--dead-code-elimination</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-swf9</Label>
+      <Description>[B]-swf9[~B] [I]file[~I] : [deprecated] 
+
+compile code to Flash9 SWF file</Description>
+      <Value />
+      <Argument>-swf9</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-help</Label>
+      <Description>[B]-help[~B]  
+
+Display this list of options</Description>
+      <Value />
+      <Argument>-help</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+  </haXe>
+  <mtasc>
+    <Arguments>
+      <Label>-swf</Label>
+      <Description>[B]-swf[~B] [I]file[~I] :
+specify input SWF which contains assets.</Description>
+      <Value />
+      <Argument>-swf</Argument>
+      <SuggestionValues>
+        <string>$(file.open,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-cp</Label>
+      <Description>[B]-cp[~B] [I]path[~I] :
+add a directory path to the ClassPath : this is the list of directories that MTASC will use to look for .as files. You can use several times -cp to add several directories.</Description>
+      <Value />
+      <Argument>-cp</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-main</Label>
+      <Description>[B]-main[~B] :
+will automaticaly call static function main once all classes are registered.</Description>
+      <Value />
+      <Argument>-main</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-header</Label>
+      <Description>[B]-header[~B] [I]width:height:fps:bgcolor[~I] :
+does not load a SWF, instead create a new one containing only compiled code and using provided header informations. bgcolor is optional and should be 6 digits hexadecimal value.</Description>
+      <Value />
+      <Argument>-header</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-mx</Label>
+      <Description>[B]-mx[~B] :
+use precompiled MX classes (see http://mtasc.org/#usage for more info).</Description>
+      <Value />
+      <Argument>-mx</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-version</Label>
+      <Description>[B]-version[~B] [I]n[~I] :
+specify SWF version : 6 to generate Player 6r89 compatible SWF or 8 to access Flash8 features.</Description>
+      <Value />
+      <Argument>-version</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-v</Label>
+      <Description>[B]-v[~B] :
+activate verbose mode, printing some additional informations about compiling process.</Description>
+      <Value />
+      <Argument>-v</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-out</Label>
+      <Description>[B]-out[~B] [I]file[~I] :
+change output swf file.</Description>
+      <Value />
+      <Argument>-out</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-msvc</Label>
+      <Description>[B]-msvc[~B] :
+use Microsoft Visual Studio errors style formating instead of Java style (for file names and lines number).</Description>
+      <Value />
+      <Argument>-msvc</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-strict</Label>
+      <Description>[B]-strict[~B] :
+will use strict compilation mode which require that all variables are explicitely typed.</Description>
+      <Value />
+      <Argument>-strict</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-exclude</Label>
+      <Description>[B]-exclude[~B] [I]file[~I] :
+exclude code generation of classes listed in specified file (format is one full class path per line).</Description>
+      <Value />
+      <Argument>-exclude</Argument>
+      <SuggestionValues>
+        <string>$(file.open,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-trace</Label>
+      <Description>[B]-trace[~B] [I]function[~I] :
+specify a custom trace function. (see Trace Facilities), or no disable all the traces.</Description>
+      <Value />
+      <Argument>-trace</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-keep</Label>
+      <Description>[B]-keep[~B] :
+keep AS2 classes compiled by MCC into the SWF (this could cause some classes to be present two times if also compiled with MTASC).</Description>
+      <Value />
+      <Argument>-keep</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-frame</Label>
+      <Description>[B]-frame[~B] [I]f[~I] :
+will export AS2 classes into target frame of swf.</Description>
+      <Value />
+      <Argument>-frame</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-pack</Label>
+      <Description>[B]-pack[~B] [I]path[~I] :
+compile all the files contained in specified package - not recursively 
+(eg to compile files in c:\flash\code\my\app do mtasc -cp c:\flash\code -pack my/app).</Description>
+      <Value />
+      <Argument>-pack</Argument>
+      <SuggestionValues>
+        <string>$(file.folder)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-group</Label>
+      <Description>[B]-group[~B] :
+will merge classes into one single clip 
+(this will reduce SWF size but might cause some problems if you're using -keep or -mx).</Description>
+      <Value />
+      <Argument>-group</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-wimp</Label>
+      <Description>[B]-wimp[~B] :
+adds warnings for import statements that are not used in the file.</Description>
+      <Value />
+      <Argument>-wimp</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-infer</Label>
+      <Description>[B]-infer[~B] :
+adds type inference for initialized local variables (see http://mtasc.org/#usage for more info).</Description>
+      <Value />
+      <Argument>-infer</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-noplay</Label>
+      <Description>[B]-noplay[~B] :
+Tells FlashDevelop to not play the generated SWF after build.</Description>
+      <Value />
+      <Argument>-noplay</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+  </mtasc>
+  <mxmlc>
+    <Arguments>
+      <Label>-accessible=</Label>
+      <Description>Enables accessibility features when compiling the Flex application or SWC file. The default value is [I]false[~I].</Description>
+      <Value />
+      <Argument>-accessible=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-actionscript-file-encoding</Label>
+      <Description>Sets the file encoding for ActionScript files.</Description>
+      <Value />
+      <Argument>-actionscript-file-encoding</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-advanced</Label>
+      <Description>Lists advanced help options when used with the help option, as the following example shows:
+[I]mxmlc -help advanced[~I]</Description>
+      <Value />
+      <Argument>-advanced</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-allow-source-path-overlap=</Label>
+      <Description>Checks if a [I]source-path[~I] entry is a subdirectory of another [I]source-path[~I] entry. It helps make the package names of MXML components unambiguous.</Description>
+      <Value />
+      <Argument>-allow-source-path-overlap=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-as3=</Label>
+      <Description>Use the ActionScript 3.0 class-based object model for greater performance and better error reporting. In the class-based object model, most built-in functions are implemented as fixed methods of classes.
+The default value is [I]true[~I]. If you set this value to [I]false[~I], you must set the es option to [I]true[~I].</Description>
+      <Value />
+      <Argument>-as3=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-benchmark=</Label>
+      <Description>Prints detailed compile times to the standard output. The default value is [I]true[~I].</Description>
+      <Value />
+      <Argument>-benchmark=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-compress=</Label>
+      <Description />
+      <Value />
+      <Argument>-compress=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-context-root</Label>
+      <Description>Sets the value of the [I]{context.root} token[~I], which is often used in channel definitions in the flex-services.xml file and other settings in the flex-config.xml file. The default value is null.</Description>
+      <Value />
+      <Argument>-context-root</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-contributor</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-contributor</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-creator</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-creator</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-date</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-date</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-debug=</Label>
+      <Description>Generates a debug SWF file. This file includes line numbers and filenames of all the source files. When a run-time error occurs, the stacktrace shows these line numbers and filenames. This information is used by the command-line debugger and the Flex Builder debugger. Enabling the debug option generates larger SWF files.
+For the mxmlc compiler, the default value is [I]false[~I]. For the compc compiler, the default value is true.
+For Flex Builder, the default value is [I]true[~I]. If you export an application by using the Export Release Build feature, the Flex Builder compiler excludes the debugging information, which is the equivalent of setting the value of this option to [I]false[~I].
+When generating SWC files, if debug is set to [I]true[~I], then the library.swf file inside the SWC file contains debug information. If you are generating a SWC file for distribution, set this value to [I]false[~I].</Description>
+      <Value />
+      <Argument>-debug=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-debug-password</Label>
+      <Description>Lets you engage in remote debugging sessions with the Flash IDE. </Description>
+      <Value />
+      <Argument>-debug-password</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-default-background-color</Label>
+      <Description>Sets the application's background color. You use the 0x notation to set the color, as the following example shows:
+[I]-default-background-color=0xCCCCFF [~I]
+The default value is null. The default background of a Flex application is an image of a gray gradient. You must override this image for the value of the [I]default-background-color[~I] option to be visible</Description>
+      <Value />
+      <Argument>-default-background-color</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-default-frame-rate</Label>
+      <Description>Sets the application's frame rate. The default value is 24.</Description>
+      <Value />
+      <Argument>-default-frame-rate</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-default-script-limits</Label>
+      <Description>Defines the application's script execution limits.
+The [I]max-recursion-depth[~I] value specifies the maximum depth of Adobe Flash Player call stack before Flash Player stops. This is essentially the stack overflow limit. The default value is 1000.
+The [I]max-execution-time[~I] value specifies the maximum duration, in seconds, that an ActionScript event handler can execute before Flash Player assumes that it is hung, and aborts it. The default value is 60 seconds. You cannot set this value above 60 seconds.
+You can override these settings in the application.</Description>
+      <Value />
+      <Argument>-default-script-limits</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-default-size</Label>
+      <Description>Defines the default application size, in pixels. </Description>
+      <Value />
+      <Argument>-default-size</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-defaults-css-files</Label>
+      <Description>Inserts CSS files into the output the same way that a per-SWC defaults.css file works, but without having to re-archive the SWC file to test each change.
+CSS files included in the output with this option have a higher precedence than default CSS files in existing SWCs. For example, a CSS file included with this option overrides definitions in framework.swc's defaults.css file, but it has the same overall precedence as other included CSS files inside the SWC file.
+This option does not actually insert the CSS file into the SWC file; it simulates it. When you finish developing the CSS file, you should rebuild the SWC file with the new integrated CSS file.
+This option takes one or more files. The precedence for multiple CSS files included with this option is from first to last.</Description>
+      <Value />
+      <Argument>-defaults-css-files</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-defaults-css-url</Label>
+      <Description>Defines the location of the default style sheet. Setting this option overrides the implicit use of the defaults.css style sheet in the framework.swc file.</Description>
+      <Value />
+      <Argument>-defaults-css-url</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-define=</Label>
+      <Description>Defines a global constant. The value is evaluated at compile time and exists as a constant within the application. A common use of inline constants is to set values that are used to include or exclude blocks of code, such as debugging or instrumentation code. This is known as conditional compilation.
+The following example defines the constant debugging in the [I]CONFIG[~I] namespace:
+
+[I]-define=CONFIG::debugging,true[~I]
+In ActionScript, you can use this value to conditionalize statements; for example:
+[I]CONFIG::debugging { // Execute debugging code here. }[~I]
+To set multiple conditionals on the command-line, use the define option more than once.</Description>
+      <Value />
+      <Argument>-define=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-description</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-description</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-dump-config</Label>
+      <Description>Outputs the compiler options in the flex-config.xml file to the target path; for example:
+[I]mxmlc -dump-config myapp-config.xml[~I]</Description>
+      <Value />
+      <Argument>-dump-config</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-es=</Label>
+      <Description>Instructs the compiler to use the ECMAScript edition 3 prototype-based object model to allow dynamic overriding of prototype properties. In the prototype-based object model, built-in functions are implemented as dynamic properties of prototype objects.
+The default value is [I]false[~I].
+Using the ECMAScript edition 3 prototype-based object model lets you use untyped properties and functions in your application code. As a result, if you set the value of the es compiler option to true, you must set the strict compiler option to false. Otherwise, the compiler will throw errors.
+If you set this option to [I]true[~I], you must also set the value of the [I]as3[~I] compiler option to [I]false[~I].</Description>
+      <Value />
+      <Argument>-es=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-externs</Label>
+      <Description>Sets a list of classes to exclude from linking when compiling a SWF file.
+This option provides compile-time link checking for external references that are dynamically linked.</Description>
+      <Value />
+      <Argument>-externs</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-external-library-path</Label>
+      <Description>Specifies a list of SWC files or directories to exclude from linking when compiling a SWF file. This option provides compile-time link checking for external components that are dynamically linked.
+By default, the libs/player/playerglobal.swc file is linked as an external library. This library is built into Flash Player.
+You can use the += operator to append the new SWC file to the list of external libraries.</Description>
+      <Value />
+      <Argument>-external-library-path</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.advanced-anti-aliasing=</Label>
+      <Description>Sets the default value that determines whether embedded fonts use advanced anti-aliasing information when rendering the font.
+Setting the value of the [I]advanced-anti-aliasing[~I] property in a style sheet overrides this value.
+The default value is [I]false[~I].</Description>
+      <Value />
+      <Argument>-fonts.advanced-anti-aliasing=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.languages.language-range</Label>
+      <Description>Specifies the range of Unicode settings for that language.</Description>
+      <Value />
+      <Argument>-fonts.languages.language-range</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.local-fonts-snapshot</Label>
+      <Description>Sets the location of the local font snapshot file. The file contains system font data.</Description>
+      <Value />
+      <Argument>-fonts.local-fonts-snapshot</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.managers</Label>
+      <Description>Defines the font manager. The default is flash.fonts.JREFontManager. You can also use the flash.fonts.BatikFontManager.</Description>
+      <Value />
+      <Argument>-fonts.managers</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.max-cached-fonts</Label>
+      <Description>Sets the maximum number of fonts to keep in the server cache.</Description>
+      <Value />
+      <Argument>-fonts.max-cached-fonts</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-fonts.max-glyphs-per-face</Label>
+      <Description>Sets the maximum number of character glyph-outlines to keep in the server cache for each font face. This is an advanced option.</Description>
+      <Value />
+      <Argument>-fonts.max-glyphs-per-face</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-frames.frame</Label>
+      <Description>Specifies a SWF file frame label with a sequence of class names that are linked onto the frame.
+This option lets you add asset factories that stream in after the application that then publish their interfaces with the ModuleManager class. The advantage to doing this is that the application starts faster than it would have if the assets had been included in the code, but does not require moving the assets to an external SWF file.</Description>
+      <Value />
+      <Argument>-frames.frame</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-generate-frame-loader=</Label>
+      <Description>Toggles the generation of an IFlexBootstrap-derived loader class. </Description>
+      <Value />
+      <Argument>-generate-frame-loader=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-headless-server=</Label>
+      <Description>Enables the headless implementation of the Flex compiler. This sets the following:
+[I]System.setProperty("java.awt.headless", "true")[~I]
+The headless setting (java.awt.headless=true) is required to use fonts and SVG on UNIX systems without X Windows.</Description>
+      <Value />
+      <Argument>-headless-server=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-help</Label>
+      <Description>Prints usage information to the standard output.</Description>
+      <Value />
+      <Argument>-help</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-include-libraries</Label>
+      <Description>Links all classes inside a SWC file to the resulting application SWF file, regardless of whether or not they are used.
+Contrast this option with the [I]library-path[~I] option that includes only those classes that are referenced at compile time.
+To link one or more classes whether or not they are used and not an entire SWC file, use the [I]includes[~I] option.
+This option is commonly used to specify resource bundles. </Description>
+      <Value />
+      <Argument>-include-libraries</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-include-resource-bundles</Label>
+      <Description>Specifies the resource bundles to link into a resource module. All resource bundles specified with this option must be in the compiler's [I]source path[~I]. You specify this using the source-path compiler option.</Description>
+      <Value />
+      <Argument>-include-resource-bundles</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-includes</Label>
+      <Description>Links one or more classes to the resulting application SWF file, whether or not those classes are required at compile time.
+To link an entire SWC file rather than individual classes, use the [I]include-libraries[~I] option.</Description>
+      <Value />
+      <Argument>-includes</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-incremental=</Label>
+      <Description>Enables incremental compilation. For more information, see About incremental compilation.
+http://livedocs.adobe.com/flex/3/html/compilers_20.html#153980
+This option is true by default for the Flex Builder application compiler. For the command-line compiler, the default is [I]false[~I]. The web-tier compiler uses incremental compilation by default.</Description>
+      <Value />
+      <Argument>-incremental=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-keep-as3-metadata=</Label>
+      <Description>Specifies custom metadata that you want to keep. By default, the compiler keeps the following metadata:
+   - Bindable
+   - Managed
+   - ChangeEvent
+   - NonCommittingChangeEvent
+   - Transient
+If you want to preserve the default metadata, you should use the += operator to append your custom metadata, rather than the = operator which replaces the default metadata.</Description>
+      <Value />
+      <Argument>-keep-as3-metadata=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-keep-all-type-selectors=</Label>
+      <Description>Instructs the compiler to keep a style sheet's type selector in a SWF file, even if that type (the class) is not used in the application. This is useful when you have a modular application that loads other applications. For example, the loading SWF file might define a type selector for a type used in the loaded (or, target) SWF file. If you set this option to true when compiling the loading SWF file, then the target SWF file will have access to that type selector when it is loaded. If you set this option to [I]false[~I], the compiler will not include that type selector in the loading SWF file at compile time. As a result, the styles will not be available to the target SWF file.</Description>
+      <Value />
+      <Argument>-keep-all-type-selectors=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-keep-generated-actionscript=</Label>
+      <Description>Determines whether to keep the generated ActionScript class files.
+The generated class files include stubs and classes that are generated by the compiler and used to build the SWF file.
+When using the application compiler, the default location of the files is the /generated subdirectory, which is directly below the target MXML file. If the /generated directory does not exist, the compiler creates one. When using the compc component compiler, the default location of the /generated directory is relative to the output of the SWC file. When using Flex Builder, the default location of the generated files is the /bin/generated directory.
+The default names of the primary generated class files are filename-generated.as and filename-interface.as.
+The default value is [I]false[~I].</Description>
+      <Value />
+      <Argument>-keep-generated-actionscript=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-language</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-language</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-library-path</Label>
+      <Description>Links SWC files to the resulting application SWF file. The compiler only links in those classes for the SWC file that are required. You can specify a directory or individual SWC files.
+The default value of the [I]library-path[~I] option includes all SWC files in the libs and libs/player directories, plus the current locale directory. These are required.
+To point to individual classes or packages rather than entire SWC files, use the [I]source-path[~I] option.
+If you set the value of the [I]library-path[~I] as an option of the command-line compiler, you must also explicitly add the framework.swc and locale SWC files. Your new entry is not appended to the [I]library-path[~I] but replaces it, unless you use the += operator.
+On the command line, you use the += operator to append the new argument to the list of existing SWC files.
+In a configuration file, you can set the append attribute of the [I]library-path[~I] tag to true to indicate that the values should be appended to the library path rather than replace existing default entries.</Description>
+      <Value />
+      <Argument>-library-path</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-license</Label>
+      <Description>Defines the license key to use when compiling. Valid values for [I]product_name[~I] include [I]flexbuilder3[~I].</Description>
+      <Value />
+      <Argument>-license</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-link-report</Label>
+      <Description>Prints linking information to the specified output file. This file is an XML file that contains &lt;def&gt;, &lt;pre&gt;, and &lt;ext&gt; symbols showing linker dependencies in the final SWF file.
+The file format output by this command can be used to write a file for input to the load-externs option. </Description>
+      <Value />
+      <Argument>-link-report</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-load-config</Label>
+      <Description>Specifies the location of the configuration file that defines compiler options.
+If you specify a configuration file, you can override individual options by setting them on the command line.
+All relative paths in the configuration file are relative to the location of the configuration file itself.
+Use the += operator to chain this configuration file to other configuration files.</Description>
+      <Value />
+      <Argument>-load-config</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-load-externs</Label>
+      <Description>Specifies the location of an XML file that contains &lt;def&gt;, &lt;pre&gt;, and &lt;ext&gt; symbols to omit from linking when compiling a SWF file. The XML file uses the same syntax as the one produced by the link-report option. For more information on the report, see Examining linker dependencies.
+http://livedocs.adobe.com/flex/3/html/performance_06.html#211202
+This option provides compile-time link checking for external components that are dynamically linked.</Description>
+      <Value />
+      <Argument>-load-externs</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-locale </Label>
+      <Description>Specifies one or more locales to be compiled into the SWF file. If you do not specify a locale, then the compiler uses the default locale from the flex-config.xml file. The default value is en_US. You can append additional locales to the default locale by using the += operator.
+If you remove the default locale from the flex-config.xml file, and do not specify one on the command line, then the compiler will use the machine's locale.</Description>
+      <Value />
+      <Argument>-locale </Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-localized-description</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-localized-description</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-localized-title</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-localized-title</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-mxml.compatibility-version=</Label>
+      <Description>Specifies the version of the Flex compiler that the output should be compatible with. This option affects some behavior such as the layout rules, padding and gaps, skins, and other style settings. In addition, it affects the rules for parsing properties files.
+The currently-supported values are [I]3[~I] and [I]2.0.1[~I]. The default value is [I]3[~I].
+The following example instructs the application to compile with the 2.0.1 rules for these behaviors:
+[I]-compatibility-version=2.0.1[~I]</Description>
+      <Value />
+      <Argument>-mxml.compatibility-version=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-namespaces.namespace</Label>
+      <Description>Specifies a namespace for the MXML file. You must include a URI and the location of the manifest file that defines the contents of this namespace. This path is relative to the MXML file.</Description>
+      <Value />
+      <Argument>-namespaces.namespace</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-optimize=</Label>
+      <Description>Enables the ActionScript optimizer. This optimizer reduces file size and increases performance by optimizing the SWF file's bytecode.
+The default value is [I]true[~I].</Description>
+      <Value />
+      <Argument>-optimize=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-output</Label>
+      <Description>Specifies the output path and filename for the resulting file. If you omit this option, the compiler saves the SWF file to the directory where the target file is located.
+The default SWF filename matches the target filename, but with a SWF file extension.
+If you use a relative path to define the filename, it is always relative to the current working directory, not the target MXML application root.
+The compiler creates extra directories based on the specified filename if those directories are not present.
+When using this option with the component compiler, the output is a SWC file rather than a SWF file, unless you set the directory option to true. In that case, the output is a directory with the contents of the SWC file. The name of the directory is that value of the [I]ouput[~I] option.</Description>
+      <Value />
+      <Argument>-output</Argument>
+      <SuggestionValues>
+        <string>$(file.save,relative-to-project)</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>Browse...</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-publisher</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-publisher</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-raw-metadata</Label>
+      <Description>Defines the metadata for the resulting SWF file. The value of this option overrides any metadata.* compiler options (such as [I]contributor[~I], [I]creator[~I], [I]date[~I], and [I]description[~I]).</Description>
+      <Value />
+      <Argument>-raw-metadata</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-resource-bundle-list</Label>
+      <Description>Prints a list of resource bundles that are used by the current application to a file named with the [I]filename[~I] argument. You then use this list as input that you specify with the [I]include-resource-bundles[~I] option to create a resource module.</Description>
+      <Value />
+      <Argument>-resource-bundle-list</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-runtime-shared-libraries</Label>
+      <Description>Specifies a list of runtime shared libraries (RSLs) to use for this application. RSLs are dynamically-linked at run time. The compiler externalizes the contents of the application that you are compiling that overlap with the RSL.
+You specify the location of the SWF file relative to the deployment location of the application. For example, if you store a file named library.swf file in the web_root/libraries directory on the web server, and the application in the web root, you specify libraries/library.swf.</Description>
+      <Value />
+      <Argument>-runtime-shared-libraries</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-runtime-shared-library-path=</Label>
+      <Description>Specifies the location of a runtime shared library (RSL). The compiler externalizes the contents of the application that you are compiling that overlap with the RSL.</Description>
+      <Value />
+      <Argument>-runtime-shared-library-path=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-services</Label>
+      <Description>Specifies the location of the services-config.xml file. This file is used by LiveCycle Data Services ES.</Description>
+      <Value />
+      <Argument>-services</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-show-actionscript-warnings=</Label>
+      <Description>Shows warnings for ActionScript classes.
+The default value is [I]true.[~I]</Description>
+      <Value />
+      <Argument>-show-actionscript-warnings=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-show-binding-warnings=</Label>
+      <Description>Shows a warning when Flash Player cannot detect changes to a bound property.
+The default value is [I]true.[~I]</Description>
+      <Value />
+      <Argument>-show-binding-warnings=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-show-shadowed-device-font-warnings=</Label>
+      <Description>Shows warnings when you try to embed a font with a family name that is the same as the operating system font name. The compiler normally warns you that you are shadowing a system font. Set this option to false to disable the warnings.
+The default value is [I]true.[~I] </Description>
+      <Value />
+      <Argument>-show-shadowed-device-font-warnings=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-show-unused-type-selector-warnings=</Label>
+      <Description>Shows warnings when a type selector in a style sheet or &lt;mx:Style&gt; block is not used by any components in the application.
+The default value is [I]true.[~I]</Description>
+      <Value />
+      <Argument>-show-unused-type-selector-warnings=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-source-path</Label>
+      <Description>Adds directories or files to the source path. The Flex compiler searches directories in the source path for MXML, AS, or CSS source files that are used in your Flex applications and includes those that are required at compile time.
+You can use wildcards to include all files and subdirectories of a directory.
+To link an entire library SWC file and not individual classes or directories, use the library-path option.
+The source path is also used as the search path for the component compiler's [I]include-classes[~I] and [I]include-resource-bundles[~I] options.
+You can also use the += operator to append the new argument to the list of existing source path entries.
+This option has the following default behavior:
+   - If [I]source-path[~I] is empty, the target file's directory will be added to [I]source-path[~I].
+   - If [I]source-path[~I] is not empty and if the target file's directory is a subdirectory of one of the directories in [I]source-path[~I], [I]source-path[~I] remains unchanged.
+   - If [I]source-path[~I] is not empty and if the target file's directory is not a subdirectory of any one of the directories in [I]source-path[~I], the target file's directory is prepended to [I]source-path[~I].</Description>
+      <Value />
+      <Argument>-source-path</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-static-link-runtime-shared-libraries=</Label>
+      <Description>
+Determines whether to compile against libraries statically or use RSLs. Set this option to true to ignore the RSLs specified by the [I]runtime-shared-library-path[~I] option. Set this option to false to use the RSLs.
+The default value is [I]true[~I].
+This option is useful so that you can quickly switch between a statically and dynamically linked application without having to change the [I]runtime-shared-library-path[~I] option, which can be verbose, or edit the configuration files. </Description>
+      <Value />
+      <Argument>-static-link-runtime-shared-libraries=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-strict=</Label>
+      <Description>Prints undefined property and function calls; also performs compile-time type checking on assignments and options supplied to method calls.
+The default value is [I]true[~I].</Description>
+      <Value />
+      <Argument>-strict=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-target-player=</Label>
+      <Description>Specifies the version of Flash Player that you want to target with the application. Features requiring a later version of Flash Player are not compiled into the application.
+The [I]player_version[~I] parameter has the following format:
+[I]major_version.minor_version.revision[~I]
+The [I]major_version[~I] is required while [I]minor_version[~I] and [I]revision[~I] are optional. The minimum value is 9.0.0. If you do not specify the minor_version or revision, then the compiler uses zero.
+If you do not explicitly set the value of this option, the compiler uses the default from the flex-config.xml file. The value in flex-config.xml is the version of Flash Player that shipped with the SDK.
+This option is useful if your application's audience has a specific player and cannot upgrade. You can use this to "downgrade" your application for that audience. </Description>
+      <Value />
+      <Argument>-target-player=</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-theme</Label>
+      <Description>Specifies a list of theme files to use with this application. Theme files can be SWC files with CSS files inside them or CSS files.</Description>
+      <Value />
+      <Argument>-theme</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-title</Label>
+      <Description>Sets metadata in the resulting SWF file. For more information, see Adding metadata to SWF files.
+http://livedocs.adobe.com/flex/3/html/compilers_16.html#145380</Description>
+      <Value />
+      <Argument>-title</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-use-network=</Label>
+      <Description>Specifies that the current application uses network services.
+The default value is [I]true[~I].
+When the [I]use-network[~I] property is set to [~I]false[I], the application can access the local filesystem (for example, use the XML.load() method with file: URLs) but not network services. In most circumstances, the value of this property should be [I]true[~I].</Description>
+      <Value />
+      <Argument>-use-network=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-use-resource-bundle-metadata=</Label>
+      <Description>Enables resource bundles. Set to [I]true[~I] to instruct the compiler to process the contents of the [I][ResourceBundle][~I] metadata tag.
+The default value is [I]true[~I].</Description>
+      <Value />
+      <Argument>-use-resource-bundle-metadata=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-verbose-stacktraces=</Label>
+      <Description>Generates source code that includes line numbers. When a run-time error occurs, the stacktrace shows these line numbers.
+Enabling this option generates larger SWF files.
+Enabling this option does not generate a debug SWF file. To do that, you must set the [I]debug[~I] option to [I]true[~I].
+The default value is [I]false[~I].</Description>
+      <Value />
+      <Argument>-verbose-stacktraces=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-verify-digests=</Label>
+      <Description>Instructs the application to check the digest of the RSL SWF file against the digest that was compiled into the application at compile time. This is a security measure that lets you load RSLs from remote domains or different sub-domains. It also lets you enforce versioning of your RSLs by forcing an application's digest to match the RSL's digest. If the digests are out of sync, you must recompile your application or load a different RSL SWF file.</Description>
+      <Value />
+      <Argument>-verify-digests=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-version</Label>
+      <Description>Returns the version number of the MXML compiler. If you are using a trial or Beta version of Flex, the version option also returns the number of days remaining in the trial period and the expiration date.</Description>
+      <Value />
+      <Argument>-version</Argument>
+      <SuggestionValues>
+        <string />
+      </SuggestionValues>
+      <SuggestionNames>
+        <string />
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-warn-warning_type=</Label>
+      <Description>Enables specified warnings.</Description>
+      <Value />
+      <Argument>-warn-warning_type=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+    <Arguments>
+      <Label>-warnings=</Label>
+      <Description>Enables all warnings. Set to [I]false[~I] to disable all warnings. This option overrides the [I]warn-warning_type[~I] options.
+The default value is [I]true[~I].</Description>
+      <Value />
+      <Argument>-warnings=</Argument>
+      <SuggestionValues>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionValues>
+      <SuggestionNames>
+        <string>true</string>
+        <string>false</string>
+      </SuggestionNames>
+    </Arguments>
+  </mxmlc>
+  <Classes>
+    <ClassTemplateGroup>
+      <templates>
+        <Template xsi:type="ClassTemplate">
+          <name>GPL License template</name>
+          <label>Insert GPL lisense note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>    Copyright (C) $(time.year) $(custom.arguments[DefaultUser])
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</output>
+        </Template>
+        <Template xsi:type="ClassTemplate">
+          <name>MIT License template</name>
+          <label>Insert MIT lisense note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Copyright (C) $(time.year) $(custom.arguments[DefaultUser])
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the 
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</output>
+        </Template>
+        <Template xsi:type="ClassTemplate">
+          <name>BSD License template</name>
+          <label>Insert BSD License note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Copyright (c) $(time.year),  $(custom.arguments[DefaultUser])
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+	Redistributions of source code must retain the above copyright notice, this 
+	list of conditions and the following disclaimer. Redistributions in binary 
+	form must reproduce the above copyright notice, this list of conditions and 
+	the following disclaimer in the documentation and/or other materials provided
+	with the distribution.
+	
+	Neither the name of the &lt;ORGANIZATION&gt; nor the names of its contributors may
+	be used to endorse or promote products derived from this software without 
+	specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.</output>
+        </Template>
+      </templates>
+      <templateType>CLASS</templateType>
+      <Templates>
+        <ClassTemplate>
+          <name>GPL License template</name>
+          <label>Insert GPL lisense note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>    Copyright (C) $(time.year) $(custom.arguments[DefaultUser])
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</output>
+        </ClassTemplate>
+        <ClassTemplate>
+          <name>MIT License template</name>
+          <label>Insert MIT lisense note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Copyright (C) $(time.year) $(custom.arguments[DefaultUser])
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the 
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</output>
+        </ClassTemplate>
+        <ClassTemplate>
+          <name>BSD License template</name>
+          <label>Insert BSD License note</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Copyright (c) $(time.year),  $(custom.arguments[DefaultUser])
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+	Redistributions of source code must retain the above copyright notice, this 
+	list of conditions and the following disclaimer. Redistributions in binary 
+	form must reproduce the above copyright notice, this list of conditions and 
+	the following disclaimer in the documentation and/or other materials provided
+	with the distribution.
+	
+	Neither the name of the &lt;ORGANIZATION&gt; nor the names of its contributors may
+	be used to endorse or promote products derived from this software without 
+	specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.</output>
+        </ClassTemplate>
+      </Templates>
+      <GroupName>License agreement</GroupName>
+    </ClassTemplateGroup>
+    <ClassTemplateGroup>
+      <templates>
+        <Template xsi:type="ClassTemplate">
+          <name>Author, Version and Date</name>
+          <label>Insert Author, Version and Date Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>@author $(custom.arguments[DefaultUser])
+@version 1.0
+
+Created $(time.format[g language:en-US])</output>
+        </Template>
+      </templates>
+      <templateType>CLASS</templateType>
+      <Templates>
+        <ClassTemplate>
+          <name>Author, Version and Date</name>
+          <label>Insert Author, Version and Date Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>@author $(custom.arguments[DefaultUser])
+@version 1.0
+
+Created $(time.format[g language:en-US])</output>
+        </ClassTemplate>
+      </Templates>
+      <GroupName>Author information</GroupName>
+    </ClassTemplateGroup>
+  </Classes>
+  <Methodes>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (No parameters, single word) (variable Type)</name>
+          <label>$(method.name) (VariableType) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is a $(Method.name.Words[1]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is $(Method.name.Words[1,1,"",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (No parameters, Multiple words) (variable Type)</name>
+          <label>$(method.name) (variableType) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is a $(Method.name.Words[1,count-1,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (No parameters, Multiple words) (sentence)</name>
+          <label>$(method.name) (sentence) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether $(Method.name.Words[1,count-2," ",lower]) is $(Method.name.Words[last,1,"",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (No parameters, Multiple words) (...)</name>
+          <label>$(method.name) (...) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether $(selection.start)...$(selection.end)</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (one parameter, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(method.Parameters[0].name) is a $(Method.Name.Words[1,count-1," "]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (one parameter, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(method.Parameters[0].name) $(Method.Name.Words[0,count," ",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (one parameter, multiple words) (Variable type)</name>
+          <label>$(method.name) (Variable type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether the specified $(method.Parameters[0].Name) is a $(Method.name.Words[1,count-1,""])</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>IsMethod (one parameter, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether the specified $(method.Parameters[0].Name) is $(Method.name.Words[1,count-1,"",lower])</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>IsMethod (No parameters, single word) (variable Type)</name>
+          <label>$(method.name) (VariableType) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is a $(Method.name.Words[1]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is $(Method.name.Words[1,1,"",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (No parameters, Multiple words) (variable Type)</name>
+          <label>$(method.name) (variableType) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether this instance is a $(Method.name.Words[1,count-1,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (No parameters, Multiple words) (sentence)</name>
+          <label>$(method.name) (sentence) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether $(Method.name.Words[1,count-2," ",lower]) is $(Method.name.Words[last,1,"",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (No parameters, Multiple words) (...)</name>
+          <label>$(method.name) (...) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether $(selection.start)...$(selection.end)</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (one parameter, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(method.Parameters[0].name) is a $(Method.Name.Words[1,count-1," "]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (one parameter, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(method.Parameters[0].name) $(Method.Name.Words[0,count," ",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (one parameter, multiple words) (Variable type)</name>
+          <label>$(method.name) (Variable type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether the specified $(method.Parameters[0].Name) is a $(Method.name.Words[1,count-1,""])</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>IsMethod (one parameter, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^is(([A-Z][a-z]*){2,})$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determinates whether the specified $(method.Parameters[0].Name) is $(Method.name.Words[1,count-1,"",lower])</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>state check (Is..)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (No parameters, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (No parameters, multiple words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (No parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (one parameters, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) has a $(Method.Name.Words[1 ,count-1,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (one parameters, single word) (characteristic)  </name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) $(Method.Name.Words[0 ,count," ",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (one parameters, multiple words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) has a $(Method.Name.Words[1 ,count-1,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>hasMethod (one parameters, multiple words) (characteristic)  </name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) $(Method.Name.Words[0 ,count," ",lower]).</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>hasMethod (No parameters, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (No parameters, multiple words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (No parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (one parameters, single word) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) has a $(Method.Name.Words[1 ,count-1,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (one parameters, single word) (characteristic)  </name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) $(Method.Name.Words[0 ,count," ",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (one parameters, multiple words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) has a $(Method.Name.Words[1 ,count-1,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>hasMethod (one parameters, multiple words) (characteristic)  </name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^has([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether the specified $(Method.parameters[0].name) $(Method.Name.Words[0 ,count," ",lower]).</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>state check (Has..)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>containsMethod (one parameters, no word)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) the specified $(Method.parameters[0].name).
+
+
+</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>containsMethod (No parameters, 1 or more words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains([A-Z][a-z]*)+$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>containsMethod (No parameters, 1 or more words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains([A-Z][a-z]*)+$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>containsMethod (one parameters, no word)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) the specified $(Method.parameters[0].name).
+
+
+</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>containsMethod (No parameters, 1 or more words) (Variable Type)</name>
+          <label>$(method.name) (Variable Type) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains([A-Z][a-z]*)+$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) a $(Method.Name.Words[1,last,""]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>containsMethod (No parameters, 1 or more words) (characteristic)</name>
+          <label>$(method.name) (characteristic) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains([A-Z][a-z]*)+$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0]) $(Method.Name.Words[1,last," ",lower]).</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>state check (contains..)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>canMethod (no parameter)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^can([A-Z][a-z]*)?$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0,count," ",lower]).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>canMethod (one parameter)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^can([A-Z][a-z]*)?$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0,count," ",lower]) the specified $(Method.Parameters[0].Name).</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>canMethod (no parameter)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^can([A-Z][a-z]*)?$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0,count," ",lower]).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>canMethod (one parameter)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^can([A-Z][a-z]*)?$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Determines whether this instance $(Method.Name.Words[0,count," ",lower]) the specified $(Method.Parameters[0].Name).</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>state check (Can..)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (No Params, single word)</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>Instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,1," ",lower]) of this instance.</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (One Params single, word)</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>Instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,1]) of the specified $(Method.parameters[0].name).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (No Params, multiple words) (Variable Type)</name>
+          <label>$(Method.name) (Variable Type) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1,""]) of this instance.</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (No Params, multiple words) (characteristic) </name>
+          <label>$(Method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1," ",lower]) of this instance.</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (One Params, multiple words) (Variable Type)</name>
+          <label>$(Method.name) (Variable Type) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1,""]) of the specified $(Method.parameters[0].name).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>GetMethod (One Params, multiple words) (characteristic) </name>
+          <label>$(Method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1," ",lower]) of the specified $(Method.parameters[0].name).</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>GetMethod (No Params, single word)</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>Instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,1," ",lower]) of this instance.</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>GetMethod (One Params single, word)</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>Instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,1]) of the specified $(Method.parameters[0].name).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>GetMethod (No Params, multiple words) (Variable Type)</name>
+          <label>$(Method.name) (Variable Type) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1,""]) of this instance.</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>GetMethod (No Params, multiple words) (characteristic) </name>
+          <label>$(Method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1," ",lower]) of this instance.</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>GetMethod (One Params, multiple words) (Variable Type)</name>
+          <label>$(Method.name) (Variable Type) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1,""]) of the specified $(Method.parameters[0].name).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>GetMethod (One Params, multiple words) (characteristic) </name>
+          <label>$(Method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^get([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Gets the $(method.name.words[1,count-1," ",lower]) of the specified $(Method.parameters[0].name).</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>(Get...)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>ToMethod (No parameters)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^to([A-Z][\w]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Returns a $(method.name.words[1,count-1]) that represents this instance.</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>ToMethod (No parameters)</name>
+          <label>$(method.name) template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^to([A-Z][\w]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Returns a $(method.name.words[1,count-1]) that represents this instance.</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>converters (To...)</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>Single word method (no parameters)</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>contains</string>
+            <string>init</string>
+            <string>initialize</string>
+            <string>instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>$(method.name)s this instace.</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>Single word method (one or more parameters)</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>contains</string>
+            <string>init</string>
+            <string>initialize</string>
+            <string>instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>$(method.name)s the specified $(method.parameters[0].name).</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>init/initialize</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(init|initialize)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Initializes this instance.</output>
+        </Template>
+        <Template xsi:type="MethodTemplate">
+          <name>(get)instance</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(instance|getInstance)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias>
+            <string>$(method.hasFlag[static])$(equal)true</string>
+          </customCriterias>
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Returns an instance of this class ($(class.name)). </output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>Single word method (no parameters)</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>contains</string>
+            <string>init</string>
+            <string>initialize</string>
+            <string>instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>$(method.name)s this instace.</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>Single word method (one or more parameters)</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName>
+            <string>.</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore>
+            <string>contains</string>
+            <string>init</string>
+            <string>initialize</string>
+            <string>instance</string>
+          </MethodNameIgnore>
+          <parameterNameIgnore />
+          <output>$(method.name)s the specified $(method.parameters[0].name).</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>init/initialize</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(init|initialize)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Initializes this instance.</output>
+        </MethodTemplate>
+        <MethodTemplate>
+          <name>(get)instance</name>
+          <label>$(method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(instance|getInstance)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias>
+            <string>$(method.hasFlag[static])$(equal)true</string>
+          </customCriterias>
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>Returns an instance of this class ($(class.name)). </output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>single word methods</GroupName>
+    </MethodTemplateGroup>
+    <MethodTemplateGroup>
+      <templates>
+        <Template xsi:type="MethodTemplate">
+          <name>Multiple Words sentence</name>
+          <label>$(Method.name) (sentence) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(?!^(is|has|get|contains|to))([a-z]*)([A-Z][a-z]*){1,}$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(method.name.words[0,1,"",FirstUpper])s $(method.name.words[1,count-1," ",lower]).</output>
+        </Template>
+      </templates>
+      <templateType>METHOD</templateType>
+      <Templates>
+        <MethodTemplate>
+          <name>Multiple Words sentence</name>
+          <label>$(Method.name) (sentence) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(?!^(is|has|get|contains|to))([a-z]*)([A-Z][a-z]*){1,}$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(method.name.words[0,1,"",FirstUpper])s $(method.name.words[1,count-1," ",lower]).</output>
+        </MethodTemplate>
+      </Templates>
+      <GroupName>Multiple words Methods</GroupName>
+    </MethodTemplateGroup>
+  </Methodes>
+  <AsDocTemplates>
+    <TagTemplateGroup>
+      <templates>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(Method.Name.Words[0,count," ",lower]); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (No parameters, single word) (variable Type)</name>
+          <label>$(method.name) (variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(method.name.words[0]) a $(Method.Name.Words[1]); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (No parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if $(Method.name.Words[1,count-2," ",lower]) $(method.name.words[0]) $(Method.name.Words[last,1,"",lower]); otherwise, $(False).
+</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (No parameters, multiple words) (variable Type)</name>
+          <label>$(method.name) (variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(method.name.words[0]) a $(Method.name.Words[1,count-1,""]); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (One parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the specified $(method.Parameters[0].name) $(method.name.words[0]) $(Method.Name.Words[1,count-1," ",lower]); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>is/has/contains Method (One parameters, multiple words) (Variable type)</name>
+          <label>$(method.name) (Variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the specified $(method.Parameters[0].name) $(method.name.words[0]) a $(Method.Name.Words[1,count-1,""]); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>Contains template</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if this instance contains the $(Method.parameters[0].name); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>SingleWordMethod (any parameter)</name>
+          <label>Single word Method template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the operation was successful; otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>ToMethod (No parameters)</name>
+          <label>ToMethod template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^to([A-Z][\w]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>A $(method.return) that represents this instance.</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>Boolean (...)</name>
+          <label>$(Method.return) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>.</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if $(selection.start)...$(selection.end); otherwise, $(False).</output>
+        </Template>
+        <Template xsi:type="AsDocTemplate">
+          <name>AnyType(...)</name>
+          <label>$(Method.return) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>.</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>^((?!^Boolean$).*)$</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>A &lt;code&gt;$(Method.return)&lt;/code&gt; $(selection.start)...$(selection.end)</output>
+        </Template>
+      </templates>
+      <templateType>TAG</templateType>
+      <Templates>
+        <AsDocTemplate>
+          <name>is/has/contains Method (No parameters, single word) (characteristic)</name>
+          <label>$(method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(Method.Name.Words[0,count," ",lower]); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>is/has/contains Method (No parameters, single word) (variable Type)</name>
+          <label>$(method.name) (variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(method.name.words[0]) a $(Method.Name.Words[1]); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>is/has/contains Method (No parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if $(Method.name.Words[1,count-2," ",lower]) $(method.name.words[0]) $(Method.name.Words[last,1,"",lower]); otherwise, $(False).
+</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>is/has/contains Method (No parameters, multiple words) (variable Type)</name>
+          <label>$(method.name) (variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if instance $(method.name.words[0]) a $(Method.name.Words[1,count-1,""]); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>is/has/contains Method (One parameters, multiple words) (characteristic)</name>
+          <label>$(method.name) (characteristic)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the specified $(method.Parameters[0].name) $(method.name.words[0]) $(Method.Name.Words[1,count-1," ",lower]); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>is/has/contains Method (One parameters, multiple words) (Variable type)</name>
+          <label>$(method.name) (Variable Type)Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^(is|has|contains)([A-Z][a-z]*){2,}$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the specified $(method.Parameters[0].name) $(method.name.words[0]) a $(Method.Name.Words[1,count-1,""]); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>Contains template</name>
+          <label>$(Method.name) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^contains$</MethodName>
+          <ParamName>
+            <string>.</string>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>.</string>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if this instance contains the $(Method.parameters[0].name); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>SingleWordMethod (any parameter)</name>
+          <label>Single word Method template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^([a-z]*)$</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if the operation was successful; otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>ToMethod (No parameters)</name>
+          <label>ToMethod template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>^to([A-Z][\w]*)$</MethodName>
+          <ParamName>
+            <string>^$</string>
+          </ParamName>
+          <ParamTypes>
+            <string>^$</string>
+          </ParamTypes>
+          <ReturnType />
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>A $(method.return) that represents this instance.</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>Boolean (...)</name>
+          <label>$(Method.return) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>.</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>Boolean</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>$(True) if $(selection.start)...$(selection.end); otherwise, $(False).</output>
+        </AsDocTemplate>
+        <AsDocTemplate>
+          <name>AnyType(...)</name>
+          <label>$(Method.return) Template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName>.</MethodName>
+          <ParamName />
+          <ParamTypes />
+          <ReturnType>^((?!^Boolean$).*)$</ReturnType>
+          <customCriterias />
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>A &lt;code&gt;$(Method.return)&lt;/code&gt; $(selection.start)...$(selection.end)</output>
+        </AsDocTemplate>
+      </Templates>
+      <TagName>@return</TagName>
+    </TagTemplateGroup>
+    <TagTemplateGroup>
+      <templates>
+        <Template xsi:type="AsDocTemplate">
+          <name>Boolean parameter</name>
+          <label>Boolean template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias>
+            <string>$(tag.text.toParameter.type)$(equal)Boolean</string>
+          </customCriterias>
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>if set to $(True) $(selection.start)...$(selection.end)</output>
+        </Template>
+      </templates>
+      <templateType>TAG</templateType>
+      <Templates>
+        <AsDocTemplate>
+          <name>Boolean parameter</name>
+          <label>Boolean template</label>
+          <className />
+          <extendName />
+          <interfaceNames />
+          <MethodName />
+          <ParamName />
+          <ParamTypes />
+          <ReturnType />
+          <customCriterias>
+            <string>$(tag.text.toParameter.type)$(equal)Boolean</string>
+          </customCriterias>
+          <MethodNameIgnore />
+          <parameterNameIgnore />
+          <output>if set to $(True) $(selection.start)...$(selection.end)</output>
+        </AsDocTemplate>
+      </Templates>
+      <TagName>@Param</TagName>
+    </TagTemplateGroup>
+  </AsDocTemplates>
+</Settings>

@@ -1,0 +1,22 @@
+package $(Package) $(CSLB){
+	import com.main.common.utils.net.Net2C;
+	import flash.utils.ByteArray;
+	
+	/**
+	$(CBI)* ...
+	$(CBI)* @author $(DefaultUser)
+	$(CBI)*/
+	public class $(FileName) extends Net2C $(CSLB){
+		
+		public function $(FileName)()
+		{
+			super();
+		}
+		override public function decode(_byte:ByteArray):void
+		{
+			
+		}
+		
+	}
+	
+}
