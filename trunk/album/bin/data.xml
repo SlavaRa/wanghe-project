@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<root> 
+<dataSet> 
+	<entity> 
+	<id>0</id>
+		<title>标题0</title>
+		<content>内容内容内容内容内容内容内容内容内容内容内容内容内容内容</content>
+		<img>0.jpg</img>
+	</entity> 
+	<entity>
+		<id>1</id> 
+		<title>标题一</title>
+		<content>内容内容内容内容内容内容内容内容内容内容内容内容内容内容</content>
+		<img>1.jpg</img> 
+	</entity>
+	<entity>
+		<id>2</id> 
+		<title>标题2</title> 
+		<content>内容内容内容内容内容内容内容内容内容内容</content>
+		<img>2.jpg</img>
+	</entity>
+	<entity>
+		<id>3</id>
+		<title>标题3</title> 
+		<content>内容内容内容内容内容内容内容内容内容内容内容内容</content>
+		<img>3.jpg</img> 
+	</entity>
+</dataSet> 
+</root>
