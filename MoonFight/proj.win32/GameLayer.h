@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Ship.h"
-//#include "LevelManager.h"
+#include "Bullet.h"
 
 using namespace cocos2d;
 
@@ -33,27 +33,30 @@ public:
 	
 	CCLabelTTF* lbScore;
 	CCSize winSize;//
+
+	CCRect screenRect;
 	
 	bool init();
 
 	CCSpriteBatchNode* texTransparentBatch;
+	CCSpriteBatchNode* texOpaqueBatch;
 
-
-	//LevelManager* levelManager;
-	//void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-
-	//bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-	
-	//void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-	//void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
-	//void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
+	void update(float dt);
 
 	bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 
+	void addBullet(Bullet* b,int zOrder,int mode);
+
+
+
+
 	void registerWithTouchDispatcher(void);
 
+	static GameLayer*  getInstance();
+
+	void removeInactiveUnit(float dt);
 
 	GameLayer(void);
 	~GameLayer(void);
@@ -67,8 +70,11 @@ private:
 	void moveBackGround(float dt);
 
 	void processEvent(CCTouch* touches);
+
+	static GameLayer* SHARED_GAME_LAYER;
+
 };
 
 
-static GameLayer* SHARED_GAME_LAYER;
+
 
