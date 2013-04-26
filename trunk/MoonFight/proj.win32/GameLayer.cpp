@@ -5,18 +5,29 @@
 #include "gameConfig.h"
 
 
+GameLayer* GameLayer::SHARED_GAME_LAYER = new GameLayer();
+
 GameLayer::GameLayer( void )
 {
 
-
 }
+
+
 
 bool GameLayer::init()
 {
     SHARED_GAME_LAYER = this;
 
     game_status = GameState::PLAY;
+    //不透明图层
+    CCTexture2D* texOpaque = CCTextureCache::sharedTextureCache()->addImage(s_texttureOpaquePack);
+    this->texOpaqueBatch = CCSpriteBatchNode::createWithTexture(texOpaque);
+    ccBlendFunc blend = {GL_SRC_ALPHA,GL_ONE};
+    this->texOpaqueBatch->setBlendFunc(blend);
+    this->addChild(texOpaqueBatch);
 
+
+    //透明的图层
     CCTexture2D* texTransparent = CCTextureCache::sharedTextureCache()->addImage(s_textureTransparentPack);
     this->texTransparentBatch = CCSpriteBatchNode::createWithTexture(texTransparent);
     this->addChild(texTransparentBatch);
@@ -26,13 +37,17 @@ bool GameLayer::init()
 
 
 
+
+
     this->iniBackGround();
 
-
+    screenRect=CCRectMake(0,0,winSize.width,winSize.height+10);
 
     this->setTouchEnabled(true);
 
-    
+    this->scheduleUpdate();
+
+    //this->schedule(schedule_selector(GameLayer::update),0.2f);
 
     return true;
 }
@@ -40,6 +55,12 @@ bool GameLayer::init()
 GameLayer::~GameLayer( void )
 {
 
+}
+
+//更新
+void GameLayer::update( float dt )
+{
+    this->removeInactiveUnit(dt);
 }
 
 //初始化背景
@@ -70,6 +91,8 @@ void GameLayer::iniBackGround()
 
 
     this->winSize = CCDirector::sharedDirector()->getWinSize();
+
+
 
 
     this->schedule(schedule_selector(GameLayer::moveBackGround), 3);
@@ -133,28 +156,7 @@ void GameLayer::moveBackGround(float dt)
 }
 
 
-//void GameLayer::ccTouchesBegan( CCSet *pTouches, CCEvent *pEvent )
-//{
-//    if (this->game_status==GameState::PLAY)
-//    {
-//        this->processEvent(pTouches);
-//    }
-//    CCLOG("%s","ccTouchesBegan");
-//}
-//
-////触摸移动
-//void GameLayer::ccTouchesMoved( CCSet *pTouches, CCEvent *pEvent )
-//{
-//    CCLOG("%s","ccTouchesMoved");
-//}
-//
-//
-//
-//
-//void GameLayer::ccTouchesEnded( CCSet *pTouches, CCEvent *pEvent )
-//{
-//    CCLOG("%s","ccTouchesEnded");
-//}
+
 
 
 //都是尼玛单点触摸 行了吧 草
@@ -197,6 +199,31 @@ void GameLayer::registerWithTouchDispatcher( void )
     CCDirector* pDirector = CCDirector::sharedDirector();
      pDirector->getTouchDispatcher()->addTargetedDelegate(this, 1, true);  
 }
+
+GameLayer* GameLayer::getInstance()
+{
+    return SHARED_GAME_LAYER;
+}
+
+//移除不活动的对象
+void GameLayer::removeInactiveUnit( float dt )
+{
+   
+    CCArray* _array  = this->texOpaqueBatch->getChildren();;
+    CCObject* _object; 
+    CCARRAY_FOREACH(_array,_object)
+    {
+        ((Bullet*)_object)->update(dt);
+
+    }
+}
+
+void GameLayer::addBullet( Bullet* b,int zOrder,int mode )
+{
+    this->texOpaqueBatch->addChild(b,zOrder,mode);
+}
+
+
 
 
 

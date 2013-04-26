@@ -6,7 +6,7 @@
 #include "GameLayer.h"
 
 
-Bullet::Bullet(float bulletSpeed, const char* weaponType, ENEMY_ATTACK_MODE attackMode)
+Bullet::Bullet(float bulletSpeed, const char* weaponType, BULLET_TYPE attackMode)
 {
 	this->active = true;
 	this->xVelocity = 0;
@@ -37,7 +37,7 @@ void Bullet::update( float dt )
 
 	this->setPosition(p);
 	//TODO 判断点是不是在屏幕之外
-	if (p.x<0)//
+	if (p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height)
 	{
 		this->active=false;
 		this->destory();
@@ -45,13 +45,12 @@ void Bullet::update( float dt )
 
 }
 
-Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, ENEMY_ATTACK_MODE attackMode, int zOrde, UNIT_TAG mode )
+Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, BULLET_TYPE attackMode, int zOrde, UNIT_TAG mode )
 {
 	if (mode == UNIT_TAG::PLAYER_BULLET_TAG)
 	{
 		for (vector<CCNode*>::iterator it = MF::getInstance()->getPlayerBullets()->begin();it != MF::getInstance()->getPlayerBullets()->end();it++)
 		{
-			//((Bullet*)(it))
 			if(((Bullet*)(*it))->active==false)
 			{
 				((Bullet*)(*it))->HP=1;
@@ -62,7 +61,7 @@ Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, EN
 		}
 
 		Bullet* b = new Bullet(bulletSpeed,weaponType,attackMode);
-		SHARED_GAME_LAYER->addChild(b,zOrde,mode);
+		GameLayer::getInstance()->addBullet(b,zOrde,mode);
 		MF::getInstance()->getPlayerBullets()->push_back(b);
 		return b;
 	}
