@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{72309724-ab06-4321-889f-104f0340e663}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{197137fb-3634-456a-9791-17f384476647}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{7a1f4818-e5e1-443b-86c3-4adc18358ba7}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MoonFight.ico">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\arial-14.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\b01.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\cocos2d-html5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\explosion.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\flare.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gameOver.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\loading.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\logo.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\menu.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\menuTitle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\textureOpaquePack.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\textureTransparentPack.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MoonFight.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="SysMenu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="gameConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLayer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="HitEffect.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyType.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="MF.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="SysMenu.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLayer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="HitEffect.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="gameConfig.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyType.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="MF.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\arial-14.fnt">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\arial-14.GlyphProject">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\explode.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\explosion.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\level01.tmx">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\textureOpaquePack.plist">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\textureTransparentPack.plist">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+</Project>
