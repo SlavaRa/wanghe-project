@@ -17,12 +17,10 @@ class Level1
 public:
 	Level1();
 	~Level1();
-
+	static bool initialed;
+	static vector<EnemyLevel*>* enemies;
 	static vector<EnemyLevel*>* getEnemies();
-	static void initLevel1();
 private:
 
 };
-
-//void initLevel1();
 

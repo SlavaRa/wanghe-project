@@ -6,7 +6,7 @@
 #include "GameLayer.h"
 
 
-Bullet::Bullet(float bulletSpeed, const char* weaponType, BULLET_TYPE attackMode)
+Bullet::Bullet(float bulletSpeed, const char* weaponType, ENEMY_ATTACK_MODE attackMode)
 {
 	this->active = true;
 	this->xVelocity = 0;
@@ -45,7 +45,7 @@ void Bullet::update( float dt )
 
 }
 
-Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, BULLET_TYPE attackMode, int zOrde, UNIT_TAG mode )
+Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, ENEMY_ATTACK_MODE attackMode, int zOrde, UNIT_TAG mode )
 {
 	if (mode == UNIT_TAG::PLAYER_BULLET_TAG)
 	{
@@ -84,5 +84,3 @@ CCRect Bullet::collideRect( CCPoint p )
 {
 	return CCRectMake(p.x-3,p.y-3,6,6);
 }
-
-

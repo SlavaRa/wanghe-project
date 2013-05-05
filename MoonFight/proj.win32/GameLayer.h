@@ -2,6 +2,8 @@
 #include "cocos2d.h"
 #include "Ship.h"
 #include "Bullet.h"
+#include "Enemy.h"
+//#include "LevelManager.h"//操你大爷的 必须虚晃一枪
 
 using namespace cocos2d;
 
@@ -9,6 +11,8 @@ using namespace cocos2d;
 #define STATE_GAMEOVER 1
 #define MAX_CONTAINT_WIDTH 40
 #define MAX_CONTAINT_HEIGHT 40
+
+class LevelManager;//操你大爷的 必须虚晃一枪 相互引用伤不起
 
 
 class GameLayer:public CCLayer
@@ -41,6 +45,9 @@ public:
 	CCSpriteBatchNode* texTransparentBatch;
 	CCSpriteBatchNode* texOpaqueBatch;
 
+
+	LevelManager* levelManager;
+
 	void update(float dt);
 
 	bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
@@ -48,7 +55,7 @@ public:
 	void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
 
 	void addBullet(Bullet* b,int zOrder,int mode);
-
+	void addEnemy(Enemy* enemy,int zOrder,int mode);
 
 
 

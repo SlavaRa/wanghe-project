@@ -64,3 +64,18 @@ ENEMY_STRUCT e6 ={
 
 static struct ENEMY_STRUCT ENEMY_TYPE[] = {e1,e2,e3,e4,e5,e6};
 
+EnemyType::EnemyType()
+{
+}
+
+EnemyType::~EnemyType()
+{
+}
+
+ENEMY_STRUCT* EnemyType::getEnemyType()
+{
+	return ENEMY_TYPE;
+}
+
+
+

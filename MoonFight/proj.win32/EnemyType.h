@@ -13,3 +13,15 @@ struct ENEMY_STRUCT
 	int scoreValue;
 
 };
+
+class EnemyType
+{
+public:
+	EnemyType();
+	~EnemyType();
+
+	static ENEMY_STRUCT* getEnemyType();
+
+private:
+
+};

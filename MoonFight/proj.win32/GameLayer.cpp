@@ -3,7 +3,7 @@
 #include "resource.h"
 #include "Ship.h"
 #include "gameConfig.h"
-
+#include "LevelManager.h"
 
 GameLayer* GameLayer::SHARED_GAME_LAYER = new GameLayer();
 
@@ -22,7 +22,7 @@ bool GameLayer::init()
     //不透明图层
     CCTexture2D* texOpaque = CCTextureCache::sharedTextureCache()->addImage(s_texttureOpaquePack);
     this->texOpaqueBatch = CCSpriteBatchNode::createWithTexture(texOpaque);
-    ccBlendFunc blend = {GL_SRC_ALPHA,GL_ONE};
+    ccBlendFunc blend = {GL_SRC_ALPHA, GL_ONE};
     this->texOpaqueBatch->setBlendFunc(blend);
     this->addChild(texOpaqueBatch);
 
@@ -33,21 +33,20 @@ bool GameLayer::init()
     this->addChild(texTransparentBatch);
 
     this->ship = new Ship();
-    this->texTransparentBatch->addChild(ship,this->ship->zOrder,UNIT_TAG::PLAYER_TAG);
+    this->texTransparentBatch->addChild(ship, this->ship->zOrder, UNIT_TAG::PLAYER_TAG);
 
 
-
+    this->levelManager = new LevelManager(*this);
 
 
     this->iniBackGround();
 
-    screenRect=CCRectMake(0,0,winSize.width,winSize.height+10);
+    screenRect = CCRectMake(0, 0, winSize.width, winSize.height + 10);
 
     this->setTouchEnabled(true);
 
     this->scheduleUpdate();
 
-    //this->schedule(schedule_selector(GameLayer::update),0.2f);
 
     return true;
 }
@@ -80,7 +79,7 @@ void GameLayer::iniBackGround()
     //背景的大船们
 
     this->backTileMap = CCTMXTiledMap::create(s_level01);
-    this->addChild(this->backTileMap,-9);
+    this->addChild(this->backTileMap, -9);
     this->backTileMapHeight = this->backTileMap->getContentSize().height;
 
     this->backSkyHeight -= 48;
@@ -101,7 +100,7 @@ void GameLayer::iniBackGround()
 void GameLayer::moveBackGround(float dt)
 {
     this->backSky->runAction(CCMoveBy::create(3.0f, ccp(0, -48)));
-    this->backTileMap->runAction(CCMoveBy::create(3.0f,ccp(0,-200)));
+    this->backTileMap->runAction(CCMoveBy::create(3.0f, ccp(0, -200)));
     this->backSkyHeight -= 48;
     this->backTileMapHeight -= 200;
 
@@ -180,14 +179,14 @@ void GameLayer::ccTouchEnded( CCTouch *pTouch, CCEvent *pEvent )
 //处理滑动事件
 void GameLayer::processEvent( CCTouch* touches )
 {
-    if (this->game_status==GameState::PLAY)
+    if (this->game_status == GameState::PLAY)
     {
         CCPoint delt = touches->getDelta();
 
         CCPoint curp = this->ship->getPosition();
-        curp = ccpAdd(curp,delt);
-        
-        curp = ccpClamp(curp,CCPointZero,ccp(winSize.width,winSize.height));
+        curp = ccpAdd(curp, delt);
+
+        curp = ccpClamp(curp, CCPointZero, ccp(winSize.width, winSize.height));
 
         this->ship->setPosition(curp);
     }
@@ -197,7 +196,7 @@ void GameLayer::processEvent( CCTouch* touches )
 void GameLayer::registerWithTouchDispatcher( void )
 {
     CCDirector* pDirector = CCDirector::sharedDirector();
-     pDirector->getTouchDispatcher()->addTargetedDelegate(this, 1, true);  
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 1, true);
 }
 
 GameLayer* GameLayer::getInstance()
@@ -208,19 +207,23 @@ GameLayer* GameLayer::getInstance()
 //移除不活动的对象
 void GameLayer::removeInactiveUnit( float dt )
 {
-   
+
     CCArray* _array  = this->texOpaqueBatch->getChildren();;
-    CCObject* _object; 
-    CCARRAY_FOREACH(_array,_object)
+    CCObject* _object;
+    CCARRAY_FOREACH(_array, _object)
     {
         ((Bullet*)_object)->update(dt);
-
     }
 }
 
-void GameLayer::addBullet( Bullet* b,int zOrder,int mode )
+void GameLayer::addBullet( Bullet* b, int zOrder, int mode )
 {
-    this->texOpaqueBatch->addChild(b,zOrder,mode);
+    this->texOpaqueBatch->addChild(b, zOrder, mode);
+}
+
+void GameLayer::addEnemy( Enemy* enemy, int zOrder, int mode )
+{
+    this->texTransparentBatch->addChild(enemy , zOrder, mode);
 }
 
 

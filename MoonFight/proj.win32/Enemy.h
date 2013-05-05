@@ -9,7 +9,7 @@ public:
 	~Enemy(void);
 
 	int eID;
-	int enenmyType;
+	int enemyType;
 	bool active;
 	int speed;
 	int bulletSpeed;
@@ -19,12 +19,12 @@ public:
 	int scoreValue;
 	int zOrder;
 	int delayTime;
-	int attackMode;
+	ENEMY_ATTACK_MODE attackMode;
 	int _hurtColorLife;
 
 	void update(int dt);
 	void destory();
-	void shoot();
+	void shoot(float dt);
 	void hurt();
 	void collideRect();
 	static Enemy* getOrCreateEnemy(ENEMY_STRUCT& arg);
