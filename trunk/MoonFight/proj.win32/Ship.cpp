@@ -27,9 +27,6 @@ Ship::Ship()
     this->setPosition(this->appearPosition);
 
 
-    //CCMultableArray<>
-
-    //CCArray<CCSpriteFrame*> *frames = new
     CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     CCSpriteFrame *frame0 = cache->spriteFrameByName("ship01.png");
     CCSpriteFrame *frame1 = cache->spriteFrameByName("ship02.png");
@@ -78,11 +75,11 @@ void Ship::shoot(float dt)
     int offset = 13;
     CCPoint point = this->getPosition();
     CCSize size = this->getContentSize();
-    //TODO 未完成 去写子弹了
-    Bullet* a = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", BULLET_TYPE::PLAYER, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
+   
+    Bullet* a = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", ENEMY_ATTACK_MODE::NORMAL, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
     a->setPosition(ccp(point.x + offset, point.y + 3 + size.height * 0.3));
 
-    Bullet* b = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", BULLET_TYPE::PLAYER, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
+    Bullet* b = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", ENEMY_ATTACK_MODE::NORMAL, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
     b->setPosition(ccp(point.x - offset, point.y + 3 + size.height * 0.3));
 }
 
