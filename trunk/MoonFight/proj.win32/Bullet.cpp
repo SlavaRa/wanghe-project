@@ -65,6 +65,24 @@ Bullet* Bullet::getOrCreateBullet( float bulletSpeed, const char* weaponType, EN
 		MF::getInstance()->getPlayerBullets()->push_back(b);
 		return b;
 	}
+	else
+	{
+		for (vector<CCNode*>::iterator it = MF::getInstance()->getEnemysBullets()->begin();it != MF::getInstance()->getEnemysBullets()->end();it++)
+		{
+			if(((Bullet*)(*it))->active==false)
+			{
+				((Bullet*)(*it))->HP=1;
+				((Bullet*)(*it))->active=true;
+
+				return ((Bullet*)(*it));
+			}
+		}
+
+		Bullet* b = new Bullet(bulletSpeed,weaponType,attackMode);
+		GameLayer::getInstance()->addBullet(b,zOrde,mode);
+		MF::getInstance()->getEnemysBullets()->push_back(b);
+		return b;
+	}
 	return NULL;
 }
 

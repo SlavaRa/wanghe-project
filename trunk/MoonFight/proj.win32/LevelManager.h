@@ -16,7 +16,7 @@ public:
     void setLevel(vector<EnemyLevel*>* enemies);
     void loadLevelResource(int datetime);
     void addEnemyToGameLayer(int enemyType);
-	
+	void moveCallBack(CCNode* node);
 
 private:
     int minuteToSecond(const char* minute);

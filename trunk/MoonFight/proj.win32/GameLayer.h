@@ -78,6 +78,9 @@ private:
 
 	void processEvent(CCTouch* touches);
 
+	void scoreCounter(float dt);
+
+
 	static GameLayer* SHARED_GAME_LAYER;
 
 };

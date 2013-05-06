@@ -46,7 +46,7 @@ bool GameLayer::init()
     this->setTouchEnabled(true);
 
     this->scheduleUpdate();
-
+    this->schedule(schedule_selector(GameLayer::scoreCounter), 1);
 
     return true;
 }
@@ -224,6 +224,16 @@ void GameLayer::addBullet( Bullet* b, int zOrder, int mode )
 void GameLayer::addEnemy( Enemy* enemy, int zOrder, int mode )
 {
     this->texTransparentBatch->addChild(enemy , zOrder, mode);
+}
+
+void GameLayer::scoreCounter(float dt)
+{
+	if (this->game_status==GameState::PLAY)
+	{
+		this->time++;
+
+		this->levelManager->loadLevelResource(this->time);
+	}
 }
 
 
