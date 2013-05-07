@@ -58,7 +58,7 @@ void Enemy::update( int dt )
 		this->setColor(ccc3(255, 255, 255));
 	}
 
-	if(p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height)
+	if(p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height||this->HP<=0)
 	{
 		this->active=false;
 		this->destory();
@@ -75,7 +75,9 @@ CCRect Enemy::collideRect()
 
 void Enemy::hurt()
 {
-
+	this->_hurtColorLife=2;
+	this->HP--;
+	this->setColor(ccc3(255,0,0));
 }
 
 void Enemy::shoot(float dt)
@@ -92,6 +94,8 @@ void Enemy::destory()
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
 	this->stopAllActions();
 	this->unschedule(schedule_selector(Enemy::shoot));
+
+	this->setPosition(GL_HIDE_POSITION);
 }
 
 Enemy* Enemy::getOrCreateEnemy( ENEMY_STRUCT& arg )
