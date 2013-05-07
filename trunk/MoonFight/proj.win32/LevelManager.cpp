@@ -30,11 +30,11 @@ void LevelManager::addEnemyToGameLayer( int enemyType )
     CCPoint point = ccp(80 + (GameLayer::getInstance()->winSize.width - 160) * CCRANDOM_0_1(), GameLayer::getInstance()->winSize.height);
     CCSize enemycs = enemy->getContentSize();
     enemy->setPosition(point);
-	
-	int newX=0;
+    
+    int newX=0;
 
     CCPoint offset;
-    CCAction* tmpAction;
+    CCActionInterval* tmpAction;
 
     CCActionInterval* a0;
     CCActionInterval* a1;
@@ -56,16 +56,16 @@ void LevelManager::addEnemyToGameLayer( int enemyType )
         a0 = CCMoveBy::create(0.5f, offset);
         a1 = CCMoveBy::create(1, ccp(-50 - 100 * CCRANDOM_0_1(), 0));
 
-        callback = CCCallFunc::create(enemy, callfunc_selector(LevelManager::moveCallBack));
-		//BUG
+        callback = CCCallFuncN::create(enemy, callfuncN_selector(LevelManager::moveCallBack));
+        //BUG
         tmpAction = CCSequence::create(a0, a1, callback,NULL);
 
         break;
     case ENEMY_MOVE_TYPE::OVERLAP:
         newX = (enemy->getPosition().x <= GameLayer::getInstance()->winSize.width / 2) ? 320 : -320;
-		a0 = CCMoveBy::create(4,ccp(newX,-240));
-		a1 = CCMoveBy::create(4,ccp(-newX,-320));
-		tmpAction = CCSequence::create(a0,a1,NULL);
+        a0 = CCMoveBy::create(4,ccp(newX,-240));
+        a1 = CCMoveBy::create(4,ccp(-newX,-320));
+        tmpAction = CCSequence::create(a0,a1,NULL);
 
         break;
     default:
@@ -73,7 +73,7 @@ void LevelManager::addEnemyToGameLayer( int enemyType )
     }
 
 
-	enemy->runAction(tmpAction);
+    enemy->runAction(tmpAction);
 }
 
 
@@ -136,6 +136,7 @@ void LevelManager::moveCallBack( CCNode* node )
 {
     CCDelayTime* a2 = CCDelayTime::create(1);
     CCActionInterval* a3 = CCMoveBy::create(1, ccp(100 + 100 * CCRANDOM_0_1(), 0));
-
+    CCLOG("%s","fuck");
+    //node->runAction(CCRepeatForever::create(CCSequence::create(a2, a3, a2->copy(), a3->reverse(),NULL)));
     node->runAction(CCRepeatForever::create(CCSequence::create(a2, a3, a2->copy(), a3->reverse(),NULL)));
 }

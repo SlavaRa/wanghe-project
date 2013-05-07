@@ -9,14 +9,14 @@ class LevelManager
 public:
     LevelManager(GameLayer& layer);
     ~LevelManager(void);
-	GameLayer* gameLayer;
+    GameLayer* gameLayer;
     //当前敌人的的等级数组
     vector<EnemyLevel*>* currentLevel;
 
     void setLevel(vector<EnemyLevel*>* enemies);
     void loadLevelResource(int datetime);
     void addEnemyToGameLayer(int enemyType);
-	void moveCallBack(CCNode* node);
+    void moveCallBack(CCNode* node);
 
 private:
     int minuteToSecond(const char* minute);
