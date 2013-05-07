@@ -145,6 +145,7 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyType.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="gameConfig.h" />
     <ClInclude Include="GameLayer.h" />
     <ClInclude Include="HitEffect.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyType.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="gameConfig.cpp" />
     <ClCompile Include="GameLayer.cpp" />
     <ClCompile Include="HitEffect.cpp" />
