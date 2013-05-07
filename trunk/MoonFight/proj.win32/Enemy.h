@@ -1,8 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 #include "EnemyType.h"
+#include "ICollideRect.h"
 using namespace cocos2d;
-class Enemy:public CCSprite
+class Enemy:public CCSprite,public ICollideRect
 {
 public:
 	Enemy(ENEMY_STRUCT &arg);
@@ -26,7 +27,7 @@ public:
 	void destory();
 	void shoot(float dt);
 	void hurt();
-	void collideRect();
+	CCRect collideRect();
 	static Enemy* getOrCreateEnemy(ENEMY_STRUCT& arg);
 private:
 	int timeTick;

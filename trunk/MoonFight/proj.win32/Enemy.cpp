@@ -14,24 +14,24 @@ using namespace cocos2d;
 
 Enemy::Enemy(ENEMY_STRUCT& arg)
 {
-    this->eID = 0;
-    this->enemyType = 1;
-    this->active = true;
-    this->speed = 200;
-    this->bulletSpeed = -200;
-    this->HP = arg.HP;
-    this->bulletPowerValue = 1;
-    this->moveType = arg.moveType;
-    this->scoreValue = arg.scoreValue;
-    this->zOrder = 1000;
-    this->delayTime = 1 + 1.2 * CCRANDOM_0_1();
-    this->attackMode = ENEMY_ATTACK_MODE::NORMAL;
-    this->_hurtColorLife = 0;
+	this->eID = 0;
+	this->enemyType = 1;
+	this->active = true;
+	this->speed = 200;
+	this->bulletSpeed = -200;
+	this->HP = arg.HP;
+	this->bulletPowerValue = 1;
+	this->moveType = arg.moveType;
+	this->scoreValue = arg.scoreValue;
+	this->zOrder = 1000;
+	this->delayTime = 1 + 1.2 * CCRANDOM_0_1();
+	this->attackMode = ENEMY_ATTACK_MODE::NORMAL;
+	this->_hurtColorLife = 0;
 
-    this->timeTick = 0;
+	this->timeTick = 0;
 
-    this->initWithSpriteFrameName(arg.textTureName);
-    this->schedule(schedule_selector(Enemy::shoot), delayTime);
+	this->initWithSpriteFrameName(arg.textTureName);
+	this->schedule(schedule_selector(Enemy::shoot), delayTime);
 }
 
 Enemy::~Enemy(void)
@@ -41,34 +41,36 @@ Enemy::~Enemy(void)
 
 void Enemy::update( int dt )
 {
-    CCPoint p = this->getPosition();
-    if ((p.x < 0 || p.x > 320) && (p.y < 0 || p.y > 480))
-    {
-        this->active = false;
-    }
+	CCPoint p = this->getPosition();
+	if ((p.x < 0 || p.x > 320) && (p.y < 0 || p.y > 480))
+	{
+		this->active = false;
+	}
 
-    this->timeTick += dt;
-    if (this->timeTick > 0.1)
-    {
-        this->timeTick = 0;
-        if (this->_hurtColorLife > 0)
-        {
-            this->_hurtColorLife--;
-        }
-        this->setColor(ccc3(255, 255, 255));
-    }
+	this->timeTick += dt;
+	if (this->timeTick > 0.1)
+	{
+		this->timeTick = 0;
+		if (this->_hurtColorLife > 0)
+		{
+			this->_hurtColorLife--;
+		}
+		this->setColor(ccc3(255, 255, 255));
+	}
 
-    if(p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height)
-    {
-        this->active=false;
-        this->destory();
-    }
+	if(p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height)
+	{
+		this->active=false;
+		this->destory();
+	}
 }
 
 
-void Enemy::collideRect()
+CCRect Enemy::collideRect()
 {
+	CCPoint p = this->getPosition();
 
+	return  CCRectMake((p.x-3),(p.y-3),6.0f,6.0f);
 }
 
 void Enemy::hurt()
@@ -78,42 +80,42 @@ void Enemy::hurt()
 
 void Enemy::shoot(float dt)
 {
-    CCPoint p = this->getPosition();
-    Bullet* b = Bullet::getOrCreateBullet(this->bulletSpeed,"W2.png",this->attackMode,3000,UNIT_TAG::ENEMY_BULLET_TAG);
-    b->setPosition(p);
+	CCPoint p = this->getPosition();
+	Bullet* b = Bullet::getOrCreateBullet(this->bulletSpeed,"W2.png",this->attackMode,3000,UNIT_TAG::ENEMY_BULLET_TAG);
+	b->setPosition(p);
 }
 
 
 
 void Enemy::destory()
 {
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
-    this->stopAllActions();
-    this->unschedule(schedule_selector(Enemy::shoot));
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
+	this->stopAllActions();
+	this->unschedule(schedule_selector(Enemy::shoot));
 }
 
 Enemy* Enemy::getOrCreateEnemy( ENEMY_STRUCT& arg )
 {
-    for (vector<CCNode*>::iterator it=MF::getInstance()->getEnemys()->begin();it!=MF::getInstance()->getEnemys()->end();it++)
-    {
-        if (((Enemy*)(*it))->active==false && ((Enemy*)(*it))->enemyType==arg.type)
-        {
-            ((Enemy*)(*it))->HP=arg.HP;
-            ((Enemy*)(*it))->active=true;
-            ((Enemy*)(*it))->moveType=arg.moveType;
-            ((Enemy*)(*it))->scoreValue=arg.scoreValue;
-            ((Enemy*)(*it))->attackMode=arg.attackMode;
-            ((Enemy*)(*it))->_hurtColorLife=0;
-            ((Enemy*)(*it))->setColor(ccc3(255,255,255));
+	for (vector<CCNode*>::iterator it=MF::getInstance()->getEnemys()->begin();it!=MF::getInstance()->getEnemys()->end();it++)
+	{
+		if (((Enemy*)(*it))->active==false && ((Enemy*)(*it))->enemyType==arg.type)
+		{
+			((Enemy*)(*it))->HP=arg.HP;
+			((Enemy*)(*it))->active=true;
+			((Enemy*)(*it))->moveType=arg.moveType;
+			((Enemy*)(*it))->scoreValue=arg.scoreValue;
+			((Enemy*)(*it))->attackMode=arg.attackMode;
+			((Enemy*)(*it))->_hurtColorLife=0;
+			((Enemy*)(*it))->setColor(ccc3(255,255,255));
 
-            ((Enemy*)(*it))->schedule(schedule_selector(Enemy::shoot),((Enemy*)(*it))->delayTime);
-            return ((Enemy*)(*it));
-        }
-    }
-    
-    Enemy* enemy = new Enemy(arg);
-    GameLayer::getInstance()->addEnemy(enemy,enemy->zOrder,UNIT_TAG::ENEMY_TAG);
-    MF::getInstance()->getEnemys()->push_back(enemy);
+			((Enemy*)(*it))->schedule(schedule_selector(Enemy::shoot),((Enemy*)(*it))->delayTime);
+			return ((Enemy*)(*it));
+		}
+	}
 
-    return enemy;
+	Enemy* enemy = new Enemy(arg);
+	GameLayer::getInstance()->addEnemy(enemy,enemy->zOrder,UNIT_TAG::ENEMY_TAG);
+	MF::getInstance()->getEnemys()->push_back(enemy);
+
+	return enemy;
 }

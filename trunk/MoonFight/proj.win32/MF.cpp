@@ -16,6 +16,7 @@ MF* MF::instance = new MF();
 
 MF::MF(void)
 {
+
 }
 
 

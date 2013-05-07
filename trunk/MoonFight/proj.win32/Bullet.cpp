@@ -98,7 +98,8 @@ void Bullet::hurt()
 	this->HP--;
 }
 
-CCRect Bullet::collideRect( CCPoint p )
+CCRect Bullet::collideRect()
 {
+	CCPoint p = this->getPosition();
 	return CCRectMake(p.x-3,p.y-3,6,6);
 }

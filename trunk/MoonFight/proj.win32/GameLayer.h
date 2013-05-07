@@ -65,6 +65,9 @@ public:
 
 	void removeInactiveUnit(float dt);
 
+	void checkIsCollide();
+	bool colledeRect(ICollideRect* rect1,ICollideRect* rect2);
+
 	GameLayer(void);
 	~GameLayer(void);
 

@@ -115,6 +115,9 @@
     <ClInclude Include="MF.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="ICollideRect.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -157,6 +160,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="MF.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ICollideRect.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
