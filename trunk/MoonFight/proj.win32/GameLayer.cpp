@@ -214,12 +214,47 @@ GameLayer* GameLayer::getInstance()
 void GameLayer::removeInactiveUnit( float dt )
 {
 
-    CCArray* _array  = this->texOpaqueBatch->getChildren();;
+    CCArray* _array  = this->texOpaqueBatch->getChildren();
     CCObject* _object;
     CCARRAY_FOREACH(_array, _object)
     {
-        ((Bullet*)_object)->update(dt);
+		if (((CCNode*)_object)->getTag()==UNIT_TAG::PLAYER_TAG)
+		{
+			if(_object&&(((Ship*)_object)->active==true))
+			{
+				((Ship*)_object)->update(dt);
+			}
+		}
+		else
+		{
+			if(_object&&(((Bullet*)_object)->active==true))
+			{
+				((Bullet*)_object)->update(dt);
+			}
+		}
     }
+
+
+	CCArray* _arrayEnemy = this->texTransparentBatch->getChildren();
+	CCObject* _objectEnemy;
+	CCARRAY_FOREACH(_arrayEnemy,_objectEnemy)
+	{
+		//应该把这些玩意抽象一下
+		if (((CCNode*)_objectEnemy)->getTag()==UNIT_TAG::PLAYER_TAG)
+		{
+			if(_objectEnemy&&(((Ship*)_objectEnemy)->active==true))
+			{
+				((Ship*)_objectEnemy)->update(dt);
+			}
+		}
+		else
+		{
+			if(_objectEnemy&&(((Enemy*)_objectEnemy)->active==true))
+			{
+				((Enemy*)_objectEnemy)->update(dt);
+			}
+		}
+	}
 }
 
 void GameLayer::addBullet( Bullet* b, int zOrder, int mode )

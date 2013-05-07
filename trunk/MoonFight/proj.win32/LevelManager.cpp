@@ -135,7 +135,6 @@ void LevelManager::moveCallBack( CCNode* node )
 {
     CCDelayTime* a2 = CCDelayTime::create(1);
     CCActionInterval* a3 = CCMoveBy::create(1, ccp(100 + 100 * CCRANDOM_0_1(), 0));
-    CCLOG("%s","fuck");
-    //node->runAction(CCRepeatForever::create(CCSequence::create(a2, a3, a2->copy(), a3->reverse(),NULL)));
+   
     node->runAction(CCRepeatForever::create(CCSequence::create(a2, a3, a2->copy(), a3->reverse(),NULL)));
 }
