@@ -4,6 +4,11 @@
 #include "Ship.h"
 #include "gameConfig.h"
 #include "LevelManager.h"
+#include "MF.h"
+#include "ICollideRect.h"
+
+#include <vector>
+using namespace std;
 
 GameLayer* GameLayer::SHARED_GAME_LAYER = new GameLayer();
 
@@ -59,6 +64,7 @@ GameLayer::~GameLayer( void )
 //更新
 void GameLayer::update( float dt )
 {
+    this->checkIsCollide();
     this->removeInactiveUnit(dt);
 }
 
@@ -228,13 +234,72 @@ void GameLayer::addEnemy( Enemy* enemy, int zOrder, int mode )
 
 void GameLayer::scoreCounter(float dt)
 {
-	if (this->game_status==GameState::PLAY)
-	{
-		this->time++;
+    if (this->game_status==GameState::PLAY)
+    {
+        this->time++;
 
-		this->levelManager->loadLevelResource(this->time);
-	}
+        this->levelManager->loadLevelResource(this->time);
+    }
 }
+
+//碰撞检测
+void GameLayer::checkIsCollide()
+{
+    for (vector<CCNode*>::iterator it = MF::getInstance()->getEnemys()->begin();it!=MF::getInstance()->getEnemys()->end();it++)
+    {
+        //与玩家子弹的碰撞
+        for (vector<CCNode*>::iterator itb = MF::getInstance()->getPlayerBullets()->begin();itb!=MF::getInstance()->getPlayerBullets()->end();itb++)
+        {
+            if (colledeRect((dynamic_cast<ICollideRect*>(*it)),(dynamic_cast<ICollideRect*>(*itb))))
+            {
+                ((Enemy*)(*it))->hurt();
+                ((Bullet*)(*it))->hurt();
+                if (!screenRect.intersectsRect((*it)->boundingBox()))
+                {
+                     ((Bullet*)(*it))->destory();
+                }
+            }
+        }
+        //与玩家的碰撞
+
+        if (colledeRect((dynamic_cast<ICollideRect*>(*it)),(dynamic_cast<ICollideRect*>(ship))))
+        {
+            if (this->ship->active)
+            {
+                this->ship->hurt();
+                ((Enemy*)(*it))->hurt();
+            }
+        }
+    }
+
+
+    for (vector<CCNode*>::iterator iteb=MF::getInstance()->getEnemysBullets()->begin();iteb!=MF::getInstance()->getEnemysBullets()->end();iteb++)
+    {
+        if (colledeRect((dynamic_cast<ICollideRect*>(*iteb)),(dynamic_cast<ICollideRect*>(ship))))
+        {
+            if (this->ship->active)
+            {
+                this->ship->hurt();
+                ((Enemy*)(*iteb))->hurt();
+            }
+        }
+        if (!screenRect.intersectsRect((*iteb)->boundingBox()))
+        {
+            ((Bullet*)(*iteb))->destory();
+        }
+    }
+}
+
+//碰撞检测
+bool GameLayer::colledeRect(ICollideRect* rect1,ICollideRect* rect2 )
+{
+    CCRect r1 = rect1->collideRect();
+    
+
+    CCRect r2 = rect2->collideRect();
+    return r1.intersectsRect(r2);
+}
+
 
 
 

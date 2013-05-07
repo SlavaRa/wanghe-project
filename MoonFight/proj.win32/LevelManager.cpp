@@ -111,7 +111,6 @@ int LevelManager::minuteToSecond( const char* minute )
     char m[2];
     char s[2];
     strncpy(m, minute, 2);
-    //m[sizeof(m) - 1] = '\0';
 
     char *sp = const_cast<char*>(minute);
     sp += 3;

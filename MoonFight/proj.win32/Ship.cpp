@@ -93,10 +93,13 @@ void Ship::hurt()
 
 }
 
-void Ship::collideRect(CCPoint p)
+CCRect Ship::collideRect()
 {
+    CCPoint p = this->getPosition();
 
+    return CCRectMake(p.x-3,p.y-3,6,6);
 }
+
 
 void Ship::born()
 {

@@ -4,9 +4,11 @@
 
 #include "cocos2d.h"
 #include "gameConfig.h"
+#include "ICollideRect.h"
+
 using namespace cocos2d;
 
-class Bullet:public CCSprite
+class Bullet:public CCSprite,public ICollideRect
 {
 public:
 	Bullet(float bulletSpeed,const char* weaponType,ENEMY_ATTACK_MODE attackMode);
@@ -26,7 +28,7 @@ public:
 	
 	void update(float dt);
 	void hurt();
-	CCRect collideRect(CCPoint p);
+	CCRect collideRect();
 	void destory();
 
 };

@@ -1,9 +1,10 @@
 #ifndef __SHIP_H__
 #define __SHIP_H__
 
+#include "ICollideRect.h"
 #include "cocos2d.h"
 using namespace cocos2d;
-class Ship:public CCSprite
+class Ship:public CCSprite,public ICollideRect
 {
 public:
 	int speed;
@@ -30,9 +31,8 @@ public:
 	void shoot(float dt);
 	void destory();
 	void hurt();
-	void collideRect(CCPoint p);
 	void born();
-
+	CCRect collideRect();
 };
 
 #endif
