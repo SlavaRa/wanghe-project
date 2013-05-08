@@ -69,8 +69,9 @@ void Enemy::update( int dt )
 CCRect Enemy::collideRect()
 {
 	CCPoint p = this->getPosition();
+	CCSize size = this->getContentSize();
 
-	return  CCRectMake((p.x-3),(p.y-3),6.0f,6.0f);
+	return  CCRectMake((p.x-size.width/2),(p.y-size.height/4),size.width,size.height/2);
 }
 
 void Enemy::hurt()
@@ -91,11 +92,9 @@ void Enemy::shoot(float dt)
 
 void Enemy::destory()
 {
-	Explosion *explosion = new Explosion();
+	Explosion *explosion =Explosion::getOrCreateExplosion();
 	explosion->setPosition(this->getPosition());
-
-	this->getParent()->addChild(explosion);
-
+	//GameLayer::getInstance()->addExplosions(explosion);
 
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
 	this->stopAllActions();

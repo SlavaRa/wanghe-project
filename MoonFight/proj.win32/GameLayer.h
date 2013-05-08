@@ -3,6 +3,7 @@
 #include "Ship.h"
 #include "Bullet.h"
 #include "Enemy.h"
+#include "Explosion.h"
 //#include "LevelManager.h"//操你大爷的 必须虚晃一枪
 
 using namespace cocos2d;
@@ -44,7 +45,7 @@ public:
 
 	CCSpriteBatchNode* texTransparentBatch;
 	CCSpriteBatchNode* texOpaqueBatch;
-
+	CCSpriteBatchNode* explosions;
 
 	LevelManager* levelManager;
 
@@ -56,7 +57,7 @@ public:
 
 	void addBullet(Bullet* b,int zOrder,int mode);
 	void addEnemy(Enemy* enemy,int zOrder,int mode);
-
+	void addExplosions(Explosion* explosion);
 
 
 	void registerWithTouchDispatcher(void);
