@@ -82,8 +82,8 @@ void GameLayer::update( float dt )
 //初始化背景
 void GameLayer::iniBackGround()
 {
-    this->_isBackSkyReload = FALSE;
-    this->_isBackTileReload = FALSE;
+    this->_isBackSkyReload = false;
+    this->_isBackTileReload = false;
 
     //背景的天空 蓝不拉几的那个
     this->backSky = CCSprite::createWithSpriteFrameName("bg01.png");
