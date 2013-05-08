@@ -40,6 +40,14 @@ bool GameLayer::init()
     this->ship = new Ship();
     this->texTransparentBatch->addChild(ship, this->ship->zOrder, UNIT_TAG::PLAYER_TAG);
 
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(s_explosion_plist);
+
+	CCTexture2D* explosionTexture =CCTextureCache::sharedTextureCache()->addImage(s_explosion);
+	this->explosions = CCSpriteBatchNode::createWithTexture(explosionTexture);
+
+	ccBlendFunc blend2 = {GL_SRC_ALPHA, GL_ONE};
+	this->explosions->setBlendFunc(blend2);
+	this->addChild(explosions);
 
     Explosion::sharedExplosion();
 
@@ -336,4 +344,9 @@ bool GameLayer::colledeRect(ICollideRect* rect1,ICollideRect* rect2 )
 
     CCRect r2 = rect2->collideRect();
     return r1.intersectsRect(r2);
+}
+
+void GameLayer::addExplosions( Explosion* explosion )
+{
+	this->explosions->addChild(explosion);
 }

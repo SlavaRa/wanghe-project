@@ -2,7 +2,8 @@
 #include "cocos2d.h"
 #include "resource.h"
 #include "cocos2d.h"
-
+#include "MF.h"
+#include "GameLayer.h"
 
 using namespace std;
 
@@ -11,6 +12,8 @@ USING_NS_CC;
 //¹¹Ôìº¯Êý
 Explosion::Explosion(void)
 {
+	this->active = true;
+
 	CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("explosion_01.png");
 	this->initWithSpriteFrame(frame);
 	CCSize size = this->getContentSize();
@@ -64,13 +67,32 @@ void Explosion::sharedExplosion()
 		s1+=s3;
 		s1+=s2;
 
-
 		CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(s1.c_str());
-
 		frames->addObject(frame);
-
 	}
-
 	CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames,0.04f);
 	CCAnimationCache::sharedAnimationCache()->addAnimation(animation,"Explosion");
 }
+
+Explosion* Explosion::getOrCreateExplosion()
+{
+	for (vector<CCNode*>::iterator it = MF::getInstance()->getExplosions()->begin();it!=MF::getInstance()->getExplosions()->end();it++)
+	{
+		if (((Explosion*)(*it))->active == false)
+		{
+			((Explosion*)(*it))->active = true;
+			CCAnimation* animation = CCAnimationCache::sharedAnimationCache()->animationByName("Explosion");
+			((Explosion*)(*it))->runAction(CCSequence::create(CCAnimate::create(animation),callfunc_selector(Explosion::destory),NULL));
+
+			return ((Explosion*)(*it));
+		}
+	}
+
+	Explosion* explosion = new Explosion();
+	GameLayer::getInstance()->addExplosions(explosion);
+	MF::getInstance()->getExplosions()->push_back(explosion);
+	return explosion;
+}
+
+
+
