@@ -7,7 +7,7 @@
 #include "SimpleAudioEngine.h"
 #include <vector>
 #include "MF.h"
-
+#include "Explosion.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -91,9 +91,18 @@ void Enemy::shoot(float dt)
 
 void Enemy::destory()
 {
+	Explosion *explosion = new Explosion();
+	explosion->setPosition(this->getPosition());
+
+	this->getParent()->addChild(explosion);
+
+
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
 	this->stopAllActions();
 	this->unschedule(schedule_selector(Enemy::shoot));
+
+	this->removeFromParent();
+
 
 	this->setPosition(GL_HIDE_POSITION);
 }
