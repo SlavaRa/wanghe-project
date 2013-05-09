@@ -60,7 +60,7 @@ void Explosion::sharedExplosion()
 		}
 		else
 		{
-			char nu[10];
+			char nu[10]="\0";
 			sprintf(nu,"%d",i);
 			s3+=nu;
 		}
