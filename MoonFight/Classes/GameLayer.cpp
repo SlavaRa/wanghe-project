@@ -8,6 +8,7 @@
 #include "ICollideRect.h"
 #include "Explosion.h"
 #include <vector>
+#include "SimpleAudioEngine.h"
 using namespace std;
 
 GameLayer* GameLayer::SHARED_GAME_LAYER = new GameLayer();
@@ -58,6 +59,8 @@ bool GameLayer::init()
     this->iniBackGround();
 
     screenRect = CCRectMake(0, 0, winSize.width, winSize.height + 10);
+
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(s_bgMusic,true);
 
     this->setTouchEnabled(true);
 
