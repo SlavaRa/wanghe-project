@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "MF.h"
 #include "GameLayer.h"
-
+#include <stdio.h>
 using namespace std;
 
 USING_NS_CC;
@@ -53,15 +53,15 @@ void Explosion::sharedExplosion()
 
 		if (i<10)
 		{
-			char num[10];
-			_itoa(i,num,10);
+			char num[10]="\0";
+			sprintf(num,"%d",i);
 			s3+="0";
 			s3+=num;
 		}
 		else
 		{
 			char nu[10];
-			_itoa(i,nu,10);
+			sprintf(nu,"%d",i);
 			s3+=nu;
 		}
 		s1+=s3;

@@ -23,7 +23,7 @@ bool GameLayer::init()
 {
     SHARED_GAME_LAYER = this;
 
-    game_status = GameState::PLAY;
+    game_status = PLAY;
     //不透明图层
     CCTexture2D* texOpaque = CCTextureCache::sharedTextureCache()->addImage(s_texttureOpaquePack);
     this->texOpaqueBatch = CCSpriteBatchNode::createWithTexture(texOpaque);
@@ -38,16 +38,16 @@ bool GameLayer::init()
     this->addChild(texTransparentBatch);
 
     this->ship = new Ship();
-    this->texTransparentBatch->addChild(ship, this->ship->zOrder, UNIT_TAG::PLAYER_TAG);
+    this->texTransparentBatch->addChild(ship, this->ship->zOrder, PLAYER_TAG);
 
-	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(s_explosion_plist);
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(s_explosion_plist);
 
-	CCTexture2D* explosionTexture =CCTextureCache::sharedTextureCache()->addImage(s_explosion);
-	this->explosions = CCSpriteBatchNode::createWithTexture(explosionTexture);
+    CCTexture2D* explosionTexture =CCTextureCache::sharedTextureCache()->addImage(s_explosion);
+    this->explosions = CCSpriteBatchNode::createWithTexture(explosionTexture);
 
-	ccBlendFunc blend2 = {GL_SRC_ALPHA, GL_ONE};
-	this->explosions->setBlendFunc(blend2);
-	this->addChild(explosions);
+    ccBlendFunc blend2 = {GL_SRC_ALPHA, GL_ONE};
+    this->explosions->setBlendFunc(blend2);
+    this->addChild(explosions);
 
     Explosion::sharedExplosion();
 
@@ -139,7 +139,7 @@ void GameLayer::moveBackGround(float dt)
         this->backSkyHeight = this->backSky->getContentSize().height;
         this->removeChild(this->backSky, true);
         this->backSky = this->backSkyRe;
-        this->backSkyRe = nullptr;
+        this->backSkyRe = NULL;
         this->_isBackSkyReload = false;
 
     }
@@ -152,7 +152,7 @@ void GameLayer::moveBackGround(float dt)
             this->addChild(this->backTileMapRe, -9);
             this->backTileMapRe->setPosition(0, winSize.height);
 
-            this->_isBackTileReload = TRUE;
+            this->_isBackTileReload = true;
 
         }
         this->backTileMapRe->runAction(CCMoveBy::create(3.0f, ccp(0, -200)));
@@ -167,7 +167,7 @@ void GameLayer::moveBackGround(float dt)
 
         this->backTileMap = this->backTileMapRe;
         this->backTileMapRe = NULL;
-        this->_isBackTileReload = FALSE;
+        this->_isBackTileReload = false;
     }
 }
 
@@ -196,7 +196,7 @@ void GameLayer::ccTouchEnded( CCTouch *pTouch, CCEvent *pEvent )
 //处理滑动事件
 void GameLayer::processEvent( CCTouch* touches )
 {
-    if (this->game_status == GameState::PLAY)
+    if (this->game_status == PLAY)
     {
         CCPoint delt = touches->getDelta();
 
@@ -229,7 +229,7 @@ void GameLayer::removeInactiveUnit( float dt )
     CCObject* _object;
     CCARRAY_FOREACH(_array, _object)
     {
-        if (((CCNode*)_object)->getTag()==UNIT_TAG::PLAYER_TAG)
+        if (((CCNode*)_object)->getTag()== PLAYER_TAG)
         {
             if(_object&&(((Ship*)_object)->active==true))
             {
@@ -251,7 +251,7 @@ void GameLayer::removeInactiveUnit( float dt )
     CCARRAY_FOREACH(_arrayEnemy,_objectEnemy)
     {
         //应该把这些玩意抽象一下
-        if (((CCNode*)_objectEnemy)->getTag()==UNIT_TAG::PLAYER_TAG)
+        if (((CCNode*)_objectEnemy)->getTag()==PLAYER_TAG)
         {
             if(_objectEnemy&&(((Ship*)_objectEnemy)->active==true))
             {
@@ -280,7 +280,7 @@ void GameLayer::addEnemy( Enemy* enemy, int zOrder, int mode )
 
 void GameLayer::scoreCounter(float dt)
 {
-    if (this->game_status==GameState::PLAY)
+    if (this->game_status==PLAY)
     {
         this->time++;
 
@@ -348,5 +348,5 @@ bool GameLayer::colledeRect(ICollideRect* rect1,ICollideRect* rect2 )
 
 void GameLayer::addExplosions( Explosion* explosion )
 {
-	this->explosions->addChild(explosion);
+    this->explosions->addChild(explosion);
 }

@@ -76,10 +76,10 @@ void Ship::shoot(float dt)
     CCPoint point = this->getPosition();
     CCSize size = this->getContentSize();
    
-    Bullet* a = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", ENEMY_ATTACK_MODE::NORMAL, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
+    Bullet* a = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", NORMAL, 3000, PLAYER_BULLET_TAG);
     a->setPosition(ccp(point.x + offset, point.y + 3 + size.height * 0.3));
 
-    Bullet* b = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", ENEMY_ATTACK_MODE::NORMAL, 3000, UNIT_TAG::PLAYER_BULLET_TAG);
+    Bullet* b = Bullet::getOrCreateBullet(bulletSpeed, "W1.png", NORMAL, 3000, PLAYER_BULLET_TAG);
     b->setPosition(ccp(point.x - offset, point.y + 3 + size.height * 0.3));
 }
 
