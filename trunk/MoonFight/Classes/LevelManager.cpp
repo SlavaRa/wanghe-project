@@ -42,15 +42,15 @@ void LevelManager::addEnemyToGameLayer( int enemyType )
     CCCallFunc* callback;
     switch (enemy->moveType)
     {
-    case ENEMY_MOVE_TYPE::ATTACK:
+    case ATTACK:
         offset = this->gameLayer->ship->getPosition();
         tmpAction = CCMoveTo::create(1, offset);
         break;
-    case ENEMY_MOVE_TYPE::VERTICAL:
+    case VERTICAL:
         offset = ccp(0, -GameLayer::getInstance()->winSize.height - enemycs.height);
         tmpAction = CCMoveBy::create(4, offset);
         break;
-    case ENEMY_MOVE_TYPE::HORIZONTAL:
+    case HORIZONTAL:
         offset = ccp(0, -100 - 200 * CCRANDOM_0_1());
         //TODO »Øµ÷
         a0 = CCMoveBy::create(0.5f, offset);
@@ -61,7 +61,7 @@ void LevelManager::addEnemyToGameLayer( int enemyType )
         tmpAction = CCSequence::create(a0, a1, callback,NULL);
 
         break;
-    case ENEMY_MOVE_TYPE::OVERLAP:
+    case OVERLAP:
         newX = (enemy->getPosition().x <= GameLayer::getInstance()->winSize.width / 2) ? 320 : -320;
         a0 = CCMoveBy::create(4,ccp(newX,-240));
         a1 = CCMoveBy::create(4,ccp(-newX,-320));
