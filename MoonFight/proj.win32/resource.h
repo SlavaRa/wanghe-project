@@ -20,13 +20,13 @@ static const char s_gameplay[]						=	"gameplayback.png";
 static const char s_texttureOpaquePack[]			=	"textureOpaquePack.png";
 static const char s_textureTransparentPack[]		=	"textureTransparentPack.png";
 //music
-static const char s_bgMusic[]						=	"Music\bgMusic.mp3";
-static const char s_mainMainMusic[]					=	"Music\\mainMainMusic.mp3";
+static const char s_bgMusic[]						=	"Music/bgMusic.mp3";
+static const char s_mainMainMusic[]					=	"Music/mainMainMusic.mp3";
 //effect
-static const char s_buttonEffect[]					=	"Music\\buttonEffect.mp3";
-static const char s_explodeEffect[]					=	"Music\\explodeEffect.mp3";
-static const char s_fireEffect[]					=	"Music\\fireEffect.mp3";
-static const char s_shipDestoryEffect[]				=	"Music\\shipDestroyEffect.mp3";
+static const char s_buttonEffect[]					=	"Music/buttonEffect.mp3";
+static const char s_explodeEffect[]					=	"Music/explodeEffect.mp3";
+static const char s_fireEffect[]					=	"Music/fireEffect.mp3";
+static const char s_shipDestoryEffect[]				=	"Music/shipDestroyEffect.mp3";
 //tmx
 static const char s_level01[]						=	"level01.tmx";
 //plist
