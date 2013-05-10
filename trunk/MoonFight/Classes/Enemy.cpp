@@ -55,7 +55,11 @@ void Enemy::update( int dt )
 		{
 			this->_hurtColorLife--;
 		}
-		this->setColor(ccc3(255, 255, 255));
+		if(this->_hurtColorLife == 1)
+		{
+			//this->setColor(ccc3(255, 255, 255));
+		}
+		
 	}
 
 	if(p.x<0||p.x>GameLayer::getInstance()->screenRect.size.width||p.y<0||p.y>GameLayer::getInstance()->screenRect.size.height||this->HP<=0)
@@ -76,7 +80,7 @@ CCRect Enemy::collideRect()
 
 void Enemy::hurt()
 {
-	this->_hurtColorLife=2;
+	//this->_hurtColorLife = 2;//引发莫名其妙的BUG
 	this->HP--;
 	this->setColor(ccc3(255,0,0));
 }
@@ -94,7 +98,7 @@ void Enemy::destory()
 {
 	Explosion *explosion =Explosion::getOrCreateExplosion();
 	explosion->setPosition(this->getPosition());
-	//GameLayer::getInstance()->addExplosions(explosion);
+
 
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(s_explodeEffect);
 	this->stopAllActions();

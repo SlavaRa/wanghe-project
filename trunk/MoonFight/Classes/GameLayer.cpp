@@ -60,7 +60,7 @@ bool GameLayer::init()
 
     screenRect = CCRectMake(0, 0, winSize.width, winSize.height + 10);
 
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(s_bgMusic,true);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(s_bgMusic,true);
 
     this->setTouchEnabled(true);
 
