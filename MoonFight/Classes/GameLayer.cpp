@@ -67,6 +67,8 @@ bool GameLayer::init()
     this->scheduleUpdate();
     this->schedule(schedule_selector(GameLayer::scoreCounter), 1);
 
+    this->setKeypadEnabled(true);
+
     return true;
 }
 
@@ -352,4 +354,9 @@ bool GameLayer::colledeRect(ICollideRect* rect1,ICollideRect* rect2 )
 void GameLayer::addExplosions( Explosion* explosion )
 {
     this->explosions->addChild(explosion);
+}
+
+void GameLayer::keyBackClicked()
+{
+    CCDirector::sharedDirector()->end();
 }

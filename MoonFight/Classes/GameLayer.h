@@ -69,6 +69,8 @@ public:
 	void checkIsCollide();
 	bool colledeRect(ICollideRect* rect1,ICollideRect* rect2);
 
+	virtual void keyBackClicked();
+
 	GameLayer(void);
 	~GameLayer(void);
 
