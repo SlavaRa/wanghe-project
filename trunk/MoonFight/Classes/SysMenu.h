@@ -24,6 +24,8 @@ public:
 
 	void newGame();
 
+	virtual void keyBackClicked();
+
 	CREATE_FUNC(SysMenu);
 };
 #endif

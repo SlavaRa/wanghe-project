@@ -81,6 +81,8 @@ bool SysMenu::init()
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.7f);
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(s_mainMainMusic,true);
 
+		this->setKeypadEnabled(true);
+
 		ret = true;
 
 	}while (0);
@@ -134,6 +136,11 @@ void SysMenu::newGame()
 	sc->addChild(GameLayer::create());
 	//sc->addChild();
 	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(1.2f,sc));
+}
+
+void SysMenu::keyBackClicked()
+{
+	CCDirector::sharedDirector()->end();
 }
 
 
