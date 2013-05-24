@@ -13,6 +13,9 @@
       <UniqueIdentifier>{e1342a43-c698-42c5-ba29-df5480286fe4}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
     </Filter>
+    <Filter Include="myFrame">
+      <UniqueIdentifier>{6213f9a6-d7ab-4166-9941-3139a20c72fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\WowPlane.ico">
@@ -46,6 +49,9 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>myFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="IObserver.cpp">
+      <Filter>myFrame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
