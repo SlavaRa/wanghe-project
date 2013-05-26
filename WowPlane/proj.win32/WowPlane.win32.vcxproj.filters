@@ -13,7 +13,10 @@
       <UniqueIdentifier>{e1342a43-c698-42c5-ba29-df5480286fe4}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
     </Filter>
-    <Filter Include="myFrame">
+    <Filter Include="Classes">
+      <UniqueIdentifier>{1f90b905-ba42-4276-98e1-37f9de5f4feb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\myFrame">
       <UniqueIdentifier>{6213f9a6-d7ab-4166-9941-3139a20c72fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -49,8 +52,14 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="IObserver.h">
-      <Filter>myFrame</Filter>
+    <ClInclude Include="..\Classes\myFrame\IObserver.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\myFrame\HNotification.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="ObserverManager.h">
+      <Filter>Classes\myFrame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +72,11 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="IObserver.cpp">
-      <Filter>myFrame</Filter>
+    <ClCompile Include="..\Classes\myFrame\IObserver.cpp">
+      <Filter>Classes\myFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="ObserverManager.cpp">
+      <Filter>Classes\myFrame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
