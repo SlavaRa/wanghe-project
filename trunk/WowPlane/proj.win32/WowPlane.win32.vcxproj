@@ -40,6 +40,7 @@
     <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir>$(Configuration).win32\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>F:\cocos2d\cocos2d-2.1rc0-x-2.1.3\WowPlane\Classes\myFrame\inlude;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
@@ -129,15 +130,18 @@
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="IObserver.h" />
+    <ClInclude Include="..\Classes\myFrame\HNotification.h" />
+    <ClInclude Include="..\Classes\myFrame\IObserver.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="ObserverManager.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="IObserver.cpp" />
+    <ClCompile Include="..\Classes\myFrame\IObserver.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObserverManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
