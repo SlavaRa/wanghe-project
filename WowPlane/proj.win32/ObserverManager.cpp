@@ -15,8 +15,6 @@ ObserverManager* ObserverManager::getInstance()
 	return ObserverManager::instance;
 }
 
-
-
 //************************************
 // Method:    registerObserver
 // FullName:  ObserverManager::registerObserver
@@ -62,8 +60,6 @@ void ObserverManager::unregisterObserver( const char* notify,IObserver* observer
 	{
 		if (strcmp(notify,(*it)->notify)==0)
 		{
-			//(*it)->observers->(observer);
-			//如果之前有类似的消息 直接扔进去 返回	
 			for (vector<IObserver*>::iterator it2 = (*it)->observers->begin();it2!=(*it)->observers->end();it2++)
 			{
 				if (observer==(*it2))
@@ -89,7 +85,22 @@ void ObserverManager::unregisterObserver( const char* notify,IObserver* observer
 //************************************
 void ObserverManager::sendNotification( const char* notify,IObserver* observer,void* data )
 {
+	vector<IObserver*> tempObserver;
+	for (vector<ObserverStruct*>::iterator it = ObserverManager::getInstance()->getObservers().begin();it!=ObserverManager::getInstance()->getObservers().end();it++)
+	{
+		if (strcmp(notify,(*it)->notify)==0)
+		{
+			for (vector<IObserver*>::iterator it2 = (*it)->observers->begin();it2!=(*it)->observers->begin();it2++)
+			{
+				tempObserver.push_back((*it2));
+			}
+		}
+	}
 
+	for (vector<IObserver*>::iterator it3 = tempObserver.begin();it3!=tempObserver.begin();it3++)
+	{
+		(*it3)->notifyObserver(notify,data);
+	}
 }
 
 
@@ -117,5 +128,7 @@ ObserverManager::~ObserverManager()
 {
 
 }
+
+
 
 
