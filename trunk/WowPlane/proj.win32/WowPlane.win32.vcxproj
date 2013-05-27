@@ -132,15 +132,19 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\myFrame\HNotification.h" />
     <ClInclude Include="..\Classes\myFrame\include\IObserver.h" />
+    <ClInclude Include="GameMenu.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="ObserverManager.h" />
+    <ClInclude Include="Processor.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\GameMenu.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObserverManager.cpp" />
+    <ClCompile Include="Processor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

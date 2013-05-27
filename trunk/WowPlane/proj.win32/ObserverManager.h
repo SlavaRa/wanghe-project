@@ -64,8 +64,6 @@ public:
 
 	vector<ObserverStruct*> getObservers();
 
-
-
 	ObserverManager();
 
 	~ObserverManager();
