@@ -5,6 +5,16 @@
 
 using namespace std;
 
+
+//消息与观察者结构体
+struct ObserverStruct
+{
+	//消息名称
+	const char* notify;
+	//观察者
+	vector<IObserver*>* observers;
+};
+
 class ObserverManager
 {
 public:
@@ -46,13 +56,13 @@ public:
 	// Returns:   void
 	// Qualifier: 发送一个消息，
 	// Parameter: const char * notify	消息名
-	// Parameter: IObserver * observer	观察者
+	// Parameter: ObserverStruct * observer	观察者
 	// Parameter: void * data			数据
 	//************************************
 	static void sendNotification(const char* notify,IObserver* observer,void* data);
 
 
-	vector<IObserver*> getObservers();
+	vector<ObserverStruct*> getObservers();
 
 
 
@@ -62,7 +72,7 @@ public:
 
 private:
 	static ObserverManager* instance;
-	vector<IObserver*> observers;
+	vector<ObserverStruct*> observers;
 
 };
 

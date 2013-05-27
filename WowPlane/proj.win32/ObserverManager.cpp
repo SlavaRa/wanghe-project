@@ -1,12 +1,7 @@
 #include "ObserverManager.h"
 
-
 //初始化单例
 ObserverManager* ObserverManager::instance = new ObserverManager();
-
-
-
-
 
 //************************************
 // Method:    getInstance
@@ -33,6 +28,22 @@ ObserverManager* ObserverManager::getInstance()
 //************************************
 void ObserverManager::registerObserver( const char* notify,IObserver* observer )
 {
+	for (vector<ObserverStruct*>::iterator it = ObserverManager::getInstance()->getObservers().begin();it!=ObserverManager::getInstance()->getObservers().end();it++)
+	{
+		if (strcmp(notify,(*it)->notify)==0)
+		{
+			(*it)->observers->push_back(observer);
+			//如果之前有类似的消息 直接扔进去 返回	
+			return;
+		}
+	}
+
+	//临时创建一个结构体
+	ObserverStruct* tempStruct = new ObserverStruct();
+	tempStruct->notify = notify;
+	tempStruct->observers->push_back(observer);
+
+	ObserverManager::getInstance()->getObservers().push_back(tempStruct);
 
 }
 
@@ -47,7 +58,23 @@ void ObserverManager::registerObserver( const char* notify,IObserver* observer )
 //************************************
 void ObserverManager::unregisterObserver( const char* notify,IObserver* observer )
 {
-
+	for (vector<ObserverStruct*>::iterator it = ObserverManager::getInstance()->getObservers().begin();it!=ObserverManager::getInstance()->getObservers().end();it++)
+	{
+		if (strcmp(notify,(*it)->notify)==0)
+		{
+			//(*it)->observers->(observer);
+			//如果之前有类似的消息 直接扔进去 返回	
+			for (vector<IObserver*>::iterator it2 = (*it)->observers->begin();it2!=(*it)->observers->end();it2++)
+			{
+				if (observer==(*it2))
+				{
+					 (*it)->observers->erase(it2);
+					 return;
+				}
+			}
+			return;
+		}
+	}
 }
 
 //************************************
@@ -70,10 +97,10 @@ void ObserverManager::sendNotification( const char* notify,IObserver* observer,v
 // Method:    getObservers
 // FullName:  ObserverManager::getObservers
 // Access:    public 
-// Returns:   vector<IObserver*>
+// Returns:   vector<ObserverStruct*>
 // Qualifier: 获取观察者们
 //************************************
-vector<IObserver*> ObserverManager::getObservers()
+vector<ObserverStruct*> ObserverManager::getObservers()
 {
 	return observers;
 }
@@ -83,6 +110,7 @@ vector<IObserver*> ObserverManager::getObservers()
 ObserverManager::ObserverManager()
 {
 	//初始化各种数据结构
+
 }
 
 ObserverManager::~ObserverManager()
