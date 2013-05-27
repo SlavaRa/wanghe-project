@@ -52,13 +52,13 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\myFrame\IObserver.h">
-      <Filter>Classes\myFrame</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\myFrame\HNotification.h">
       <Filter>Classes\myFrame</Filter>
     </ClInclude>
     <ClInclude Include="ObserverManager.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\myFrame\include\IObserver.h">
       <Filter>Classes\myFrame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\myFrame\IObserver.cpp">
-      <Filter>Classes\myFrame</Filter>
     </ClCompile>
     <ClCompile Include="ObserverManager.cpp">
       <Filter>Classes\myFrame</Filter>
