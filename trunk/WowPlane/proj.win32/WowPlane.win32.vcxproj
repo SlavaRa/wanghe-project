@@ -12,6 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C1349517-BCFF-4B63-8588-8C1C0CABB3E2}</ProjectGuid>
+    <ProjectName>WowPlane</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -132,19 +133,19 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\myFrame\HNotification.h" />
     <ClInclude Include="..\Classes\myFrame\include\IObserver.h" />
+    <ClInclude Include="..\Classes\myFrame\include\ObserverManager.h" />
+    <ClInclude Include="..\Classes\Processor.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="ObserverManager.h" />
-    <ClInclude Include="Processor.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\GameMenu.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\myFrame\ObserverManager.cpp" />
+    <ClCompile Include="..\Classes\Processor.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObserverManager.cpp" />
-    <ClCompile Include="Processor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
