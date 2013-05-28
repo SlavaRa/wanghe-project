@@ -55,16 +55,16 @@
     <ClInclude Include="..\Classes\myFrame\HNotification.h">
       <Filter>Classes\myFrame</Filter>
     </ClInclude>
-    <ClInclude Include="ObserverManager.h">
-      <Filter>Classes\myFrame</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\myFrame\include\IObserver.h">
       <Filter>Classes\myFrame</Filter>
     </ClInclude>
     <ClInclude Include="GameMenu.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="Processor.h">
+    <ClInclude Include="..\Classes\myFrame\include\ObserverManager.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Processor.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -78,13 +78,13 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="ObserverManager.cpp">
-      <Filter>Classes\myFrame</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameMenu.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Processor.cpp">
+    <ClCompile Include="..\Classes\myFrame\ObserverManager.cpp">
+      <Filter>Classes\myFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Processor.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
