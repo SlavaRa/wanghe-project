@@ -2,12 +2,13 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
-class GameMenu
+class GameMenu:public cocos2d::CCLayer
 {
 public:
-	static CCScene* pScene;
-	static CCScene* scene(); 
+		static CCScene* scene();
+
 	GameMenu(void);
+
 	~GameMenu(void);
 };
 
