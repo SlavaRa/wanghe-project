@@ -49,22 +49,19 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\myFrame\HNotification.h">
-      <Filter>Classes\myFrame</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\myFrame\include\IObserver.h">
       <Filter>Classes\myFrame</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMenu.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\myFrame\include\ObserverManager.h">
       <Filter>Classes\myFrame</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\myFrame\include\HNotification.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Processor.h">
+      <Filter>Classes\myFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameMenu.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -75,9 +72,6 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameMenu.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -85,7 +79,7 @@
       <Filter>Classes\myFrame</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Processor.cpp">
-      <Filter>Classes</Filter>
+      <Filter>Classes\myFrame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
