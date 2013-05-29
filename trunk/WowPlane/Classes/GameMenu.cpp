@@ -42,6 +42,6 @@ bool GameMenu::init()
 void GameMenu::startGameCallBack(CCObject* pSender)
 {
     CCLOG("%s","many bu kaopu");
-	CCScene* scene = GameView::scene();
+    CCScene* scene = GameView::scene();
     CCDirector::sharedDirector()->replaceScene(scene);
 }
