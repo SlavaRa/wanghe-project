@@ -64,6 +64,9 @@
     <ClInclude Include="..\Classes\GameMenu.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="GameView.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Processor.cpp">
       <Filter>Classes\myFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameView.cpp">
+      <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

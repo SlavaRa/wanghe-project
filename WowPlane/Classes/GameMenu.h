@@ -8,6 +8,7 @@ public:
 	virtual bool init();
 	static CCScene* scene(); 
 
+	void startGameCallBack(CCObject* pSender);
 
 	CREATE_FUNC(GameMenu);
 };
