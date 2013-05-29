@@ -18,7 +18,7 @@ bool GameView::init()
 	}
 
 	//初始化各种东西
-
+	CCSprite* bg = CCSprite::create("gameview.jpg");
 
 
 	return true;
