@@ -29,62 +29,66 @@ import com.google.zxing.client.android.R;
 
 import java.util.ArrayList;
 
-final class HistoryItemAdapter extends ArrayAdapter<HistoryItem> {
+final class HistoryItemAdapter extends ArrayAdapter<HistoryItem>{
 
-  private final Context activity;
+	private final Context activity;
 
-    /**
-     * construct
-     * @param activity
-     */
-  HistoryItemAdapter(Context activity)
-  {
-    super(activity, R.layout.history_list_item, new ArrayList<HistoryItem>());
-    this.activity = activity;
-  }
+	/**
+	 * construct
+	 * @param activity  视图
+	 */
+	HistoryItemAdapter(Context activity)
+	{
+		super(activity, R.layout.history_list_item, new ArrayList<HistoryItem>());
+		this.activity = activity;
+	}
 
-
-  @Override
-  public View getView(int position, View view, ViewGroup viewGroup) {
-    View layout;
+	/**
+	 *  给视图填充数据
+	 * @param position  位置
+	 * @param view      显示对象
+	 * @param viewGroup 显示对象分组
+	 * @return
+	 */
+	@Override
+	public View getView(int position, View view, ViewGroup viewGroup) {
+		View layout;
 //      view 是否是LinearLayout类型
-    if (view instanceof LinearLayout) {
-      layout = view;
-    } else {
-      LayoutInflater factory = LayoutInflater.from(activity);
-      layout = factory.inflate(R.layout.history_list_item, viewGroup, false);
-    }
-//    获取索引位置的数据
-//      泛型
-    HistoryItem item = getItem(position);
-//      从HistoryItem里获取Result 结果，这个结果是ZXing内置的类型
-    Result result = item.getResult();
-//
-    CharSequence title;
-    CharSequence detail;
-//      有结果的情况
-    if (result != null)
-    {
-//        标题
-      title = result.getText();
-//        获取详细信息
-      detail = item.getDisplayAndDetails();      
-    }
-    else
-    {
-//        无结果的情况
-//  获取资源
-      Resources resources = getContext().getResources();
-//  从资源里获取字符串
-      title = resources.getString(R.string.history_empty);
-      detail = resources.getString(R.string.history_empty_detail);
-    }
-//  设置标题
-    ((TextView) layout.findViewById(R.id.history_title)).setText(title);
-//     设置文本
-    ((TextView) layout.findViewById(R.id.history_detail)).setText(detail);
-
-    return layout;
-  }
-
+		if (view instanceof LinearLayout) {
+			layout = view;
+		} else {
+			LayoutInflater factory = LayoutInflater.from(activity);
+			layout = factory.inflate(R.layout.history_list_item, viewGroup, false);
+		}
+// 获取索引位置的数据
+		//泛型
+		HistoryItem item = getItem(position);
+		//从HistoryItem里获取Result 结果，这个结果是ZXing内置的类型
+		Result result = item.getResult();
+		CharSequence title;
+		CharSequence detail;
+		//有结果的情况
+		if (result != null)
+		{
+			//  标题
+			title = result.getText();
+			//  获取详细信息
+			detail = item.getDisplayAndDetails();
+		}
+		else
+		{
+			//  无结果的情况
+			//  获取资源
+			Resources resources = getContext().getResources();
+			//  从资源里获取字符串
+			// Ctrl+"-" 可以查看内容
+			title = resources.getString(R.string.history_empty);
+			detail = resources.getString(R.string.history_empty_detail);
+		}
+		//  设置标题
+		((TextView) layout.findViewById(R.id.history_title)).setText(title);
+		//  设置文本
+		((TextView) layout.findViewById(R.id.history_detail)).setText(detail);
+		return layout;
+	}
 }
