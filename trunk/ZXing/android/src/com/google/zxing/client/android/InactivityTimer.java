@@ -27,6 +27,7 @@ import android.util.Log;
 
 /**
  * Finishes an activity after a period of inactivity if the device is on battery power.
+ * 如果是电池供电的话，一段时间不交互的话，就停止这个Activity
  */
 final class InactivityTimer {
 

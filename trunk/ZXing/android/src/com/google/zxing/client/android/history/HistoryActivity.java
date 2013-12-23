@@ -214,10 +214,11 @@ public final class HistoryActivity extends ListActivity {
 //            删除按钮
             case R.id.menu_history_clear_text:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	            //你肯定吗
+	            //"你肯定吗"
                 builder.setMessage(R.string.msg_sure);
                 builder.setCancelable(true);
-                builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener(){
+                builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener()
+                {
                     @Override
                     public void onClick(DialogInterface dialog, int i2)
                     {
