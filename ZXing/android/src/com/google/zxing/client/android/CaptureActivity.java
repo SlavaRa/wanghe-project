@@ -194,7 +194,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         inactivityTimer.onResume();
 
         Intent intent = getIntent();
-//       数据存储
+//       数据存储 配置
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         copyToClipboard = prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD, true)
                 && (intent == null || intent.getBooleanExtra(Intents.Scan.SAVE_HISTORY, true));
@@ -289,31 +289,47 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         super.onPause();
     }
 
+	/***
+	 * 销毁
+	 */
     @Override
     protected void onDestroy() {
+//	    关闭屏幕常量的管理器
         inactivityTimer.shutdown();
         super.onDestroy();
     }
 
+	/**
+	 * 按键下来
+	 * @param keyCode   按键代码
+	 * @param event 事件
+	 * @return
+	 */
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        switch (keyCode)
+        {
+//	        返回键
             case KeyEvent.KEYCODE_BACK:
-                if (source == IntentSource.NATIVE_APP_INTENT) {
+                if (source == IntentSource.NATIVE_APP_INTENT)
+                {
                     setResult(RESULT_CANCELED);
                     finish();
                     return true;
                 }
-                if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
+                if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null)
+                {
                     restartPreviewAfterDelay(0L);
                     return true;
                 }
                 break;
-            case KeyEvent.KEYCODE_FOCUS:
-            case KeyEvent.KEYCODE_CAMERA:
+	        case KeyEvent.KEYCODE_FOCUS:
+	        case KeyEvent.KEYCODE_CAMERA:
                 // Handle these events so they don't launch the Camera app
                 return true;
             // Use volume up/down to turn on light
+			// 打开或者关闭闪光灯
             case KeyEvent.KEYCODE_VOLUME_DOWN:
                 cameraManager.setTorch(false);
                 return true;
@@ -324,6 +340,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         return super.onKeyDown(keyCode, event);
     }
 
+	/***
+	 * 创建操作菜单事件
+	 * @param   menu    菜单
+	 * @return  是否创建成功
+	 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -331,8 +352,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         return super.onCreateOptionsMenu(menu);
     }
 
+	/**
+	 * 操作按钮点击
+	 * @param item  按钮项
+	 * @return
+	 */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
 //      定义一个消息  类型是发给自己的界面
         Intent intent = new Intent(Intent.ACTION_VIEW);
 
@@ -345,6 +372,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 break;
             case R.id.menu_history:
                 intent.setClassName(this, HistoryActivity.class.getName());
+//	            startActivityForResult 这样的调用 会在onActivityResult 返回数据
+//	            HISTORY_REQUEST_CODE    就是期望的
                 startActivityForResult(intent, HISTORY_REQUEST_CODE);
                 break;
             case R.id.menu_settings:
@@ -361,12 +390,24 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         return true;
     }
 
+	/**
+	 *  接受子Activity返回的数据
+	 * @param requestCode   Activity.RESULT_OK
+	 * @param resultCode    HISTORY_REQUEST_CODE
+	 * @param intent        返回数据
+	 */
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == HISTORY_REQUEST_CODE) {
+    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+//	    数据返回成功
+        if (resultCode == RESULT_OK)
+        {
+//	        类型是历史数据
+            if (requestCode == HISTORY_REQUEST_CODE)
+            {
                 int itemNumber = intent.getIntExtra(Intents.History.ITEM_NUMBER, -1);
-                if (itemNumber >= 0) {
+                if (itemNumber >= 0)
+                {
                     HistoryItem historyItem = historyManager.buildHistoryItem(itemNumber);
                     decodeOrStoreSavedBitmap(null, historyItem.getResult());
                 }
@@ -374,6 +415,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
     }
 
+	/***
+	 * 解码图片
+	 * @param bitmap
+	 * @param result
+	 */
     private void decodeOrStoreSavedBitmap(Bitmap bitmap, Result result) {
         // Bitmap isn't used yet -- will be used soon
         if (handler == null) {
@@ -402,12 +448,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
+    public void surfaceDestroyed(SurfaceHolder holder)
+    {
         hasSurface = false;
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height)
+    {
 
     }
 
@@ -418,34 +466,41 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
      * @param scaleFactor amount by which thumbnail was scaled
      * @param barcode     A greyscale bitmap of the camera data which was decoded.
      */
-    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor)
+    {
         inactivityTimer.onActivity();
         lastResult = rawResult;
         ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
 
         boolean fromLiveScan = barcode != null;
-        if (fromLiveScan) {
+        if (fromLiveScan)
+        {
             historyManager.addHistoryItem(rawResult, resultHandler);
             // Then not from history, so beep/vibrate and we have an image to draw on
             beepManager.playBeepSoundAndVibrate();
             drawResultPoints(barcode, scaleFactor, rawResult);
         }
 
-        switch (source) {
+        switch (source)
+        {
             case NATIVE_APP_INTENT:
             case PRODUCT_SEARCH_LINK:
                 handleDecodeExternally(rawResult, resultHandler, barcode);
                 break;
             case ZXING_LINK:
-                if (scanFromWebPageManager == null || !scanFromWebPageManager.isScanFromWebPage()) {
+                if (scanFromWebPageManager == null || !scanFromWebPageManager.isScanFromWebPage())
+                {
                     handleDecodeInternally(rawResult, resultHandler, barcode);
-                } else {
+                }
+                else
+                {
                     handleDecodeExternally(rawResult, resultHandler, barcode);
                 }
                 break;
             case NONE:
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                if (fromLiveScan && prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE, false)) {
+                if (fromLiveScan && prefs.getBoolean(PreferencesActivity.KEY_BULK_MODE, false))
+                {
                     Toast.makeText(getApplicationContext(),
                             getResources().getString(R.string.msg_bulk_mode_scanned) + " (" + rawResult.getText() + ')',
                             Toast.LENGTH_SHORT).show();
@@ -465,7 +520,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
      * @param scaleFactor amount by which thumbnail was scaled
      * @param rawResult   The decoded results which contains the points to draw.
      */
-    private void drawResultPoints(Bitmap barcode, float scaleFactor, Result rawResult) {
+    private void drawResultPoints(Bitmap barcode, float scaleFactor, Result rawResult)
+    {
         ResultPoint[] points = rawResult.getResultPoints();
         if (points != null && points.length > 0) {
             Canvas canvas = new Canvas(barcode);
@@ -502,7 +558,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     // Put up our own UI for how to handle the decoded contents.
-    private void handleDecodeInternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
+    private void handleDecodeInternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode)
+    {
         statusView.setVisibility(View.GONE);
         viewfinderView.setVisibility(View.GONE);
         resultView.setVisibility(View.VISIBLE);

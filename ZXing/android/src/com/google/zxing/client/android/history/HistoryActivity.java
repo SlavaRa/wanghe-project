@@ -110,6 +110,7 @@ public final class HistoryActivity extends ListActivity {
 	        //
             Intent intent = new Intent(this, CaptureActivity.class);
             intent.putExtra(Intents.History.ITEM_NUMBER, position);
+//	        返回CaptureActivity 的onActivityResult
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
