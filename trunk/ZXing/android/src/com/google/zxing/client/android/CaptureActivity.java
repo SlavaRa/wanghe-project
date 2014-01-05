@@ -437,11 +437,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        if (holder == null) {
+    public void surfaceCreated(SurfaceHolder holder)
+    {
+        if (holder == null)
+        {
             Log.e(TAG, "*** WARNING *** surfaceCreated() gave us a null surface!");
         }
-        if (!hasSurface) {
+        if (!hasSurface)
+        {
             hasSurface = true;
             initCamera(holder);
         }
@@ -461,14 +464,16 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     /**
      * A valid barcode has been found, so give an indication of success and show the results.
-     *
+     *  触发了一个可用的二位码
      * @param rawResult   The contents of the barcode.
      * @param scaleFactor amount by which thumbnail was scaled
      * @param barcode     A greyscale bitmap of the camera data which was decoded.
      */
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor)
     {
+        //不要灭灯哦
         inactivityTimer.onActivity();
+        //结果
         lastResult = rawResult;
         ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
 
@@ -478,6 +483,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             historyManager.addHistoryItem(rawResult, resultHandler);
             // Then not from history, so beep/vibrate and we have an image to draw on
             beepManager.playBeepSoundAndVibrate();
+
             drawResultPoints(barcode, scaleFactor, rawResult);
         }
 
@@ -522,24 +528,42 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
      */
     private void drawResultPoints(Bitmap barcode, float scaleFactor, Result rawResult)
     {
+        //结果点
         ResultPoint[] points = rawResult.getResultPoints();
-        if (points != null && points.length > 0) {
+        if (points != null && points.length > 0)
+        {
+            //画布
             Canvas canvas = new Canvas(barcode);
+            //画笔
             Paint paint = new Paint();
+            //设置画笔的颜色 为绿色
             paint.setColor(getResources().getColor(R.color.result_points));
-            if (points.length == 2) {
+            //如果有两个点的情况
+            if (points.length == 2)
+            {
+                //设置笔画宽
                 paint.setStrokeWidth(4.0f);
                 drawLine(canvas, paint, points[0], points[1], scaleFactor);
-            } else if (points.length == 4 &&
+            }
+            //如果有四个点
+            //同时编码类型为UPC-A 或者 EAN-13的话 画两个横线
+            //这两种都是竖条的那种码
+            else if (points.length == 4 &&
                     (rawResult.getBarcodeFormat() == BarcodeFormat.UPC_A ||
-                            rawResult.getBarcodeFormat() == BarcodeFormat.EAN_13)) {
+                            rawResult.getBarcodeFormat() == BarcodeFormat.EAN_13))
+            {
                 // Hacky special case -- draw two lines, for the barcode and metadata
                 drawLine(canvas, paint, points[0], points[1], scaleFactor);
                 drawLine(canvas, paint, points[2], points[3], scaleFactor);
-            } else {
+            }
+            else
+            {
+                //画点
                 paint.setStrokeWidth(10.0f);
-                for (ResultPoint point : points) {
-                    if (point != null) {
+                for (ResultPoint point : points)
+                {
+                    if (point != null)
+                    {
                         canvas.drawPoint(scaleFactor * point.getX(), scaleFactor * point.getY(), paint);
                     }
                 }
@@ -547,8 +571,18 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
     }
 
-    private static void drawLine(Canvas canvas, Paint paint, ResultPoint a, ResultPoint b, float scaleFactor) {
-        if (a != null && b != null) {
+    /**
+     * 画一条线
+     * @param canvas    画布
+     * @param paint     画笔
+     * @param a         第一个点
+     * @param b         第二个点
+     * @param scaleFactor   比例因子
+     */
+    private static void drawLine(Canvas canvas, Paint paint, ResultPoint a, ResultPoint b, float scaleFactor)
+    {
+        if (a != null && b != null)
+        {
             canvas.drawLine(scaleFactor * a.getX(),
                     scaleFactor * a.getY(),
                     scaleFactor * b.getX(),
@@ -560,29 +594,40 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     // Put up our own UI for how to handle the decoded contents.
     private void handleDecodeInternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode)
     {
+        //状态栏 设置为不可见
         statusView.setVisibility(View.GONE);
+        //
         viewfinderView.setVisibility(View.GONE);
+        //结果界面 设置为不可见
         resultView.setVisibility(View.VISIBLE);
-
+        //图片控件
         ImageView barcodeImageView = (ImageView) findViewById(R.id.barcode_image_view);
-        if (barcode == null) {
+        if (barcode == null)
+        {
+            //如果结果为空的话  就把图标ico设置进去
             barcodeImageView.setImageBitmap(BitmapFactory.decodeResource(getResources(),
                     R.drawable.launcher_icon));
-        } else {
+        }
+        else
+        {
+            //如果有结果  则把结果显示上去
             barcodeImageView.setImageBitmap(barcode);
         }
 
+        //编码文本
         TextView formatTextView = (TextView) findViewById(R.id.format_text_view);
+        //设置文本  获取编码的格式
         formatTextView.setText(rawResult.getBarcodeFormat().toString());
-
+        //类型文本
         TextView typeTextView = (TextView) findViewById(R.id.type_text_view);
+        //获取类型的文本
         typeTextView.setText(resultHandler.getType().toString());
-
-        DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+        //日期时间解析类
+        DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+        //显示时间的文本框
         TextView timeTextView = (TextView) findViewById(R.id.time_text_view);
         timeTextView.setText(formatter.format(new Date(rawResult.getTimestamp())));
-
-
+        //元数据 CN之类的
         TextView metaTextView = (TextView) findViewById(R.id.meta_text_view);
         View metaTextViewLabel = findViewById(R.id.meta_text_view_label);
         metaTextView.setVisibility(View.GONE);
@@ -603,6 +648,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             }
         }
 
+        //
         TextView contentsTextView = (TextView) findViewById(R.id.contents_text_view);
         CharSequence displayContents = resultHandler.getDisplayContents();
         contentsTextView.setText(displayContents);
@@ -614,13 +660,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         supplementTextView.setText("");
         supplementTextView.setOnClickListener(null);
         if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
-                PreferencesActivity.KEY_SUPPLEMENTAL, true)) {
+                PreferencesActivity.KEY_SUPPLEMENTAL, true))
+        {
             SupplementalInfoRetriever.maybeInvokeRetrieval(supplementTextView,
                     resultHandler.getResult(),
                     historyManager,
                     this);
         }
-
+        //
         int buttonCount = resultHandler.getButtonCount();
         ViewGroup buttonView = (ViewGroup) findViewById(R.id.result_button_view);
         buttonView.requestFocus();
@@ -634,7 +681,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 button.setVisibility(View.GONE);
             }
         }
-
+        //复制到剪切板
         if (copyToClipboard && !resultHandler.areContentsSecure()) {
             ClipboardInterface.setText(displayContents, this);
         }
@@ -643,7 +690,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     // Briefly show the contents of the barcode, then handle the result outside Barcode Scanner.
     private void handleDecodeExternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
 
-        if (barcode != null) {
+        if (barcode != null)
+        {
             viewfinderView.drawResultBitmap(barcode);
         }
 
