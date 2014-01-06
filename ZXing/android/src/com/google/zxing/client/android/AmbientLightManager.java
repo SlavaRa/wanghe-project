@@ -27,6 +27,7 @@ import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.camera.FrontLightMode;
 
 /**
+ * 检测环境光，在很黑暗的情况下，打开闪光灯，然后光照充足的时候关闭
  * Detects ambient light and switches on the front light when very dark, and off again when sufficiently light.
  *
  * @author Sean Owen
@@ -34,6 +35,7 @@ import com.google.zxing.client.android.camera.FrontLightMode;
  */
 final class AmbientLightManager implements SensorEventListener {
 
+  //  黑暗阀值  勒克斯（照明单位）
   private static final float TOO_DARK_LUX = 45.0f;
   private static final float BRIGHT_ENOUGH_LUX = 450.0f;
 
@@ -41,17 +43,26 @@ final class AmbientLightManager implements SensorEventListener {
   private CameraManager cameraManager;
   private Sensor lightSensor;
 
-  AmbientLightManager(Context context) {
+  AmbientLightManager(Context context)
+  {
     this.context = context;
   }
 
-  void start(CameraManager cameraManager) {
+  void start(CameraManager cameraManager)
+  {
     this.cameraManager = cameraManager;
     SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-    if (FrontLightMode.readPref(sharedPrefs) == FrontLightMode.AUTO) {
+    if (FrontLightMode.readPref(sharedPrefs) == FrontLightMode.AUTO)
+    {
+      //  获取传感器服务
       SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+      // 获取一个光传感器
       lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-      if (lightSensor != null) {
+      if (lightSensor != null)
+      {
+        //  注册监听
+        //  这个类实现 SensorEventListener 接口
+        //  回调onSensorChanged函数
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
       }
     }
@@ -67,12 +78,21 @@ final class AmbientLightManager implements SensorEventListener {
   }
 
   @Override
-  public void onSensorChanged(SensorEvent sensorEvent) {
+  public void onSensorChanged(SensorEvent sensorEvent)
+  {
+    //  当前环境的光照强度
     float ambientLightLux = sensorEvent.values[0];
-    if (cameraManager != null) {
-      if (ambientLightLux <= TOO_DARK_LUX) {
+    if (cameraManager != null)
+    {
+      if (ambientLightLux <= TOO_DARK_LUX)
+      {
+        //  如果小于 黑暗阀值
+        //  打开手电筒
         cameraManager.setTorch(true);
-      } else if (ambientLightLux >= BRIGHT_ENOUGH_LUX) {
+      }
+      else if (ambientLightLux >= BRIGHT_ENOUGH_LUX)
+      {
+        //  如果大于明亮的阀值 关闭手电筒
         cameraManager.setTorch(false);
       }
     }
