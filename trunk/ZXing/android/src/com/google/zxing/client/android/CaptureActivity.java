@@ -688,36 +688,45 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     // Briefly show the contents of the barcode, then handle the result outside Barcode Scanner.
-    private void handleDecodeExternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
-
+    private void handleDecodeExternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode)
+    {
+        //
         if (barcode != null)
         {
             viewfinderView.drawResultBitmap(barcode);
         }
 
         long resultDurationMS;
-        if (getIntent() == null) {
+        if (getIntent() == null)
+        {
             resultDurationMS = DEFAULT_INTENT_RESULT_DURATION_MS;
-        } else {
-            resultDurationMS = getIntent().getLongExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS,
-                    DEFAULT_INTENT_RESULT_DURATION_MS);
+        }
+        else
+        {
+            resultDurationMS = getIntent().getLongExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS,DEFAULT_INTENT_RESULT_DURATION_MS);
         }
 
-        if (resultDurationMS > 0) {
+        if (resultDurationMS > 0)
+        {
+            //valueOf 等于  toString()
             String rawResultString = String.valueOf(rawResult);
-            if (rawResultString.length() > 32) {
+            //控制长度在32个字符以内
+            if (rawResultString.length() > 32)
+            {
                 rawResultString = rawResultString.substring(0, 32) + " ...";
             }
+            //设置状态结果文本
             statusView.setText(getString(resultHandler.getDisplayTitle()) + " : " + rawResultString);
         }
-
-        if (copyToClipboard && !resultHandler.areContentsSecure()) {
+        //拷贝结果到剪切板
+        if (copyToClipboard && !resultHandler.areContentsSecure())
+        {
             CharSequence text = resultHandler.getDisplayContents();
             ClipboardInterface.setText(text, this);
         }
-
-        if (source == IntentSource.NATIVE_APP_INTENT) {
-
+        //结果是扫描来的
+        if (source == IntentSource.NATIVE_APP_INTENT)
+        {
             // Hand back whatever action they requested - this can be changed to Intents.Scan.ACTION when
             // the deprecated intent is retired.
             Intent intent = new Intent(getIntent().getAction());
@@ -725,17 +734,22 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             intent.putExtra(Intents.Scan.RESULT, rawResult.toString());
             intent.putExtra(Intents.Scan.RESULT_FORMAT, rawResult.getBarcodeFormat().toString());
             byte[] rawBytes = rawResult.getRawBytes();
-            if (rawBytes != null && rawBytes.length > 0) {
+            if (rawBytes != null && rawBytes.length > 0)
+            {
                 intent.putExtra(Intents.Scan.RESULT_BYTES, rawBytes);
             }
+            //元数据
             Map<ResultMetadataType, ?> metadata = rawResult.getResultMetadata();
-            if (metadata != null) {
-                if (metadata.containsKey(ResultMetadataType.UPC_EAN_EXTENSION)) {
+            if (metadata != null)
+            {
+                if (metadata.containsKey(ResultMetadataType.UPC_EAN_EXTENSION))
+                {
                     intent.putExtra(Intents.Scan.RESULT_UPC_EAN_EXTENSION,
                             metadata.get(ResultMetadataType.UPC_EAN_EXTENSION).toString());
                 }
                 Number orientation = (Number) metadata.get(ResultMetadataType.ORIENTATION);
-                if (orientation != null) {
+                if (orientation != null)
+                {
                     intent.putExtra(Intents.Scan.RESULT_ORIENTATION, orientation.intValue());
                 }
                 String ecLevel = (String) metadata.get(ResultMetadataType.ERROR_CORRECTION_LEVEL);
@@ -744,9 +758,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 }
                 @SuppressWarnings("unchecked")
                 Iterable<byte[]> byteSegments = (Iterable<byte[]>) metadata.get(ResultMetadataType.BYTE_SEGMENTS);
-                if (byteSegments != null) {
+                if (byteSegments != null)
+                {
                     int i = 0;
-                    for (byte[] byteSegment : byteSegments) {
+                    for (byte[] byteSegment : byteSegments)
+                    {
                         intent.putExtra(Intents.Scan.RESULT_BYTE_SEGMENTS_PREFIX + i, byteSegment);
                         i++;
                     }
@@ -754,51 +770,77 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             }
             sendReplyMessage(R.id.return_scan_result, intent, resultDurationMS);
 
-        } else if (source == IntentSource.PRODUCT_SEARCH_LINK) {
-
+        }
+        else if (source == IntentSource.PRODUCT_SEARCH_LINK)
+        {
             // Reformulate the URL which triggered us into a query, so that the request goes to the same
             // TLD as the scan URL.
             int end = sourceUrl.lastIndexOf("/scan");
             String replyURL = sourceUrl.substring(0, end) + "?q=" + resultHandler.getDisplayContents() + "&source=zxing";
             sendReplyMessage(R.id.launch_product_query, replyURL, resultDurationMS);
-
-        } else if (source == IntentSource.ZXING_LINK) {
-
-            if (scanFromWebPageManager != null && scanFromWebPageManager.isScanFromWebPage()) {
+        }
+        else if (source == IntentSource.ZXING_LINK)
+        {
+            if (scanFromWebPageManager != null && scanFromWebPageManager.isScanFromWebPage())
+            {
                 String replyURL = scanFromWebPageManager.buildReplyURL(rawResult, resultHandler);
                 sendReplyMessage(R.id.launch_product_query, replyURL, resultDurationMS);
             }
-
         }
     }
 
-    private void sendReplyMessage(int id, Object arg, long delayMS) {
-        if (handler != null) {
+    /**
+     * 发送重播的信息
+     * @param id        消息ID
+     * @param arg       消息参数
+     * @param delayMS   延迟毫秒
+     */
+    private void sendReplyMessage(int id, Object arg, long delayMS)
+    {
+        if (handler != null)
+        {
+            //构造消息
             Message message = Message.obtain(handler, id, arg);
-            if (delayMS > 0L) {
+            if (delayMS > 0L)
+            {
+                //发送消息 加延迟
                 handler.sendMessageDelayed(message, delayMS);
-            } else {
+            }
+            else
+            {
+                //直接发
                 handler.sendMessage(message);
             }
         }
     }
 
-    private void initCamera(SurfaceHolder surfaceHolder) {
-        if (surfaceHolder == null) {
+    /**
+     * 初始化摄像头
+     * @param surfaceHolder surface接口
+     */
+    private void initCamera(SurfaceHolder surfaceHolder)
+    {
+        if (surfaceHolder == null)
+        {
             throw new IllegalStateException("No SurfaceHolder provided");
         }
-        if (cameraManager.isOpen()) {
+        if (cameraManager.isOpen())
+        {
             Log.w(TAG, "initCamera() while already open -- late SurfaceView callback?");
             return;
         }
-        try {
+        try
+        {
             cameraManager.openDriver(surfaceHolder);
             // Creating the handler starts the preview, which can also throw a RuntimeException.
-            if (handler == null) {
+            if (handler == null)
+            {
                 handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
             }
             decodeOrStoreSavedBitmap(null, null);
-        } catch (IOException ioe) {
+        }
+        catch (IOException ioe)
+        {
             Log.w(TAG, ioe);
             displayFrameworkBugMessageAndExit();
         } catch (RuntimeException e) {
