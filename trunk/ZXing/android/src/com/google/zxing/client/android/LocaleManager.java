@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * Handles any locale-specific logic for the client.
- *
+ *  本地化管理器  值得借鉴
  * @author Sean Owen
  */
 public final class LocaleManager {

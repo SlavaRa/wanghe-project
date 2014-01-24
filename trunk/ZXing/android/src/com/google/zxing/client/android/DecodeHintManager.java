@@ -198,6 +198,11 @@ final class DecodeHintManager {
     return hints;
   }
 
+    /**
+     * 解码提示
+     * @param intent
+     * @return
+     */
   static Map<DecodeHintType, Object> parseDecodeHints(Intent intent) {
     Bundle extras = intent.getExtras();
     if (extras == null || extras.isEmpty()) {
