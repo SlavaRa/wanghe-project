@@ -179,15 +179,19 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
-        if (hasSurface) {
+        if (hasSurface)
+        {
             // The activity was paused but not stopped, so the surface still exists. Therefore
             // surfaceCreated() won't be called, so init the camera here.
             initCamera(surfaceHolder);
-        } else {
+        }
+        else
+        {
             // Install the callback and wait for surfaceCreated() to init the camera.
             surfaceHolder.addCallback(this);
         }
 
+        //
         beepManager.updatePrefs();
         ambientLightManager.start(cameraManager);
 
@@ -482,8 +486,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         {
             historyManager.addHistoryItem(rawResult, resultHandler);
             // Then not from history, so beep/vibrate and we have an image to draw on
+            //哔哔和震动
             beepManager.playBeepSoundAndVibrate();
-
+            //画那些默认的点什么的
             drawResultPoints(barcode, scaleFactor, rawResult);
         }
 
@@ -843,7 +848,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         {
             Log.w(TAG, ioe);
             displayFrameworkBugMessageAndExit();
-        } catch (RuntimeException e) {
+        }
+        catch (RuntimeException e)
+        {
             // Barcode Scanner has seen crashes in the wild of this variety:
             // java.?lang.?RuntimeException: Fail to connect to camera service
             Log.w(TAG, "Unexpected error initializing camera", e);
@@ -851,7 +858,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
     }
 
-    private void displayFrameworkBugMessageAndExit() {
+    private void displayFrameworkBugMessageAndExit()
+    {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.app_name));
         builder.setMessage(getString(R.string.msg_camera_framework_bug));
@@ -860,14 +868,16 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         builder.show();
     }
 
-    public void restartPreviewAfterDelay(long delayMS) {
+    public void restartPreviewAfterDelay(long delayMS)
+    {
         if (handler != null) {
             handler.sendEmptyMessageDelayed(R.id.restart_preview, delayMS);
         }
         resetStatusView();
     }
 
-    private void resetStatusView() {
+    private void resetStatusView()
+    {
         resultView.setVisibility(View.GONE);
         statusView.setText(R.string.msg_default_status);
         statusView.setVisibility(View.VISIBLE);
